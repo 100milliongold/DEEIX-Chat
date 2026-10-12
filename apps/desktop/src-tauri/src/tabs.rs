@@ -532,6 +532,9 @@ fn persist<R: Runtime>(app: &AppHandle<R>) -> Result<()> {
 }
 
 fn changed<R: Runtime>(app: &AppHandle<R>) -> Result<()> {
+    // macOS: the File menu's ⌘W item follows the tab count (src/menu.rs).
+    #[cfg(target_os = "macos")]
+    crate::menu::sync(app);
     persist(app)?;
     app.emit_to(
         EventTarget::webview(CHROME_LABEL),

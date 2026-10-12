@@ -36,6 +36,7 @@ import { cn } from "@/lib/utils";
 import { type FileContentLoader, PreviewMedia } from "@/entities/file";
 import { type MarkdownArtifactActions, MarkdownImage } from "@/shared/components/markdown/streamdown-components";
 import { StreamdownRender } from "@/shared/components/markdown/streamdown-render";
+import type { UIBlockStateBinding } from "@/shared/components/markdown/ui-blocks/ui-block-state";
 import { MediaActionBar, MediaActionButton } from "@/shared/components/media-action-bar";
 import { useBranding } from "@/shared/config/branding-provider";
 import { useCopyAction } from "@/shared/components/copy-action";
@@ -164,6 +165,8 @@ type ChatMessageBotProps = {
   onEditImageAttachment?: (attachment: MessageAttachment, sourceModelName?: string) => void;
   onExtendVideoAttachment?: (attachment: MessageAttachment, sourceModelName?: string) => void;
   artifactActions?: MarkdownArtifactActions;
+  // Persisted state of the interactive component blocks in this reply.
+  uiBlockState?: UIBlockStateBinding;
   showBranchNavigator?: boolean;
   contentWidthClassName?: string;
   screenshotMeta?: React.ReactNode;
@@ -199,6 +202,7 @@ export function ChatMessageBot({
   onEditImageAttachment,
   onExtendVideoAttachment,
   artifactActions,
+  uiBlockState,
   showBranchNavigator = true,
   contentWidthClassName = "max-w-[1080px]",
   screenshotMeta,
@@ -418,6 +422,7 @@ export function ChatMessageBot({
                 autoExpandThinking={autoExpandThinking}
                 imageActions={markdownImageActions}
                 artifactActions={artifactActions}
+                uiBlockState={uiBlockState}
               />
             ) : hasInlineContent ? (
               <p className="whitespace-pre-wrap break-words [overflow-wrap:anywhere]">{streamdownContent}</p>
@@ -430,6 +435,7 @@ export function ChatMessageBot({
             autoExpandThinking={autoExpandThinking}
             imageActions={markdownImageActions}
             artifactActions={artifactActions}
+            uiBlockState={uiBlockState}
           />
         ) : hasStreamdownContent ? (
           <p className="whitespace-pre-wrap break-words [overflow-wrap:anywhere]">{item.content}</p>

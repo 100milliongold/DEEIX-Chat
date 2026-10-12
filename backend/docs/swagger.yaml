@@ -5427,6 +5427,9 @@ definitions:
         type: integer
       tokenUsage:
         type: integer
+      uiState:
+        description: UIState 是交互式组件块已保存的状态快照，键为块 id、值为该块的差量状态；没有状态时省略。
+        type: object
       updatedAt:
         type: string
       upstreamModelName:
@@ -5553,6 +5556,48 @@ definitions:
     - summary
     - title
     - updatedAt
+    type: object
+  MessageUIStateInputRequest:
+    properties:
+      blockID:
+        maxLength: 128
+        type: string
+      messagePublicID:
+        description: MessagePublicID 是组件所在 assistant 消息的 public_id。
+        maxLength: 64
+        type: string
+      state:
+        type: object
+      title:
+        description: Title 是组件标题，帮助模型对应到具体组件；超过 40 个字符的部分被截断。
+        maxLength: 200
+        type: string
+    required:
+    - blockID
+    - messagePublicID
+    type: object
+  MessageUIStateResponse:
+    properties:
+      messageID:
+        type: integer
+      messagePublicID:
+        type: string
+      uiState:
+        type: object
+    required:
+    - messageID
+    - messagePublicID
+    - uiState
+    type: object
+  MessageUIStateResponseDoc:
+    properties:
+      data:
+        $ref: '#/definitions/MessageUIStateResponse'
+      errorMsg:
+        type: string
+    required:
+    - data
+    - errorMsg
     type: object
   ModelCatalogReasoningResponse:
     properties:
@@ -8907,10 +8952,24 @@ definitions:
       sourceMessagePublicID:
         maxLength: 32
         type: string
+      uiBlockVersion:
+        description: UIBlockVersion 是客户端能渲染的 deeix-ui 块格式版本：缺省或 1 只用静态组件，2 允许可交互块（state、computed、原语）。
+        maximum: 2
+        minimum: 1
+        type: integer
       uiComponentIDs:
         description: UIComponentIDs 是本次会话勾选的交互式组件；后端据此注入组件目录提示词，不可见的 ID 被忽略。
         items:
           type: integer
+        maxItems: 32
+        type: array
+      uiStates:
+        description: |-
+          UIStates 是用户在当前分支的交互式组件里设定的状态（只含与初始值不同的键），作为本轮上下文发给模型，不落库。
+          条数与字段长度超过这里声明的上限时按请求体不合法拒绝；除此之外，不在当前分支上的消息、
+          状态内容不合法或超出注入预算的条目只是被忽略，不会让发送失败。
+        items:
+          $ref: '#/definitions/MessageUIStateInputRequest'
         maxItems: 32
         type: array
     required:
@@ -9097,6 +9156,16 @@ definitions:
         - up
         - down
         type: string
+    type: object
+  SetMessageUIStateRequest:
+    properties:
+      blocks:
+        description: |-
+          Blocks 以组件块 id 为键、该块的状态对象为值（只含与初始值不同的键）。
+          出现的块整块替换；值为 null 或空对象表示清除该块；没出现的块保持不变。
+        type: object
+    required:
+    - blocks
     type: object
   SetModelPermissionGroupsRequest:
     properties:
@@ -9588,10 +9657,21 @@ definitions:
           type: integer
         maxItems: 128
         type: array
+      uiBlockVersion:
+        description: UIBlockVersion 语义同 SendMessageRequest.uiBlockVersion。
+        maximum: 2
+        minimum: 1
+        type: integer
       uiComponentIDs:
         description: UIComponentIDs 是本次会话勾选的交互式组件。
         items:
           type: integer
+        maxItems: 32
+        type: array
+      uiStates:
+        description: UIStates 是用户在本次临时对话的交互式组件里设定的状态；语义同 SendMessageRequest.uiStates。
+        items:
+          $ref: '#/definitions/TemporaryChatUIStateRequest'
         maxItems: 32
         type: array
     required:
@@ -9599,6 +9679,24 @@ definitions:
     - messages
     - model
     - sessionID
+    type: object
+  TemporaryChatUIStateRequest:
+    properties:
+      blockID:
+        maxLength: 128
+        type: string
+      messageIndex:
+        maximum: 99
+        minimum: 0
+        type: integer
+      state:
+        type: object
+      title:
+        maxLength: 200
+        type: string
+    required:
+    - blockID
+    - messageIndex
     type: object
   ToolListResponse:
     properties:
@@ -19953,6 +20051,57 @@ paths:
       security:
       - BearerAuth: []
       summary: 从指定消息 fork 新会话
+      tags:
+      - chat
+  /conversations/{id}/messages/{message_id}/ui-state:
+    put:
+      consumes:
+      - application/json
+      description: 按块保存 assistant 消息里交互式组件的当前状态快照（只保存与块初始值不同的键）。blocks 以块 id 为键：出现的块整块替换，值为
+        null 或空对象表示清除，没出现的块保持不变
+      parameters:
+      - description: 会话 public_id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 消息 public_id
+        in: path
+        name: message_id
+        required: true
+        type: string
+      - description: 组件状态
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/SetMessageUIStateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/MessageUIStateResponseDoc'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ConversationErrorDoc'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ConversationErrorDoc'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ConversationErrorDoc'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ConversationErrorDoc'
+      security:
+      - BearerAuth: []
+      summary: 保存消息内交互式组件的状态
       tags:
       - chat
   /conversations/{id}/messages/preview:

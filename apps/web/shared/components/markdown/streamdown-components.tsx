@@ -28,7 +28,8 @@ import { MarkdownFootnotesContext } from "./streamdown-html";
 import { StreamdownCheckIcon, StreamdownCopyIcon } from "./streamdown-icons";
 import { MarkdownMermaidLoading, MarkdownMermaidPendingContext } from "./streamdown-mermaid";
 import { sanitizeHTMLStyle } from "./streamdown-style";
-import { UI_BLOCK_FENCE_LANGUAGE, UIBlockHost } from "./ui-blocks";
+import { UI_WIDGET_FENCE_LANGUAGE } from "@deeix/core";
+import { MarkdownWidgetHost, UI_BLOCK_FENCE_LANGUAGE, UIBlockHost } from "./ui-blocks";
 
 // Fences without a language are treated as plain text: the label shows text as-is, so content isn't wrongly highlighted as Markdown.
 const DEFAULT_CODE_BLOCK_LANGUAGE = "text";
@@ -76,6 +77,8 @@ export type MarkdownArtifactActions = {
     language: string;
     kind: ArtifactPreviewKind;
   }) => void;
+  // Opens an interactive block of this message in the side panel, by block key.
+  onOpenUIBlock?: (blockKey: string) => void;
 };
 
 type MarkdownParagraphProps = React.HTMLAttributes<HTMLParagraphElement> & {
@@ -521,6 +524,14 @@ export function MarkdownCodePre({ children, node: _node, "data-markdown-source-l
     return (
       <div className="w-full" data-markdown-source-line={sourceLine}>
         <UIBlockHost raw={codeContent} streaming={streaming} />
+      </div>
+    );
+  }
+
+  if (language === UI_WIDGET_FENCE_LANGUAGE) {
+    return (
+      <div className="w-full" data-markdown-source-line={sourceLine}>
+        <MarkdownWidgetHost raw={codeContent} streaming={streaming} />
       </div>
     );
   }
