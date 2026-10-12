@@ -2428,6 +2428,8 @@ export interface MessageResponse {
   thumbsDownCount: number;
   thumbsUpCount: number;
   tokenUsage: number;
+  /** UIState 是交互式组件块已保存的状态快照，键为块 id、值为该块的差量状态；没有状态时省略。 */
+  uiState?: object;
   updatedAt: string;
   upstreamModelName: string;
   userID: number;
@@ -2467,6 +2469,33 @@ export interface MessageTraceEventResponse {
   summary: string;
   title: string;
   updatedAt: string;
+}
+
+export interface MessageUIStateInputRequest {
+  /** @maxLength 128 */
+  blockID: string;
+  /**
+   * MessagePublicID 是组件所在 assistant 消息的 public_id。
+   * @maxLength 64
+   */
+  messagePublicID: string;
+  state?: object;
+  /**
+   * Title 是组件标题，帮助模型对应到具体组件；超过 40 个字符的部分被截断。
+   * @maxLength 200
+   */
+  title?: string;
+}
+
+export interface MessageUIStateResponse {
+  messageID: number;
+  messagePublicID: string;
+  uiState: object;
+}
+
+export interface MessageUIStateResponseDoc {
+  data: MessageUIStateResponse;
+  errorMsg: string;
 }
 
 export interface ModelCatalogReasoningResponse {
@@ -3951,10 +3980,23 @@ export interface SendMessageRequest {
   /** @maxLength 32 */
   sourceMessagePublicID?: string;
   /**
+   * UIBlockVersion 是客户端能渲染的 deeix-ui 块格式版本：缺省或 1 只用静态组件，2 允许可交互块（state、computed、原语）。
+   * @min 1
+   * @max 2
+   */
+  uiBlockVersion?: number;
+  /**
    * UIComponentIDs 是本次会话勾选的交互式组件；后端据此注入组件目录提示词，不可见的 ID 被忽略。
    * @maxItems 32
    */
   uiComponentIDs?: number[];
+  /**
+   * UIStates 是用户在当前分支的交互式组件里设定的状态（只含与初始值不同的键），作为本轮上下文发给模型，不落库。
+   * 条数与字段长度超过这里声明的上限时按请求体不合法拒绝；除此之外，不在当前分支上的消息、
+   * 状态内容不合法或超出注入预算的条目只是被忽略，不会让发送失败。
+   * @maxItems 32
+   */
+  uiStates?: MessageUIStateInputRequest[];
 }
 
 export interface SendMessageResponse {
@@ -4040,6 +4082,14 @@ export interface SetGroupUsersRequest {
 
 export interface SetMessageFeedbackRequest {
   feedback?: "up" | "down";
+}
+
+export interface SetMessageUIStateRequest {
+  /**
+   * Blocks 以组件块 id 为键、该块的状态对象为值（只含与初始值不同的键）。
+   * 出现的块整块替换；值为 null 或空对象表示清除该块；没出现的块保持不变。
+   */
+  blocks: object;
 }
 
 export interface SetModelPermissionGroupsRequest {
@@ -4277,10 +4327,34 @@ export interface TemporaryChatMessageRequest {
   /** @maxItems 128 */
   skillIDs?: number[];
   /**
+   * UIBlockVersion 语义同 SendMessageRequest.uiBlockVersion。
+   * @min 1
+   * @max 2
+   */
+  uiBlockVersion?: number;
+  /**
    * UIComponentIDs 是本次会话勾选的交互式组件。
    * @maxItems 32
    */
   uiComponentIDs?: number[];
+  /**
+   * UIStates 是用户在本次临时对话的交互式组件里设定的状态；语义同 SendMessageRequest.uiStates。
+   * @maxItems 32
+   */
+  uiStates?: TemporaryChatUIStateRequest[];
+}
+
+export interface TemporaryChatUIStateRequest {
+  /** @maxLength 128 */
+  blockID: string;
+  /**
+   * @min 0
+   * @max 99
+   */
+  messageIndex: number;
+  state?: object;
+  /** @maxLength 200 */
+  title?: string;
 }
 
 export interface ToolListResponse {
@@ -10018,6 +10092,27 @@ export namespace Conversations {
     export type RequestBody = never;
     export type RequestHeaders = {};
     export type ResponseBody = ConversationUpdateResponseDoc;
+  }
+
+  /**
+   * @description 按块保存 assistant 消息里交互式组件的当前状态快照（只保存与块初始值不同的键）。blocks 以块 id 为键：出现的块整块替换，值为 null 或空对象表示清除，没出现的块保持不变
+   * @tags chat
+   * @name MessagesUiStateUpdate
+   * @summary 保存消息内交互式组件的状态
+   * @request PUT:/conversations/{id}/messages/{message_id}/ui-state
+   * @secure
+   */
+  export namespace MessagesUiStateUpdate {
+    export type RequestParams = {
+      /** 会话 public_id */
+      id: string;
+      /** 消息 public_id */
+      messageId: string;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = SetMessageUIStateRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = MessageUIStateResponseDoc;
   }
 
   /**

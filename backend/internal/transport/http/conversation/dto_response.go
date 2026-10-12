@@ -867,24 +867,26 @@ type MessageResponse struct {
 	ErrorMessage    string  `json:"errorMessage"`
 	// ErrorRequestID 是失败助手消息（status 为 error / interrupted）对应生成请求的 requestId，
 	// 即用户可见的“错误 ID”，管理员凭它检索访问日志；其他消息为空串。
-	ErrorRequestID    string                           `json:"errorRequestID"`
-	Attachments       string                           `json:"attachments"`
-	PlatformModelName string                           `json:"platformModelName"`
-	UpstreamModelName string                           `json:"upstreamModelName"`
-	ModelVendor       string                           `json:"modelVendor"`
-	ModelIcon         string                           `json:"modelIcon"`
-	ParentPublicID    string                           `json:"parentPublicID"`
-	SourcePublicID    string                           `json:"sourcePublicID"`
-	MyFeedback        string                           `json:"myFeedback"`
-	ThumbsUpCount     int64                            `json:"thumbsUpCount"`
-	ThumbsDownCount   int64                            `json:"thumbsDownCount"`
-	BillingCost       *MessageBillingCostResponse      `json:"billingCost,omitempty"`
-	KnowledgeSources  []MessageKnowledgeSourceResponse `json:"knowledgeSources,omitempty"`
-	ProcessTrace      *MessageProcessTraceResponse     `json:"processTrace,omitempty"`
-	Moderation        *MessageModerationResponse       `json:"moderation,omitempty"`
-	EditedAt          *time.Time                       `json:"editedAt" extensions:"x-nullable,!x-omitempty"`
-	CreatedAt         time.Time                        `json:"createdAt"`
-	UpdatedAt         time.Time                        `json:"updatedAt"`
+	ErrorRequestID    string `json:"errorRequestID"`
+	Attachments       string `json:"attachments"`
+	PlatformModelName string `json:"platformModelName"`
+	UpstreamModelName string `json:"upstreamModelName"`
+	ModelVendor       string `json:"modelVendor"`
+	ModelIcon         string `json:"modelIcon"`
+	ParentPublicID    string `json:"parentPublicID"`
+	SourcePublicID    string `json:"sourcePublicID"`
+	MyFeedback        string `json:"myFeedback"`
+	ThumbsUpCount     int64  `json:"thumbsUpCount"`
+	ThumbsDownCount   int64  `json:"thumbsDownCount"`
+	// UIState 是交互式组件块已保存的状态快照，键为块 id、值为该块的差量状态；没有状态时省略。
+	UIState          map[string]json.RawMessage       `json:"uiState,omitempty" swaggertype:"object"`
+	BillingCost      *MessageBillingCostResponse      `json:"billingCost,omitempty"`
+	KnowledgeSources []MessageKnowledgeSourceResponse `json:"knowledgeSources,omitempty"`
+	ProcessTrace     *MessageProcessTraceResponse     `json:"processTrace,omitempty"`
+	Moderation       *MessageModerationResponse       `json:"moderation,omitempty"`
+	EditedAt         *time.Time                       `json:"editedAt" extensions:"x-nullable,!x-omitempty"`
+	CreatedAt        time.Time                        `json:"createdAt"`
+	UpdatedAt        time.Time                        `json:"updatedAt"`
 }
 
 // MessageModerationResponse 向客户端暴露软审核状态。
@@ -1093,11 +1095,13 @@ func toMessageResponseWithRunAndFallback(m model.Message, run model.Run, fallbac
 	attachments := m.Attachments
 	knowledgeSources := m.KnowledgeSources
 	processTrace := m.ProcessTrace
+	uiState := m.UIState
 	if strings.EqualFold(strings.TrimSpace(m.Status), "blocked") && m.Role == "assistant" {
 		content = ""
 		attachments = "[]"
 		knowledgeSources = nil
 		processTrace = nil
+		uiState = nil
 	}
 	return MessageResponse{
 		ID:                m.ID,
@@ -1131,6 +1135,7 @@ func toMessageResponseWithRunAndFallback(m model.Message, run model.Run, fallbac
 		ParentPublicID:    m.ParentPublicID,
 		SourcePublicID:    m.SourcePublicID,
 		MyFeedback:        m.MyFeedback,
+		UIState:           appconversation.MergedMessageUIState(uiState),
 		ThumbsUpCount:     m.ThumbsUpCount,
 		ThumbsDownCount:   m.ThumbsDownCount,
 		BillingCost:       toMessageBillingCostResponse(m),
@@ -1297,6 +1302,13 @@ type MessageFeedbackResponse struct {
 	MyFeedback      string `json:"myFeedback"`
 	ThumbsUpCount   int64  `json:"thumbsUpCount"`
 	ThumbsDownCount int64  `json:"thumbsDownCount"`
+}
+
+// MessageUIStateResponse 消息组件状态写入结果。
+type MessageUIStateResponse struct {
+	MessageID       uint                       `json:"messageID"`
+	MessagePublicID string                     `json:"messagePublicID"`
+	UIState         map[string]json.RawMessage `json:"uiState" swaggertype:"object"`
 }
 
 func toMessageFeedbackResponse(r *appconversation.MessageFeedbackResult) MessageFeedbackResponse {
@@ -1663,6 +1675,12 @@ type MessageResponseDoc struct {
 type MessageFeedbackResponseDoc struct {
 	ErrorMsg string                  `json:"errorMsg"`
 	Data     MessageFeedbackResponse `json:"data"`
+}
+
+// MessageUIStateResponseDoc 保存消息组件状态响应文档。
+type MessageUIStateResponseDoc struct {
+	ErrorMsg string                 `json:"errorMsg"`
+	Data     MessageUIStateResponse `json:"data"`
 }
 
 // ConversationRunListResponseDoc 运行日志分页响应文档。

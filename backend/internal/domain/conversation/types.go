@@ -216,11 +216,25 @@ type Message struct {
 	SourcePublicID           string
 	MyFeedback               string
 	ThumbsUpCount            int64
-	ThumbsDownCount          int64
-	ProcessTrace             *MessageProcessTrace
-	EditedAt                 *time.Time
-	CreatedAt                time.Time
-	UpdatedAt                time.Time
+	// UIState 按组件块 id 保存该消息里持久化的交互状态 JSON；只在所有者读取路径填充。
+	UIState         map[string]string
+	ThumbsDownCount int64
+	ProcessTrace    *MessageProcessTrace
+	EditedAt        *time.Time
+	CreatedAt       time.Time
+	UpdatedAt       time.Time
+}
+
+// MessageUIState 表示一条助手消息内单个交互式组件块的状态快照。
+type MessageUIState struct {
+	ID             uint
+	UserID         uint
+	ConversationID uint
+	MessageID      uint
+	BlockID        string
+	StateJSON      string
+	CreatedAt      time.Time
+	UpdatedAt      time.Time
 }
 
 // MessageFeedback 表示消息反馈。
