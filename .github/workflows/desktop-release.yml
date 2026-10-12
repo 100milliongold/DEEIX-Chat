@@ -283,12 +283,22 @@ jobs:
           # One `--config <json>` without spaces: tauri-action splits `args` on whitespace.
           echo "tauri_args=$(node apps/desktop/scripts/release-config.mjs "${args[@]}")" >> "$GITHUB_OUTPUT"
 
+      # Swap tauri-cli's cached linuxdeploy for a wrapper that excludes
+      # libwayland-* from the AppImage bundle (blank window on newer
+      # Wayland distros otherwise); see prepare-linuxdeploy-wrapper.sh.
+      - name: Exclude Wayland libraries from the AppImage bundle
+        if: matrix.platform == 'Linux'
+        shell: bash
+        run: bash apps/desktop/scripts/prepare-linuxdeploy-wrapper.sh
+
       - name: Build desktop bundles
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+          # Captured by the linuxdeploy wrapper so failures are diagnosable.
+          LINUXDEPLOY_DEBUG_LOG: ${{ runner.temp }}/linuxdeploy.log
           # APPLE_* and the Windows certificate thumbprint arrive through
           # GITHUB_ENV from the steps above, only when configured.
         with:
@@ -310,6 +320,32 @@ jobs:
           # entry at the per-user installer (the auto-updating form). Installed
           # apps look up `windows-x86_64-nsis` / `-msi` first by bundle type.
           updaterJsonPreferNsis: true
+
+      # tauri-action swallows linuxdeploy's output; print it so bundling
+      # failures are diagnosable.
+      - name: Show linuxdeploy log
+        if: ${{ always() && matrix.platform == 'Linux' }}
+        shell: bash
+        run: cat "$RUNNER_TEMP/linuxdeploy.log" 2>/dev/null || echo "(no linuxdeploy log)"
+
+      # Fail loudly if the AppImage still bundles Wayland libraries (e.g. a
+      # future tauri-cli stopped reusing the cached wrapper).
+      - name: Verify no bundled Wayland libraries in the AppImage
+        if: matrix.platform == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for appimage in apps/desktop/src-tauri/target/release/bundle/appimage/*.AppImage; do
+            workdir="$(mktemp -d)"
+            (cd "$workdir" && "$GITHUB_WORKSPACE/$appimage" --appimage-extract >/dev/null 2>&1)
+            if ls "$workdir/squashfs-root/usr/lib" 2>/dev/null | grep -q '^libwayland'; then
+              echo "::error::$appimage still bundles libwayland-*; the linuxdeploy wrapper was not used"
+              exit 1
+            fi
+            rm -rf "$workdir"
+          done
+          echo "AppImage does not bundle Wayland libraries"
 
       # Same post-processing as a local build (scripts/package-dmg.sh); the
       # re-encoded image replaces the asset tauri-action uploaded.
