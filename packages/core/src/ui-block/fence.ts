@@ -143,11 +143,50 @@ export function widgetKey(source: string): string {
 // The illustration's own name, for the model and the side panel: its <title>,
 // else its first heading, as plain text.
 export function widgetTitle(source: string): string {
-  const match = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(source) ?? /<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/i.exec(source);
-  const text = (match?.[1] ?? "")
-    .replace(/<[^>]*>/g, "")
-    .replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g, (entity) => ({ "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'", "&nbsp;": " " })[entity] ?? entity)
+  const raw = elementText(source, ["title"]) ?? elementText(source, ["h1", "h2", "h3"]) ?? "";
+  const text = stripTags(raw)
+    .replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g, (entity) => HTML_ENTITIES[entity] ?? entity)
     .replace(/\s+/g, " ")
     .trim();
   return Array.from(text).slice(0, 40).join("");
+}
+
+const HTML_ENTITIES: Readonly<Record<string, string>> = { "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'", "&nbsp;": " " };
+
+// The content of the first element named one of `names`, found with indexOf
+// rather than a regex: the source is model output, and lazy patterns over it
+// backtrack quadratically on inputs like "<title<title<title…".
+function elementText(source: string, names: readonly string[]): string | undefined {
+  const lower = source.toLowerCase();
+  for (let open = lower.indexOf("<"); open !== -1; open = lower.indexOf("<", open + 1)) {
+    const name = names.find((candidate) => lower.startsWith(candidate, open + 1) && /[\s>/]/.test(lower[open + 1 + candidate.length] ?? ""));
+    if (!name) {
+      continue;
+    }
+    const start = lower.indexOf(">", open);
+    if (start === -1) {
+      return undefined;
+    }
+    const end = lower.indexOf(`</${name}`, start + 1);
+    return end === -1 ? undefined : source.slice(start + 1, end);
+  }
+  return undefined;
+}
+
+// Drops markup and keeps the text between tags. Angle brackets that survive
+// (an unclosed "<b") go too: the result is shown as plain text and sent to the
+// model, never parsed as HTML.
+function stripTags(value: string): string {
+  let text = "";
+  let inTag = false;
+  for (const char of value) {
+    if (char === "<") {
+      inTag = true;
+    } else if (char === ">") {
+      inTag = false;
+    } else if (!inTag) {
+      text += char;
+    }
+  }
+  return text;
 }

@@ -54,10 +54,12 @@ export function joinTextBlocks(parts: readonly string[]): string {
 
 const MAX_TABLE_ROWS = 200;
 
+// Backslashes are escaped too: otherwise a "\" in the text would escape the
+// "\" added before a pipe or asterisk and break the table or title.
 function escapeCell(value: string): string {
-  return value.replace(/\r?\n/g, " ").replace(/\|/g, "\\|").trim();
+  return value.replace(/\r?\n/g, " ").replace(/[\\|]/g, "\\$&").trim();
 }
 
 function escapeInline(value: string): string {
-  return value.replace(/\*/g, "\\*");
+  return value.replace(/[\\*]/g, "\\$&");
 }
