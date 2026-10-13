@@ -324,7 +324,7 @@ type PublicSharedMessageResponse struct {
 	CacheWriteTokens int64  `json:"cacheWriteTokens"`
 	ReasoningTokens  int64  `json:"reasoningTokens"`
 	// ReasoningEffort 是生成该消息时生效的规范推理档位；模型无推理能力时为 null。
-	ReasoningEffort   *string                      `json:"reasoningEffort" enums:"none,minimal,low,medium,high,xhigh,max" extensions:"x-nullable,!x-omitempty"`
+	ReasoningEffort   *string                      `json:"reasoningEffort" enums:"none,minimal,low,medium,high,xhigh,max,ultra" extensions:"x-nullable,!x-omitempty"`
 	LatencyMS         int64                        `json:"latencyMS"`
 	Status            string                       `json:"status"`
 	ErrorCode         string                       `json:"errorCode"`
@@ -860,7 +860,7 @@ type MessageResponse struct {
 	CacheWriteTokens int64  `json:"cacheWriteTokens"`
 	ReasoningTokens  int64  `json:"reasoningTokens"`
 	// ReasoningEffort 是生成该消息时生效的规范推理档位；模型无推理能力时为 null。
-	ReasoningEffort *string `json:"reasoningEffort" enums:"none,minimal,low,medium,high,xhigh,max" extensions:"x-nullable,!x-omitempty"`
+	ReasoningEffort *string `json:"reasoningEffort" enums:"none,minimal,low,medium,high,xhigh,max,ultra" extensions:"x-nullable,!x-omitempty"`
 	LatencyMS       int64   `json:"latencyMS"`
 	Status          string  `json:"status"`
 	ErrorCode       string  `json:"errorCode"`
@@ -1348,7 +1348,7 @@ type RunResponse struct {
 	CacheWriteTokens   int64  `json:"cacheWriteTokens"`
 	ReasoningTokens    int64  `json:"reasoningTokens"`
 	// ReasoningEffort 是本次运行生效的规范推理档位；模型无推理能力时为 null。
-	ReasoningEffort     *string    `json:"reasoningEffort" enums:"none,minimal,low,medium,high,xhigh,max" extensions:"x-nullable,!x-omitempty"`
+	ReasoningEffort     *string    `json:"reasoningEffort" enums:"none,minimal,low,medium,high,xhigh,max,ultra" extensions:"x-nullable,!x-omitempty"`
 	ToolCallsCount      int        `json:"toolCallsCount"`
 	FirstTokenLatencyMS int64      `json:"firstTokenLatencyMS"`
 	TotalLatencyMS      int64      `json:"totalLatencyMS"`

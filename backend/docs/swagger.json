@@ -25885,7 +25885,8 @@
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ],
                     "x-nullable": true,
                     "x-omitempty": false
@@ -26132,7 +26133,8 @@
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ]
                 },
                 "format": {
@@ -26159,7 +26161,8 @@
                             "medium",
                             "high",
                             "xhigh",
-                            "max"
+                            "max",
+                            "ultra"
                         ]
                     }
                 },
@@ -27050,7 +27053,8 @@
                             "medium",
                             "high",
                             "xhigh",
-                            "max"
+                            "max",
+                            "ultra"
                         ]
                     }
                 }
@@ -29444,7 +29448,8 @@
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ]
                 },
                 "levels": {
@@ -29459,7 +29464,8 @@
                             "medium",
                             "high",
                             "xhigh",
-                            "max"
+                            "max",
+                            "ultra"
                         ]
                     }
                 },
@@ -29820,7 +29826,8 @@
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ],
                     "x-nullable": true,
                     "x-omitempty": false
@@ -30664,7 +30671,8 @@
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ],
                     "x-nullable": true,
                     "x-omitempty": false

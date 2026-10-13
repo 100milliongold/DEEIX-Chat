@@ -25892,7 +25892,8 @@ const docTemplate = `{
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ],
                     "x-nullable": true,
                     "x-omitempty": false
@@ -26139,7 +26140,8 @@ const docTemplate = `{
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ]
                 },
                 "format": {
@@ -26166,7 +26168,8 @@ const docTemplate = `{
                             "medium",
                             "high",
                             "xhigh",
-                            "max"
+                            "max",
+                            "ultra"
                         ]
                     }
                 },
@@ -27057,7 +27060,8 @@ const docTemplate = `{
                             "medium",
                             "high",
                             "xhigh",
-                            "max"
+                            "max",
+                            "ultra"
                         ]
                     }
                 }
@@ -29451,7 +29455,8 @@ const docTemplate = `{
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ]
                 },
                 "levels": {
@@ -29466,7 +29471,8 @@ const docTemplate = `{
                             "medium",
                             "high",
                             "xhigh",
-                            "max"
+                            "max",
+                            "ultra"
                         ]
                     }
                 },
@@ -29827,7 +29833,8 @@ const docTemplate = `{
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ],
                     "x-nullable": true,
                     "x-omitempty": false
@@ -30671,7 +30678,8 @@ const docTemplate = `{
                         "medium",
                         "high",
                         "xhigh",
-                        "max"
+                        "max",
+                        "ultra"
                     ],
                     "x-nullable": true,
                     "x-omitempty": false
