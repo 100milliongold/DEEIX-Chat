@@ -292,6 +292,8 @@ The default compose files persist application data:
 | PostgreSQL data | `/var/lib/postgresql/data`, full installation only |
 | Redis data | `/data`, full installation only |
 
+To move a PostgreSQL database to another machine, use `pg_dump` and restore into a freshly initialized server. Do not copy the data directory or volume between images with a different C library or locale (for example `postgres:*-alpine` and the Debian-based `pgvector/pgvector`): text indexes are ordered by the collation they were built with, so after such a move unique indexes stop detecting existing rows and duplicates appear. If a database has already been moved this way, run `REINDEX DATABASE <name>;` (and `ALTER DATABASE <name> REFRESH COLLATION VERSION;` when the server reports a collation version mismatch). Duplicate rows block the rebuild and must be removed first. On startup the application removes duplicate rows in `system_settings` and rebuilds that table's indexes, and logs a warning when it does.
+
 The default application image is `ghcr.io/deeix-ai/deeix-chat:latest`. Compose files reference an image and do not define a build step. Build a local image from the repository root first, then select it with `DEEIX_CHAT_IMAGE`:
 
 ```bash
