@@ -289,6 +289,8 @@ docker compose -f docker-compose.full.yml up -d
 | PostgreSQL 数据 | `/var/lib/postgresql/data`，仅全量安装 |
 | Redis 数据 | `/data`，仅全量安装 |
 
+PostgreSQL 迁移到其他机器时，请用 `pg_dump` 导出，再导入新初始化的数据库。不要在 C 库或 locale 不同的镜像之间直接拷贝数据目录或数据卷（例如 `postgres:*-alpine` 与基于 Debian 的 `pgvector/pgvector`）：文本索引按建立时的排序规则排列，这样迁移后唯一索引会查不到已有行，从而产生重复数据。已经这样迁移过的数据库，请执行 `REINDEX DATABASE <库名>;`；若服务端提示排序规则版本不一致，再执行 `ALTER DATABASE <库名> REFRESH COLLATION VERSION;`。存在重复行时重建会失败，需要先清理重复行。应用启动时会自动清理 `system_settings` 的重复行并重建该表索引，同时输出警告日志。
+
 默认应用镜像为 `ghcr.io/deeix-ai/deeix-chat:latest`。Compose 文件只引用镜像，不定义构建步骤。测试本地构建时先在仓库根目录生成镜像，再通过 `DEEIX_CHAT_IMAGE` 选择它：
 
 ```bash
