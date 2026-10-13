@@ -18,6 +18,7 @@ const (
 	ReasoningLevelHigh    = "high"
 	ReasoningLevelXHigh   = "xhigh"
 	ReasoningLevelMax     = "max"
+	ReasoningLevelUltra   = "ultra"
 )
 
 // 推理能力声明的原生映射格式。
@@ -65,6 +66,7 @@ var reasoningLevelOrder = []string{
 	ReasoningLevelHigh,
 	ReasoningLevelXHigh,
 	ReasoningLevelMax,
+	ReasoningLevelUltra,
 }
 
 // ReasoningCapability 是归一化后的模型推理强度能力，显式声明与旧配置推断的结果行为一致。
@@ -342,9 +344,12 @@ func isKnownReasoningFormat(format string) bool {
 	return false
 }
 
-// reasoningFormatAllowsLevel 返回格式可声明的档位：anthropic_effort 没有 minimal，
-// gemini_level 只有 minimal..high，其余格式允许全部规范档位。
+// reasoningFormatAllowsLevel 返回格式可声明的档位：ultra 仅 openai 格式可用，anthropic_effort 没有 minimal，
+// gemini_level 只有 minimal..high，其余格式允许其余规范档位。
 func reasoningFormatAllowsLevel(format string, level string) bool {
+	if level == ReasoningLevelUltra {
+		return format == ReasoningFormatOpenAI
+	}
 	switch format {
 	case ReasoningFormatAnthropicEffort:
 		return level != ReasoningLevelMinimal

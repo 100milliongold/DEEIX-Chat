@@ -5404,6 +5404,7 @@ definitions:
         - high
         - xhigh
         - max
+        - ultra
         type: string
         x-nullable: true
         x-omitempty: false
@@ -5611,6 +5612,7 @@ definitions:
         - high
         - xhigh
         - max
+        - ultra
         type: string
       format:
         enum:
@@ -5633,6 +5635,7 @@ definitions:
           - high
           - xhigh
           - max
+          - ultra
           type: string
         type: array
       source:
@@ -6265,6 +6268,7 @@ definitions:
           - high
           - xhigh
           - max
+          - ultra
           type: string
         type: array
     required:
@@ -7958,6 +7962,7 @@ definitions:
         - high
         - xhigh
         - max
+        - ultra
         type: string
       levels:
         description: Levels 为可选规范档位，按由低到高排列。
@@ -7970,6 +7975,7 @@ definitions:
           - high
           - xhigh
           - max
+          - ultra
           type: string
         type: array
       locked:
@@ -8224,6 +8230,7 @@ definitions:
         - high
         - xhigh
         - max
+        - ultra
         type: string
         x-nullable: true
         x-omitempty: false
@@ -8815,6 +8822,7 @@ definitions:
         - high
         - xhigh
         - max
+        - ultra
         type: string
         x-nullable: true
         x-omitempty: false
