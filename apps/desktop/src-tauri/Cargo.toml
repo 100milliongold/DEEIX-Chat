@@ -29,7 +29,8 @@ keyring = { version = "4.2.0", features = [
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 # Same major/TLS stack as tauri-plugin-updater, so no second HTTP client is linked.
-reqwest = { version = "0.13", default-features = false, features = ["json", "rustls-no-provider"] }
+# `socks` only switches on hyper-util's SOCKS connector for manual proxies.
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls-no-provider", "socks"] }
 # Process-wide TLS provider, installed once at startup (the updater would otherwise
 # install it lazily on first use, which is too late for an early session refresh).
 rustls = { version = "0.23", default-features = false, features = ["ring"] }
@@ -61,6 +62,8 @@ strip = true
 windows-registry = "0.6"
 windows-sys = { version = "0.61", features = [
   "Win32_Foundation",
+  # WinHttpGetIEProxyConfigForCurrentUser: the system proxy (proxy.rs).
+  "Win32_Networking_WinHttp",
   "Win32_UI_Shell",
   "Win32_UI_WindowsAndMessaging",
 ] }
@@ -68,6 +71,9 @@ windows-sys = { version = "0.61", features = [
 [target.'cfg(target_os = "macos")'.dependencies]
 objc2 = "0.6"
 objc2-foundation = { version = "0.3", default-features = false, features = ["NSString"] }
+# Reads the system proxy (System Settings › Network › Proxies, proxy.rs). The
+# same version hyper-util already links; nothing new is downloaded.
+system-configuration = "0.7"
 
 # Linux-only: sizes the tab strip inside the window's GtkBox (tabs.rs). Same
 # version tauri/wry already link; nothing new is downloaded.
