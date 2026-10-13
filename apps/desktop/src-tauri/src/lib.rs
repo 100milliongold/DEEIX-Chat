@@ -8,6 +8,7 @@ mod menu;
 mod oauth_loopback;
 mod paths;
 mod policy;
+mod proxy;
 mod session;
 mod sidecar;
 mod tabs;
@@ -43,7 +44,10 @@ pub fn run() {
         .manage(tabs::TabsState::default())
         .invoke_handler(tauri::generate_handler![
             distribution::get_distribution,
+            distribution::check_update,
             distribution::check_update_notice,
+            proxy::get_network_proxy,
+            proxy::set_network_proxy,
             session::get_server,
             session::set_remote_server,
             session::set_local_server,
@@ -74,6 +78,18 @@ pub fn run() {
             let paths = paths::AppPaths::resolve(app.handle(), portable.as_ref())?;
             paths.reset_tmp();
             app.manage(paths);
+            // Before any webview or the sidecar exists: both take their proxy
+            // when they are created.
+            let proxy_policy = app
+                .state::<distribution::Distribution>()
+                .policy
+                .proxy
+                .clone();
+            app.manage(proxy::ProxyState::load(
+                &paths::config_dir(app.handle()),
+                &app.config().identifier,
+                proxy_policy.as_ref(),
+            ));
             distribution::grant_updater(app.handle())?;
             tabs::init(app.handle()).map_err(|e| e.0)?;
             #[cfg(desktop)]
