@@ -195,6 +195,47 @@ func legacyReasoningControlPath(protocolKey string) string {
 	return ""
 }
 
+// geminiThinkingAliasPaths 是 Gemini 思考档位与预算的全部写法，翻译时统一删除后只写入其一。
+var geminiThinkingAliasPaths = func() []string {
+	keys := []string{"thinkingLevel", "thinkingBudget", "thinking_level", "thinking_budget", "budget_tokens"}
+	paths := append([]string(nil), keys...)
+	for _, parent := range []string{"thinkingConfig", "generationConfig.thinkingConfig", "generation_config.thinkingConfig"} {
+		for _, key := range keys {
+			paths = append(paths, parent+"."+key)
+		}
+	}
+	return paths
+}()
+
+// ReasoningOwnedOptionPaths 返回思考强度翻译在协议上接管的原生参数路径：翻译会覆盖或删除这些参数，
+// 单独调整不会生效，因此不再作为控件展示。须与 conversation.applyReasoningEffortTranslation 保持一致。
+func ReasoningOwnedOptionPaths(format string, protocolKey string) []string {
+	if !ReasoningFormatSupportsProtocol(format, protocolKey) {
+		return nil
+	}
+	switch format {
+	case ReasoningFormatOpenAI:
+		return []string{"reasoning_effort", "reasoning.effort"}
+	case ReasoningFormatAnthropicEffort:
+		// thinking.type 只在 Off 时写 disabled，其余档位把 disabled 改回 adaptive，同样由思考强度决定。
+		return []string{"output_config.effort", "effort", "thinking.type", "thinking.budget_tokens", "enable_thinking", "budget_tokens"}
+	case ReasoningFormatAnthropicBudget:
+		return []string{"thinking.type", "thinking.budget_tokens", "enable_thinking", "budget_tokens"}
+	case ReasoningFormatGeminiLevel:
+		if protocolKey == ReasoningProtocolGeminiInteractions {
+			return []string{"generation_config.thinking_level"}
+		}
+		return geminiThinkingAliasPaths
+	case ReasoningFormatGeminiBudget:
+		return geminiThinkingAliasPaths
+	case ReasoningFormatQwen:
+		return []string{"enable_thinking", "thinking_budget"}
+	case ReasoningFormatToggle:
+		return []string{"thinking.type", "thinking.budget_tokens", "thinking.display"}
+	}
+	return nil
+}
+
 func legacyReasoningFormat(protocolKey string) string {
 	switch protocolKey {
 	case ReasoningProtocolOpenAIChat, ReasoningProtocolOpenRouterChat,
