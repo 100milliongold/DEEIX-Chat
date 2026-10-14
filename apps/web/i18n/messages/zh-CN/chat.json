@@ -217,7 +217,11 @@
       "askLabel": "追问",
       "askPlaceholder": "输入要追问的内容",
       "askSend": "发送追问",
-      "askRestore": "恢复为建议的问题"
+      "askRestore": "恢复为建议的问题",
+      "imageCount": "{count} 张",
+      "close": "关闭",
+      "previousImage": "上一张",
+      "nextImage": "下一张"
     },
     "copyLatex": "复制公式源码",
     "latexCopied": "已复制公式源码",
