@@ -537,6 +537,24 @@ export function AppChatArea() {
     [hasOlder, loadOlderMessages, loadingOlder],
   );
 
+  // Only a scroll asks for older messages. When the loaded page does not overflow (short turns, or a page
+  // taken mostly by other branches), keep loading until the viewport can scroll or the history runs out.
+  React.useEffect(() => {
+    if (loading || loadingOlder || !hasOlder || loadingOlderInFlightRef.current) {
+      return;
+    }
+    const viewport = messageContentRef.current?.closest<HTMLElement>("[data-slot='message-scroller-viewport']");
+    if (!viewport || viewport.scrollHeight - viewport.clientHeight > TOP_LOAD_OLDER_MESSAGES_THRESHOLD_PX) {
+      return;
+    }
+    loadingOlderInFlightRef.current = true;
+    Promise.resolve(loadOlderMessages())
+      .catch((): undefined => undefined)
+      .finally(() => {
+        loadingOlderInFlightRef.current = false;
+      });
+  }, [hasOlder, loadOlderMessages, loading, loadingOlder, visibleMessages]);
+
   const {
     onEditGeneratedImageAttachment,
     onExtendGeneratedVideoAttachment,

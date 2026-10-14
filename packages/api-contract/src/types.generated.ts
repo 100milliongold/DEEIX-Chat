@@ -2337,7 +2337,18 @@ export interface MessageModerationResponse {
   state?: string;
 }
 
+export interface MessageProcessTraceDetailResponse {
+  processTrace: MessageProcessTraceResponse | null;
+}
+
+export interface MessageProcessTraceDetailResponseDoc {
+  data: MessageProcessTraceDetailResponse;
+  errorMsg: string;
+}
+
 export interface MessageProcessTraceResponse {
+  /** DetailOmitted 为 true 时是消息列表的摘要：思考只保留开头、工具调用不含完整输入输出，完整轨迹通过 GET /messages/{id}/trace 获取。 */
+  detailOmitted?: boolean;
   enabled: boolean;
   events?: MessageTraceEventResponse[];
   process?: MessageTraceBlockResponse;
@@ -10031,10 +10042,16 @@ export namespace Conversations {
       id: string;
     };
     export type RequestQuery = {
+      /** 返回该消息 id 之前的 page_size 条消息 */
+      before_id?: number;
       /** 页码（从 1 开始，默认 1） */
       page?: number;
       /** 每页数量（1-1000，默认 20） */
       page_size?: number;
+      /** 为 true 时返回最近的 page_size 条消息 */
+      tail?: boolean;
+      /** summary：已完成消息的思考与工具过程只带摘要，完整内容通过 /messages/{id}/trace 获取 */
+      trace?: "summary";
     };
     export type RequestBody = never;
     export type RequestHeaders = {};
@@ -11429,6 +11446,25 @@ export namespace Messages {
     export type RequestBody = SetMessageFeedbackRequest;
     export type RequestHeaders = {};
     export type ResponseBody = MessageFeedbackResponseDoc;
+  }
+
+  /**
+   * @description 返回当前用户一条助手消息的完整处理轨迹（思考全文与工具输入输出）；消息列表以 trace=summary 查询时只带摘要
+   * @tags chat
+   * @name TraceList
+   * @summary 查询消息处理轨迹
+   * @request GET:/messages/{id}/trace
+   * @secure
+   */
+  export namespace TraceList {
+    export type RequestParams = {
+      /** 消息 public_id */
+      id: string;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = MessageProcessTraceDetailResponseDoc;
   }
 }
 

@@ -19,6 +19,7 @@ import { AssistantMessageMeta } from "@/features/chat/components/message/message
 import { MessageAgentTrace, MessageProcessTrace } from "@/features/chat/components/message/message-process-trace";
 import { UpstreamExchangeDetails } from "@/features/chat/components/message/message-upstream-debug";
 import { useChatInlineVideoSource } from "@/features/chat/hooks/use-chat-inline-video-source";
+import { useChatMessageTraceDetail } from "@/features/chat/hooks/use-chat-message-trace-detail";
 import type { ChatRegenerateReasoningOptions } from "@/features/chat/model/chat-reasoning-effort";
 import { resolveLeadingImagePreview } from "@/features/chat/model/media-image-preview";
 import {
@@ -247,10 +248,16 @@ export function ChatMessageBot({
     }
   }, [isEditing, item.content]);
   const liveProcessTrace = useLiveUpstreamThinkTrace(item.runID);
-  const processTrace =
+  const messageProcessTrace =
     liveProcessTrace && (item.isStreaming || !item.processTrace)
       ? mergeLiveUpstreamThinkTrace(item.processTrace, liveProcessTrace)
       : item.processTrace;
+  const {
+    trace: processTrace,
+    detailPending: traceDetailPending,
+    detailFailed: traceDetailFailed,
+    loadDetail: loadTraceDetail,
+  } = useChatMessageTraceDetail(item.publicID, messageProcessTrace);
   React.useEffect(() => {
     if (!item.isStreaming && item.processTrace?.upstreamThink) {
       clearLiveUpstreamThinkTrace(item.runID);
@@ -397,6 +404,9 @@ export function ChatMessageBot({
         autoExpandToolCalls={autoExpandToolCalls}
         runID={item.runID}
         allowFullToolResults={allowFullToolResults && !messageStreaming}
+        detailPending={traceDetailPending}
+        detailFailed={traceDetailFailed}
+        onLoadDetail={loadTraceDetail}
       />
 
       <div
