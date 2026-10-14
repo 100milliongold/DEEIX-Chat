@@ -106,6 +106,7 @@ apps/*  →  packages/core  →  packages/api-contract  →  backend/docs/swagge
 | `usageMetering` | 记录用量与费用 | ✅ | —— |
 | `contentModeration` | 内容审核 | ❌ | `/admin/content-moderation*` |
 | `sharing` | 对话公开分享 | ❌ | `/conversations/:id/share*`、`/conversations/shares/revoke`、`/shared-conversations/*` |
+| `desktopDownload` | 向网页端用户推荐下载桌面端 | ❌ | 无路由；`desktop.download_enabled` 与 `desktop.download_url` 两个设置项锁定，`/settings/feature-policy` 不返回下载入口 |
 
 服务器模式全部为 `true`；"当前是否配置了 X"由各功能自己的端点回答，不进能力位。
 

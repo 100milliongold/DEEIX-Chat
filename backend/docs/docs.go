@@ -20313,6 +20313,7 @@ const docTemplate = `{
                 "announcements",
                 "billingGating",
                 "contentModeration",
+                "desktopDownload",
                 "identityProviders",
                 "multiUser",
                 "registration",
@@ -20334,6 +20335,10 @@ const docTemplate = `{
                 },
                 "contentModeration": {
                     "description": "ContentModeration 内容审核。",
+                    "type": "boolean"
+                },
+                "desktopDownload": {
+                    "description": "DesktopDownload 向网页端用户推荐下载桌面端；只监听回环的服务器只会被桌面端自己连接。",
                     "type": "boolean"
                 },
                 "identityProviders": {
