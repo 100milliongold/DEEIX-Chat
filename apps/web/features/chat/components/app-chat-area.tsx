@@ -934,6 +934,7 @@ export function AppChatArea() {
                   showTokenUsage={showTokenUsage}
                   showBillingCost={showBillingCost}
                   showProcessTrace={showProcessTrace}
+                  sendShortcut={sendShortcut}
                   billingDisplayCurrency={billingDisplayCurrency}
                   billingDisplayUsdToCnyRate={billingDisplayUsdToCnyRate}
                   splitRightInset={hasInlineArtifact}

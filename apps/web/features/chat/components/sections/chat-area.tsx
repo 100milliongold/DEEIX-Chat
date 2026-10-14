@@ -21,6 +21,7 @@ import {
 } from "@/features/chat/components/message/message-bot";
 import type { AssistantReaction } from "@/features/chat/components/message/message-meta";
 import { ChatMessageUser } from "@/features/chat/components/message/message-user";
+import type { SendShortcut } from "@/features/settings";
 import { ChatLabel } from "@/features/chat/components/sections/chat-label";
 import {
   ChatMessagePositionRail,
@@ -140,6 +141,7 @@ type ChatAreaProps = {
   showTokenUsage?: boolean;
   showBillingCost?: boolean;
   showProcessTrace?: boolean;
+  sendShortcut?: SendShortcut;
   billingDisplayCurrency?: BillingDisplayCurrency;
   billingDisplayUsdToCnyRate?: number | null;
   splitRightInset?: boolean;
@@ -305,6 +307,7 @@ const ChatMessageRow = React.memo(function ChatMessageRow({
   showTokenUsage,
   showBillingCost,
   showProcessTrace,
+  sendShortcut,
   billingDisplayCurrency,
   billingDisplayUsdToCnyRate,
   contentWidthClassName,
@@ -345,6 +348,7 @@ const ChatMessageRow = React.memo(function ChatMessageRow({
   showTokenUsage: boolean;
   showBillingCost: boolean;
   showProcessTrace: boolean;
+  sendShortcut: SendShortcut;
   billingDisplayCurrency: BillingDisplayCurrency;
   billingDisplayUsdToCnyRate: number | null;
   contentWidthClassName: string;
@@ -425,6 +429,7 @@ const ChatMessageRow = React.memo(function ChatMessageRow({
         copySucceeded={isCopied(copyKey)}
         attachmentContentLoader={attachmentContentLoader}
         readOnly={readOnly}
+        sendShortcut={sendShortcut}
         screenshotMeta={screenshotMeta}
       />
     );
@@ -461,6 +466,7 @@ const ChatMessageRow = React.memo(function ChatMessageRow({
         showTokenUsage={showTokenUsage}
         showBillingCost={showBillingCost}
         showProcessTrace={showProcessTrace}
+        sendShortcut={sendShortcut}
         billingDisplayCurrency={billingDisplayCurrency}
         billingDisplayUsdToCnyRate={billingDisplayUsdToCnyRate}
         readOnly={readOnly}
@@ -498,6 +504,7 @@ const ChatMessageRow = React.memo(function ChatMessageRow({
   previous.showTokenUsage === next.showTokenUsage &&
   previous.showBillingCost === next.showBillingCost &&
   previous.showProcessTrace === next.showProcessTrace &&
+  previous.sendShortcut === next.sendShortcut &&
   previous.billingDisplayCurrency === next.billingDisplayCurrency &&
   previous.billingDisplayUsdToCnyRate === next.billingDisplayUsdToCnyRate &&
   previous.contentWidthClassName === next.contentWidthClassName &&
@@ -563,6 +570,7 @@ export function ChatArea({
   showTokenUsage = true,
   showBillingCost = false,
   showProcessTrace = true,
+  sendShortcut = "enter",
   billingDisplayCurrency = "USD",
   billingDisplayUsdToCnyRate = null,
   splitRightInset = false,
@@ -755,6 +763,7 @@ export function ChatArea({
                       showTokenUsage={showTokenUsage}
                       showBillingCost={showBillingCost}
                       showProcessTrace={showProcessTrace}
+                      sendShortcut={sendShortcut}
                       billingDisplayCurrency={billingDisplayCurrency}
                       billingDisplayUsdToCnyRate={billingDisplayUsdToCnyRate}
                       contentWidthClassName={contentWidthClassName}
