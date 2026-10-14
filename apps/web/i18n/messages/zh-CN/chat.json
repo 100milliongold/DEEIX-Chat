@@ -860,7 +860,10 @@
       "toolCalls": "{count} 次工具调用",
       "thinkRounds": "{count} 轮深度思考",
       "duration": "{duration}",
-      "labelSeparator": " · "
+      "labelSeparator": " · ",
+      "detailLoading": "正在加载执行过程",
+      "detailFailed": "执行过程加载失败",
+      "detailRetry": "重试"
     },
     "promptTrace": {
       "modes": {

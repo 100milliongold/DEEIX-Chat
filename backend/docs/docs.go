@@ -12578,6 +12578,27 @@ const docTemplate = `{
                         "description": "每页数量（1-1000，默认 20）",
                         "name": "page_size",
                         "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "为 true 时返回最近的 page_size 条消息",
+                        "name": "tail",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "返回该消息 id 之前的 page_size 条消息",
+                        "name": "before_id",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            "summary"
+                        ],
+                        "type": "string",
+                        "description": "summary：已完成消息的思考与工具过程只带摘要，完整内容通过 /messages/{id}/trace 获取",
+                        "name": "trace",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -16652,6 +16673,58 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/MessageFeedbackResponseDoc"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ConversationErrorDoc"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ConversationErrorDoc"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ConversationErrorDoc"
+                        }
+                    }
+                }
+            }
+        },
+        "/messages/{id}/trace": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "返回当前用户一条助手消息的完整处理轨迹（思考全文与工具输入输出）；消息列表以 trace=summary 查询时只带摘要",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "chat"
+                ],
+                "summary": "查询消息处理轨迹",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "消息 public_id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/MessageProcessTraceDetailResponseDoc"
                         }
                     },
                     "400": {
@@ -25610,6 +25683,38 @@ const docTemplate = `{
                 }
             }
         },
+        "MessageProcessTraceDetailResponse": {
+            "type": "object",
+            "required": [
+                "processTrace"
+            ],
+            "properties": {
+                "processTrace": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/MessageProcessTraceResponse"
+                        }
+                    ],
+                    "x-nullable": true,
+                    "x-omitempty": false
+                }
+            }
+        },
+        "MessageProcessTraceDetailResponseDoc": {
+            "type": "object",
+            "required": [
+                "data",
+                "errorMsg"
+            ],
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/MessageProcessTraceDetailResponse"
+                },
+                "errorMsg": {
+                    "type": "string"
+                }
+            }
+        },
         "MessageProcessTraceResponse": {
             "type": "object",
             "required": [
@@ -25617,6 +25722,10 @@ const docTemplate = `{
                 "status"
             ],
             "properties": {
+                "detailOmitted": {
+                    "description": "DetailOmitted 为 true 时是消息列表的摘要：思考只保留开头、工具调用不含完整输入输出，完整轨迹通过 GET /messages/{id}/trace 获取。",
+                    "type": "boolean"
+                },
                 "enabled": {
                     "type": "boolean"
                 },

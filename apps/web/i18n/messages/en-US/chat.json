@@ -860,7 +860,10 @@
       "toolCalls": "{count} tool calls",
       "thinkRounds": "{count} deep-reasoning rounds",
       "duration": "{duration}",
-      "labelSeparator": " · "
+      "labelSeparator": " · ",
+      "detailLoading": "Loading run details",
+      "detailFailed": "Couldn't load run details",
+      "detailRetry": "Retry"
     },
     "promptTrace": {
       "modes": {
