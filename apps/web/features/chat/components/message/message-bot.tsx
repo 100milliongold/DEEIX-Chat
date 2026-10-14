@@ -31,6 +31,7 @@ import type {
   ChatInlineAlert,
   MessageAttachment,
 } from "@/features/chat/types/messages";
+import type { SendShortcut } from "@/features/settings";
 import { isUpstreamStreamingDebugBody, summarizeUpstreamError } from "@/features/chat/utils/chat-runtime";
 import { cn } from "@/lib/utils";
 import { type FileContentLoader, PreviewMedia } from "@/entities/file";
@@ -38,6 +39,7 @@ import { type MarkdownArtifactActions, MarkdownImage } from "@/shared/components
 import { StreamdownRender } from "@/shared/components/markdown/streamdown-render";
 import type { UIBlockStateBinding } from "@/shared/components/markdown/ui-blocks/ui-block-state";
 import { MediaActionBar, MediaActionButton } from "@/shared/components/media-action-bar";
+import { isImeComposingKeyEvent, isSendShortcutEvent } from "@/shared/lib/platform-shortcuts";
 import { useBranding } from "@/shared/config/branding-provider";
 import { useCopyAction } from "@/shared/components/copy-action";
 import type { BillingDisplayCurrency } from "@/entities/billing";
@@ -156,6 +158,8 @@ type ChatMessageBotProps = {
   showTokenUsage?: boolean;
   showBillingCost?: boolean;
   showProcessTrace?: boolean;
+  // Enter saves the edit, as the composer does, honouring the same user setting.
+  sendShortcut?: SendShortcut;
   billingDisplayCurrency?: BillingDisplayCurrency;
   billingDisplayUsdToCnyRate?: number | null;
   readOnly?: boolean;
@@ -192,6 +196,7 @@ export function ChatMessageBot({
   showTokenUsage = true,
   showBillingCost = false,
   showProcessTrace = true,
+  sendShortcut = "enter",
   billingDisplayCurrency = "USD",
   billingDisplayUsdToCnyRate = null,
   readOnly = false,
@@ -208,6 +213,8 @@ export function ChatMessageBot({
   const submitT = useTranslations("chat.submit");
   const [isEditing, setIsEditing] = React.useState(false);
   const [editingValue, setEditingValue] = React.useState(item.content);
+  // Some IMEs end the composition before the Enter keydown arrives, so the state is tracked too.
+  const editingComposingRef = React.useRef(false);
   const onRetry = React.useCallback(() => {
     void onRetryAssistantMessage(item);
   }, [item, onRetryAssistantMessage]);
@@ -355,6 +362,23 @@ export function ChatMessageBot({
             className="chat-font-content min-h-[160px] resize-none rounded-lg border-border border-[0.5px] bg-background px-3 py-2 text-sm leading-7 shadow-none focus-visible:border-primary focus-visible:ring-0"
             style={{ fontFamily: "var(--font-chat)", fontWeight: "var(--font-chat-weight)" }}
             onChange={(event) => setEditingValue(event.target.value)}
+            onCompositionStart={() => {
+              editingComposingRef.current = true;
+            }}
+            onCompositionEnd={() => {
+              editingComposingRef.current = false;
+            }}
+            onKeyDown={(event) => {
+              if (isImeComposingKeyEvent(event, editingComposingRef.current) || !isSendShortcutEvent(sendShortcut, event)) {
+                return;
+              }
+              // The send key is never a newline here; only what the save button could run happens.
+              event.preventDefault();
+              if (busy || nextContent.length === 0 || unchanged) {
+                return;
+              }
+              void onEditSave();
+            }}
           />
           <div className="mt-3 flex items-center justify-end gap-2">
             <Button

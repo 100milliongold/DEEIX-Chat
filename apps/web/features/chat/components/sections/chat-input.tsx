@@ -97,7 +97,7 @@ import {
   resolveFileProcessingBadge,
 } from "@/entities/file";
 import { isModelOptionPathFiltered, type ModelControlValue, type ModelOptionPolicy } from "@/entities/model";
-import { isSendShortcutEvent } from "@/shared/lib/platform-shortcuts";
+import { isImeComposingKeyEvent, isSendShortcutEvent } from "@/shared/lib/platform-shortcuts";
 
 const TEMPORARY_NOTICE_TRANSITION = {
   duration: 0.22,
@@ -1091,7 +1091,7 @@ function ChatInputComponent({
               composingRef.current = false;
             }}
             onKeyDown={(event) => {
-              if (event.nativeEvent.isComposing || composingRef.current || event.key === "Process" || event.keyCode === 229) {
+              if (isImeComposingKeyEvent(event, composingRef.current)) {
                 return;
               }
               const shouldSend = isSendShortcutEvent(sendShortcut, event);

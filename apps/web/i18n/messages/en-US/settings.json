@@ -364,7 +364,7 @@
     "input": {
       "sectionTitle": "Input and sending",
       "shortcutTitle": "Send shortcut",
-      "shortcutDescription": "This platform uses {shortcut} to submit messages.",
+      "shortcutDescription": "This platform uses {shortcut} to submit messages and to save message edits.",
       "heightTitle": "Input area height",
       "heightDescription": "Controls the maximum height allowed when the input box auto-expands.",
       "height": {

@@ -364,7 +364,7 @@
     "input": {
       "sectionTitle": "输入与发送",
       "shortcutTitle": "发送快捷键",
-      "shortcutDescription": "当前平台使用 {shortcut} 提交消息。",
+      "shortcutDescription": "当前平台使用 {shortcut} 提交消息，消息编辑也用同一按键保存。",
       "heightTitle": "输入区域高度",
       "heightDescription": "控制输入框自动扩展时允许占用的最大高度。",
       "height": {
