@@ -257,6 +257,12 @@ step, because MSI versions must be numeric. Build the setup only
 (`pnpm tauri build --bundles nsis`) or pass the config CI uses:
 `node scripts/release-config.mjs --channel beta` prints the `--config` argument.
 
+The macOS app requires macOS 12 (`bundle.macOS.minimumSystemVersion`, which
+becomes `LSMinimumSystemVersion`; Go 1.26 supports nothing older). Tauri builds
+the Rust binary for it, and `build-sidecar.mjs` passes the same version to cgo;
+otherwise the sidecar would require the macOS of the build machine, and local
+mode would not start on older systems that can still install the app.
+
 Building is not enough to ship: macOS packages must be **notarized** and Windows
 packages **code-signed**, otherwise users cannot install them. Signing keys and
 the updater key live only in CI secrets — never in this repository.
@@ -454,13 +460,23 @@ signs the exe inside each installer and the sidecar; the portable exe is signed
 separately with signtool. A CI step then requires a valid Authenticode signature
 on the setup, MSI, portable exe and sidecar whenever a certificate is configured.
 
+On macOS, `scripts/verify-macos-bundle.sh` checks the app as it ships, inside the
+final DMG and inside the updater archive, before CI uploads the DMG: the app
+binary and the sidecar must be built for the leg's architecture and must not
+require a newer macOS than the app declares, and the bundle must pass
+`codesign --verify --deep --strict`. With a Developer ID it also requires the
+certificate's team id on the app and the DMG, a stapled notarization ticket on
+both, and a Gatekeeper assessment of `Notarized Developer ID`.
+`pnpm build:signed` runs the same check.
+
 Only the updater key is mandatory. Platform signing switches on by itself once
-its secrets exist. Without a Developer ID the macOS app is signed **ad-hoc**
-(`APPLE_SIGNING_IDENTITY=-`); Tauri would otherwise skip `codesign` and leave
-only the linker's signature, which macOS reports as *damaged* on Apple silicon.
-Ad-hoc builds still need the user to allow the app under System Settings →
-Privacy & Security and are for internal testing, not public releases. Signing
-keys never enter the repository.
+its secrets exist; CI fails when only some of the macOS secrets are set instead
+of quietly building an unnotarized app. Without a Developer ID the macOS app is
+signed **ad-hoc** (`APPLE_SIGNING_IDENTITY=-`); Tauri would otherwise skip
+`codesign` and leave only the linker's signature, which macOS reports as
+*damaged* on Apple silicon. Ad-hoc builds still need the user to allow the app
+under System Settings → Privacy & Security and are for internal testing, not
+public releases. Signing keys never enter the repository.
 
 To obtain the .p12 on macOS: Keychain Access → My Certificates → right-click the
 "Developer ID Application" cert → Export → base64 it (`base64 -i cert.p12 | pbcopy`).
