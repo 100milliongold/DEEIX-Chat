@@ -93,8 +93,10 @@ function useBalancedColumns(count: number) {
       return;
     }
     const items = Math.max(1, count);
+    // The grid classes below size cards in rem, so the threshold has to be read
+    // from the root; the element's own font size is not what rem resolves to.
+    const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
     const measure = () => {
-      const rem = Number.parseFloat(getComputedStyle(element).fontSize) || 16;
       const fit = Math.max(1, Math.floor((element.clientWidth + GAP_REM * rem) / ((MIN_CARD_REM + GAP_REM) * rem)));
       const rows = Math.ceil(items / Math.min(fit, MAX_COLUMNS, items));
       setColumns(Math.ceil(items / rows));

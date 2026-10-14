@@ -10,42 +10,7 @@ import { cn } from "@/lib/utils";
 import { MediaActionBar, MediaActionButton } from "@/shared/components/media-action-bar";
 import { useImageDisplaySource } from "@/shared/hooks/use-image-display-source";
 import { downloadMarkdownImageSource, resolveMarkdownImageDownloadName } from "@/shared/lib/markdown-image-source";
-
-// Images in catalog components come from model output. Only absolute http(s)
-// URLs and this server's own `/api/v1/...` files (uploads, generated images)
-// are loaded; data: URLs and other schemes are dropped, as are relative paths
-// that would resolve against the page.
-export function safeImageSource(value: string | undefined): string | undefined {
-  const trimmed = value?.trim();
-  if (!trimmed) {
-    return undefined;
-  }
-  if (trimmed.startsWith("/api/v1/")) {
-    return trimmed;
-  }
-  try {
-    const url = new URL(trimmed.startsWith("//") ? `https:${trimmed}` : trimmed);
-    return url.protocol === "https:" || url.protocol === "http:" ? url.toString() : undefined;
-  } catch {
-    return undefined;
-  }
-}
-
-// A source page link, shown as attribution next to an image.
-export function safeLinkURL(value: string | undefined): { href: string; host: string } | undefined {
-  if (!value) {
-    return undefined;
-  }
-  try {
-    const url = new URL(value);
-    if (url.protocol !== "http:" && url.protocol !== "https:") {
-      return undefined;
-    }
-    return { href: url.toString(), host: url.hostname.replace(/^www\./, "") };
-  } catch {
-    return undefined;
-  }
-}
+import { safeLinkURL } from "./block-url";
 
 type BlockImageProps = {
   src: string;
@@ -138,6 +103,7 @@ type ImageLightboxProps = {
 export function ImageLightbox({ images, index, onIndexChange }: ImageLightboxProps) {
   const t = useTranslations("chat.markdown");
   const tb = useTranslations("chat.markdown.uiBlock");
+  const common = useTranslations("common.actions");
   const current = index !== null ? images[index] : undefined;
   const count = images.length;
   const step = (delta: number) => {
@@ -148,7 +114,14 @@ export function ImageLightbox({ images, index, onIndexChange }: ImageLightboxPro
   const link = safeLinkURL(current?.href);
 
   return (
-    <Dialog open={current !== undefined} onOpenChange={(open) => (open ? undefined : onIndexChange(null))}>
+    <Dialog
+      open={current !== undefined}
+      onOpenChange={(open) => {
+        if (!open) {
+          onIndexChange(null);
+        }
+      }}
+    >
       <DialogContent
         className="flex w-fit max-w-[96vw] flex-col items-center gap-2 overflow-visible border-0 bg-transparent p-0 shadow-none backdrop-blur-none sm:max-w-[96vw]"
         onKeyDown={(event) => {
@@ -171,7 +144,7 @@ export function ImageLightbox({ images, index, onIndexChange }: ImageLightboxPro
                 <MediaActionButton label={t("downloadImage")} onClick={() => void downloadImage(current, () => toast.error(t("downloadImageFailed")))}>
                   <Download className="size-3.5" />
                 </MediaActionButton>
-                <MediaActionButton label={tb("close")} onClick={() => onIndexChange(null)}>
+                <MediaActionButton label={common("close")} onClick={() => onIndexChange(null)}>
                   <X className="size-3.5" />
                 </MediaActionButton>
               </MediaActionBar>

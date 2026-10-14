@@ -219,7 +219,6 @@
       "askSend": "发送追问",
       "askRestore": "恢复为建议的问题",
       "imageCount": "{count} 张",
-      "close": "关闭",
       "previousImage": "上一张",
       "nextImage": "下一张"
     },
@@ -1161,10 +1160,7 @@
     "default": "默认",
     "auto": "自动",
     "levelWithDefault": "{level}（默认）",
-    "dialogDescription": "统一的思考强度，服务器会映射为该模型的原生参数。",
-    "regenerate": "重新生成",
-    "regenerateWith": "以指定思考强度重新生成",
-    "usedByReply": "本次回复"
+    "dialogDescription": "统一的思考强度，服务器会映射为该模型的原生参数。"
   },
   "modelControls": {
     "title": "对话参数",
