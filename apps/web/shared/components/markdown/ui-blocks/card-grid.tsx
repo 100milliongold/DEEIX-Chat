@@ -5,13 +5,13 @@ import { useTranslations } from "next-intl";
 import * as React from "react";
 
 import { HeightTransition } from "@/components/ui/height-transition";
-import { SlideSwitch } from "@/shared/components/slide-switch";
-
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import { SlideSwitch } from "@/shared/components/slide-switch";
 import type { UIBlockDefinition, UIBlockRenderProps, UIBlockSkeletonProps } from "./block";
-import { BlockImage, ImageLightbox, safeImageSource, safeLinkURL } from "./block-image";
+import { BlockImage, ImageLightbox } from "./block-image";
 import { joinTextBlocks, textTitle } from "./block-text";
+import { safeImageSource, safeLinkURL } from "./block-url";
 import { s } from "./schema";
 import { UIBlockFrame } from "./ui-block-frame";
 import { useUIBlockState } from "./ui-block-state";

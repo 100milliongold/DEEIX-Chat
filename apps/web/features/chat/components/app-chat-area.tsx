@@ -53,9 +53,6 @@ import { useChatConversationDefaults } from "@/features/chat/hooks/use-chat-conv
 import { useChatTemporaryRuntime } from "@/features/chat/hooks/use-chat-temporary-runtime";
 import { useChatUIBlockStateRuntime } from "@/features/chat/hooks/use-chat-ui-block-state";
 import { filterAvailableMCPToolIDs } from "@/features/chat/model/chat-mcp-tool-defaults";
-import type {
-  ChatRegenerateReasoningOptions,
-} from "@/features/chat/model/chat-reasoning-effort";
 import type { ChatAreaMessage, } from "@/features/chat/types/messages";
 import { useSettingsChatPreferences } from "@/features/settings";
 import { cn } from "@/lib/utils";
@@ -264,14 +261,6 @@ export function AppChatArea() {
     [modelOptions, selectedPlatformModelName],
   );
   const modelOptionPolicyDisabled = modelOptionPolicy?.mode?.trim() === "disabled";
-  // Regeneration runs on the composer model, so "Regenerate with…" offers that model's levels.
-  const regenerateReasoning = React.useMemo<ChatRegenerateReasoningOptions | null>(() => {
-    const capability = selectedModel?.reasoning;
-    if (!selectedModel || !capability || capability.locked) {
-      return null;
-    }
-    return { levels: capability.levels, defaultLevel: capability.default };
-  }, [selectedModel]);
   const refreshModelCatalogForComposer = React.useCallback(async () => {
     await refreshModelCatalog();
   }, [refreshModelCatalog]);
@@ -912,7 +901,6 @@ export function AppChatArea() {
                   onEditUserMessage={temporaryMode ? temporaryRuntime.onEditUserMessage : onEditUserMessage}
                   onForkMessage={temporaryMode ? undefined : onForkMessage}
                   onDeleteMessage={temporaryMode ? undefined : onDeleteMessage}
-                  regenerateReasoning={regenerateReasoning}
                   modelOptions={modelOptions}
                   selectedPlatformModelName={selectedPlatformModelName}
                   onModelChange={setSelectedPlatformModelName}

@@ -20,7 +20,6 @@ import { MessageAgentTrace, MessageProcessTrace } from "@/features/chat/componen
 import { UpstreamExchangeDetails } from "@/features/chat/components/message/message-upstream-debug";
 import { useChatInlineVideoSource } from "@/features/chat/hooks/use-chat-inline-video-source";
 import { useChatMessageTraceDetail } from "@/features/chat/hooks/use-chat-message-trace-detail";
-import type { ChatRegenerateReasoningOptions } from "@/features/chat/model/chat-reasoning-effort";
 import { resolveLeadingImagePreview } from "@/features/chat/model/media-image-preview";
 import {
   clearLiveUpstreamThinkTrace,
@@ -42,7 +41,6 @@ import { MediaActionBar, MediaActionButton } from "@/shared/components/media-act
 import { useBranding } from "@/shared/config/branding-provider";
 import { useCopyAction } from "@/shared/components/copy-action";
 import type { BillingDisplayCurrency } from "@/entities/billing";
-import type { ReasoningEffortLevel } from "@/entities/model";
 
 const EMPTY_TRACE_EVENTS: NonNullable<NonNullable<ChatAreaMessage["processTrace"]>["events"]> = [];
 const GrainientBackground = dynamic(
@@ -140,8 +138,7 @@ type ChatMessageBotProps = {
   item: ChatAreaMessage;
   busy?: boolean;
   reaction: AssistantReaction;
-  onRetryAssistantMessage: (message: ChatAreaMessage, reasoningEffort?: ReasoningEffortLevel) => Promise<void> | void;
-  regenerateReasoning?: ChatRegenerateReasoningOptions | null;
+  onRetryAssistantMessage: (message: ChatAreaMessage) => Promise<void> | void;
   onContinueAssistantMessage?: (message: ChatAreaMessage) => Promise<void> | void;
   onEditAssistantMessage: (message: ChatAreaMessage, content: string) => Promise<boolean> | boolean;
   onForkMessage?: (message: ChatAreaMessage) => Promise<void> | void;
@@ -178,7 +175,6 @@ export function ChatMessageBot({
   busy = false,
   reaction,
   onRetryAssistantMessage,
-  regenerateReasoning = null,
   onContinueAssistantMessage,
   onEditAssistantMessage,
   onForkMessage,
@@ -214,9 +210,6 @@ export function ChatMessageBot({
   const [editingValue, setEditingValue] = React.useState(item.content);
   const onRetry = React.useCallback(() => {
     void onRetryAssistantMessage(item);
-  }, [item, onRetryAssistantMessage]);
-  const onRetryWithReasoning = React.useCallback((level: ReasoningEffortLevel) => {
-    void onRetryAssistantMessage(item, level);
   }, [item, onRetryAssistantMessage]);
   const onContinue = React.useCallback(() => {
     void onContinueAssistantMessage?.(item);
@@ -493,8 +486,6 @@ export function ChatMessageBot({
         reaction={reaction}
         onCycleBranch={onCycleMessageBranch}
         onRetry={onRetry}
-        regenerateReasoning={regenerateReasoning}
-        onRetryWithReasoning={onRetryWithReasoning}
         onContinue={onContinueAssistantMessage ? onContinue : undefined}
         onEdit={() => setIsEditing(true)}
         onCopy={onCopy}

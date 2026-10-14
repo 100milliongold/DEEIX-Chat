@@ -5,9 +5,10 @@ import * as React from "react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { BlockImage, ImageLightbox, type LightboxImage, safeImageSource, safeLinkURL } from "./block-image";
 import type { UIBlockDefinition, UIBlockRenderProps, UIBlockSkeletonProps } from "./block";
+import { BlockImage, ImageLightbox, type LightboxImage } from "./block-image";
 import { joinTextBlocks, textTitle } from "./block-text";
+import { safeImageSource, safeLinkURL } from "./block-url";
 import { s } from "./schema";
 import { UIBlockFrame } from "./ui-block-frame";
 
