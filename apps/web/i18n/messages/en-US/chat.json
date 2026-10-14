@@ -217,7 +217,11 @@
       "askLabel": "Follow-up question",
       "askPlaceholder": "Type a follow-up question",
       "askSend": "Send follow-up",
-      "askRestore": "Restore the suggested question"
+      "askRestore": "Restore the suggested question",
+      "imageCount": "{count, plural, one {# image} other {# images}}",
+      "close": "Close",
+      "previousImage": "Previous image",
+      "nextImage": "Next image"
     },
     "copyLatex": "Copy formula source",
     "latexCopied": "Formula source copied",
