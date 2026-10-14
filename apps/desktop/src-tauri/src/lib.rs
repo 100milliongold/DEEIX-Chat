@@ -36,6 +36,7 @@ pub fn run() {
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_notification::init())
         // Rust-side only: no `shell:*` permission is granted to the webview.
         .plugin(tauri_plugin_shell::init())
         .manage(distribution)

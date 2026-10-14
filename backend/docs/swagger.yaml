@@ -1467,6 +1467,9 @@ definitions:
       contentModeration:
         description: ContentModeration 内容审核。
         type: boolean
+      desktopDownload:
+        description: DesktopDownload 向网页端用户推荐下载桌面端；只监听回环的服务器只会被桌面端自己连接。
+        type: boolean
       identityProviders:
         description: IdentityProviders 第三方登录与身份绑定。
         type: boolean
@@ -1487,6 +1490,7 @@ definitions:
     - announcements
     - billingGating
     - contentModeration
+    - desktopDownload
     - identityProviders
     - multiUser
     - registration

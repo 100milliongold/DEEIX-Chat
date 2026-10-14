@@ -61,12 +61,12 @@
       "unsupportedDescription": "Use a desktop browser that supports the Notification API.",
       "deniedTitle": "Notification permission was denied",
       "deniedDescription": "Allow notifications in this site's browser permissions before enabling this option.",
-      "enabledTitle": "Browser notifications enabled",
+      "enabledTitle": "Notifications enabled",
       "enabledDescription": "You will receive a system notification when a reply finishes in the background.",
-      "defaultHelp": "When enabled, the browser notification permission is used to alert you through system notifications.",
+      "defaultHelp": "When enabled, notification permission is requested and you are alerted through system notifications.",
       "unsupportedHelp": "This browser does not support system notifications.",
       "deniedHelp": "Notifications are blocked by the browser. Allow them manually in browser settings.",
-      "grantedHelp": "Browser notifications are enabled. When a model reply finishes, a notification will appear."
+      "grantedHelp": "Notification permission granted. When a model reply finishes, a system notification will appear."
     },
     "appearance": {
       "colorMode": "Color mode",

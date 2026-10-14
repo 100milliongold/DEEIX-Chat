@@ -601,6 +601,8 @@ export interface Capabilities {
   billingGating: boolean;
   /** ContentModeration 内容审核。 */
   contentModeration: boolean;
+  /** DesktopDownload 向网页端用户推荐下载桌面端；只监听回环的服务器只会被桌面端自己连接。 */
+  desktopDownload: boolean;
   /** IdentityProviders 第三方登录与身份绑定。 */
   identityProviders: boolean;
   /** MultiUser 存在多个账号：账号管理、权限组。 */

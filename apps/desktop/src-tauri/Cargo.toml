@@ -36,6 +36,8 @@ reqwest = { version = "0.13", default-features = false, features = ["json", "rus
 rustls = { version = "0.23", default-features = false, features = ["ring"] }
 tauri-plugin-shell = "2"
 tauri-plugin-single-instance = "2"
+# Native notifications: the webviews do not deliver Web Notifications.
+tauri-plugin-notification = "2"
 tokio = { version = "1", features = ["time", "macros", "rt-multi-thread"] }
 # Strips Windows verbatim (\\?\) prefixes from canonical paths before they reach
 # WebView2 or the sidecar. Already in the tree through tauri-utils.

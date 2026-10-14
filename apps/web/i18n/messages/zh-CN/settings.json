@@ -61,12 +61,12 @@
       "unsupportedDescription": "请使用支持 Notification API 的桌面浏览器。",
       "deniedTitle": "通知权限被拒绝",
       "deniedDescription": "请在浏览器的站点权限设置里允许通知后再开启。",
-      "enabledTitle": "已开启浏览器通知",
+      "enabledTitle": "已开启通知",
       "enabledDescription": "当回复在后台完成时，你会收到系统通知。",
-      "defaultHelp": "开启后会调用浏览器通知权限，通过系统通知提醒你。",
+      "defaultHelp": "开启后会请求通知权限，通过系统通知提醒你。",
       "unsupportedHelp": "当前浏览器不支持系统通知。",
       "deniedHelp": "浏览器已阻止通知，请在浏览器设置中手动允许。",
-      "grantedHelp": "已启用浏览器通知。开启后，模型回复完成时会弹出提醒。"
+      "grantedHelp": "已获得通知权限，模型回复完成时会通过系统通知提醒你。"
     },
     "appearance": {
       "colorMode": "颜色模式",
