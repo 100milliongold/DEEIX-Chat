@@ -1,0 +1,58 @@
+{
+  "title": "네트워크 프록시",
+  "mode": {
+    "title": "프록시",
+    "description": "내장 로컬 서버의 모델 요청과 앱의 로그인 갱신, 업데이트 확인에 사용됩니다.",
+    "system": "시스템 설정 사용",
+    "manual": "수동",
+    "direct": "프록시 사용 안 함"
+  },
+  "fields": {
+    "scheme": "프로토콜",
+    "schemeDescription": "대부분의 프록시 앱은 HTTP를 사용하며, 프록시가 SOCKS5만 제공하는 경우 SOCKS5를 선택하세요.",
+    "host": "주소",
+    "hostDescription": "프록시의 호스트 이름 또는 IP 주소입니다.",
+    "port": "포트",
+    "portDescription": "Clash와 v2rayN은 보통 7890 또는 10809 포트를 사용합니다.",
+    "username": "사용자 이름",
+    "usernameDescription": "로그인이 필요한 프록시에만 입력하세요.",
+    "password": "비밀번호",
+    "passwordDescription": "시스템 키체인에 저장됩니다.",
+    "removePassword": "저장된 비밀번호 삭제",
+    "bypass": "프록시 우회 목록",
+    "bypassDescription": "한 줄에 하나씩 또는 쉼표로 구분해 입력하세요. 호스트 이름, *.example.com, IP 주소, 192.168.* 또는 10.0.0.0/8 같은 범위를 사용할 수 있습니다. 이 컴퓨터는 항상 직접 연결됩니다."
+  },
+  "effective": {
+    "title": "사용 중",
+    "direct": "직접 연결",
+    "sources": {
+      "policy": "조직에서 설정함",
+      "manual": "수동 설정",
+      "direct": "프록시 사용 안 함",
+      "environment": "환경 변수",
+      "system": "시스템 설정",
+      "none": "시스템 설정 (프록시 미설정)"
+    }
+  },
+  "notices": {
+    "managed": "이 앱의 네트워크 프록시는 조직에서 관리합니다.",
+    "restart": "변경 사항은 앱을 다시 시작한 후 적용됩니다. 이 컴퓨터에서 진행 중인 응답은 중단됩니다.",
+    "restartAction": "지금 다시 시작",
+    "systemChanged": "앱을 시작한 후 시스템 프록시 설정이 변경되었습니다. 변경된 설정을 사용하려면 다시 시작하세요.",
+    "pacIgnored": "시스템에서 자동 구성 스크립트(PAC)를 사용 중이며, 앱은 이를 적용할 수 없습니다. 요청은 직접 연결됩니다. 프록시를 사용하려면 수동을 선택하세요.",
+    "webviewNotApplied": "앱 창 자체는 계속 시스템 프록시 설정을 따르며, 이 설정은 로컬 서버와 앱이 직접 보내는 요청에 적용됩니다."
+  },
+  "toasts": {
+    "saved": "프록시 설정을 저장했습니다",
+    "savedDescription": "앱을 다시 시작한 후 적용됩니다.",
+    "saveFailed": "프록시 설정을 저장하지 못했습니다",
+    "loadFailed": "프록시 설정을 읽지 못했습니다"
+  },
+  "errors": {
+    "host": "http://나 경로 없이 호스트 이름 또는 IP 주소를 입력하세요.",
+    "port": "1에서 65535 사이의 포트를 입력하세요.",
+    "bypass": "\"{value}\"은(는) 호스트 이름, 주소 또는 범위가 아닙니다.",
+    "policy": "이 앱의 네트워크 프록시는 조직에서 관리합니다.",
+    "storage": "설정을 저장할 수 없습니다: {message}"
+  }
+}

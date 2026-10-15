@@ -1,0 +1,562 @@
+{
+  "groups": {
+    "uploadLimits": {
+      "title": "업로드 제한",
+      "description": "채팅 메시지의 첨부 파일 수, MIME 허용 목록, 파일 크기 제한을 설정합니다."
+    },
+    "extraction": {
+      "title": "콘텐츠 추출",
+      "description": "기본 추출 파이프라인, 공용 OCR 엔진, OCR 활성화 범위를 설정합니다."
+    },
+    "fullContext": {
+      "title": "전체 텍스트 주입",
+      "description": "RAG를 사용하지 않고 추출된 파일 텍스트를 컨텍스트에 직접 주입할 수 있는지 설정합니다."
+    },
+    "embedding": {
+      "title": "벡터 검색",
+      "description": "외부 임베딩 서비스의 사용 여부를 설정합니다. 모델을 변경하면 기존 벡터가 오래된 상태로 표시됩니다."
+    },
+    "semantic": {
+      "title": "의미 기반 강화",
+      "description": "벡터 검색을 기반으로 과거 메시지를 의미적으로 불러옵니다. 메시지 임베딩이 준비되어 있어야 합니다."
+    },
+    "rag": {
+      "title": "RAG",
+      "description": "검색, 유사도 임계값, 주입 예산, 준비 대기 전략을 설정합니다."
+    }
+  },
+  "runtime": {
+    "address": "주소",
+    "testConnection": "연결 테스트"
+  },
+  "embeddingStatus": {
+    "title": "벡터 인덱스 상태",
+    "noSignature": "아직 시그니처가 없습니다. 처음 저장하면 자동으로 계산됩니다.",
+    "reindex": "남은 항목 인덱싱",
+    "reindexing": "제출 중...",
+    "reindexIncludingNoText": "텍스트 없는 파일 포함",
+    "ready": "준비됨",
+    "stale": "오래됨",
+    "pending": "대기 중",
+    "noText": "텍스트 없음",
+    "failed": "실패",
+    "empty": "아직 인덱스 데이터가 없습니다. 임베딩 서비스를 설정하면 표시됩니다.",
+    "needsReindex": "오래된 벡터가 감지되었습니다. \"남은 항목 인덱싱\"을 클릭하여 검색을 복원하세요.",
+    "unsupported": "지원되지 않음",
+    "stalled": "{count}개 정체됨",
+    "viewBucket": "{label} 파일 보기 ({count})",
+    "hint": "인덱싱은 인덱싱되지 않았거나, 실패했거나, 오래되었거나, 정체된 파일만 처리하며 준비된 파일은 다시 만들지 않습니다. 사용할 수 있는 텍스트가 없는 파일은 먼저 다시 추출합니다. 개수를 선택하면 파일을 확인하고 개별적으로 재시도할 수 있습니다.",
+    "reindexRunning": "인덱싱 중...",
+    "runningHint": "인덱싱은 백그라운드에서 실행됩니다. 완료될 때까지 상태가 자동으로 갱신됩니다."
+  },
+  "embeddingTasks": {
+    "title": "벡터 인덱스 작업",
+    "description": "플랫폼 전체 파일의 벡터화 상태를 확인합니다. 실패했거나 정체된 작업은 개별적으로 재시도할 수 있으며, 준비된 파일은 다시 만들지 않습니다.",
+    "buckets": {
+      "ready": "준비됨",
+      "pending": "대기 중",
+      "failed": "실패",
+      "stale": "오래됨",
+      "empty": "텍스트 없음",
+      "unsupported": "지원되지 않음"
+    },
+    "bucketHints": {
+      "pending": "아직 인덱싱되지 않았거나, 대기열에 있거나, 처리 중인 파일입니다. 30분 넘게 대기열에 있는 작업은 정체된 것으로 간주되어 다시 제출할 수 있으며, 중단된 실행은 몇 분 안에 실패로 바뀝니다.",
+      "failed": "파일 처리 또는 벡터화에 실패했습니다. 재시도하면 아직 텍스트가 없는 파일을 먼저 추출한 뒤 인덱싱하며, 추출된 텍스트는 유지됩니다.",
+      "stale": "임베딩 모델, 차원 또는 엔드포인트가 변경되어 이 파일들의 기존 벡터가 더 이상 유효하지 않으므로 다시 만들어야 합니다.",
+      "empty": "추출이 텍스트 없이 끝났습니다. 보통 스캔본이나 이미지로만 된 파일입니다. OCR 엔진을 바꾼 뒤 재시도하면 새 설정으로 다시 추출하며 결과는 유지됩니다.",
+      "unsupported": "현재 설정으로는 이 파일들을 벡터화할 수 없습니다. 예를 들어 OCR이 꺼져 있고 임베딩 프로토콜이 이미지 입력을 지원하지 않을 때의 오디오, 비디오, 이미지가 해당합니다. 설정을 변경한 뒤 \"남은 항목 인덱싱\"으로 처리하세요.",
+      "ready": "이미 벡터화된 파일로, 참고용으로 표시됩니다. 벡터 공간 시그니처가 변경된 파일은 재시도할 수 있습니다."
+    },
+    "searchPlaceholder": "파일 이름 또는 파일 ID로 검색",
+    "selectAll": "모두 선택",
+    "selectFile": "{name} 선택",
+    "selectedCount": "{count}개 선택됨",
+    "retry": "재시도",
+    "retrySelected": "선택 항목 재시도",
+    "retrying": "재시도 제출 중",
+    "retrySubmitted": "파일 {count}개의 재시도를 제출했습니다",
+    "retrySkipped": "아직 실행 중이거나 지금은 재시도할 수 없는 파일 {count}개를 건너뛰었습니다.",
+    "retryNothing": "재시도할 수 있는 파일이 없습니다",
+    "retryFailed": "재시도에 실패했습니다",
+    "status": {
+      "none": "인덱싱되지 않음",
+      "queued": "대기열",
+      "processing": "처리 중",
+      "failed": "실패",
+      "stale": "오래됨",
+      "empty": "텍스트 없음",
+      "ready": "준비됨"
+    },
+    "stalled": "정체됨",
+    "blockedReasons": {
+      "processing": "작업이 아직 실행 중입니다",
+      "unsupported": "현재 설정에서는 이 파일 형식을 지원하지 않습니다",
+      "not_ready": "파일 파싱이 아직 끝나지 않았습니다",
+      "already_ready": "이미 벡터화되었습니다",
+      "not_found": "파일이 더 이상 존재하지 않습니다"
+    },
+    "updatedAt": "{time}에 업데이트됨",
+    "empty": "이 그룹에는 파일이 없습니다",
+    "emptySearch": "일치하는 파일이 없습니다",
+    "loadingMore": "불러오는 중...",
+    "loadFailed": "벡터 인덱스 작업을 불러오지 못했습니다",
+    "total": "파일 {count}개",
+    "close": "닫기"
+  },
+  "toast": {
+    "sessionExpired": "세션이 만료되었습니다.",
+    "sessionExpiredDescription": "계속하려면 다시 로그인해 주세요.",
+    "unknownError": "요청에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    "cannotEnable": "활성화할 수 없습니다",
+    "saveFailed": "파일 설정을 저장하지 못했습니다",
+    "loadFailed": "파일 설정을 불러오지 못했습니다",
+    "serviceTestFailed": "{service} 테스트에 실패했습니다",
+    "reindexSubmitted": "인덱싱을 제출했습니다",
+    "reindexSubmittedDescription": "파일 {count}개를 제출했습니다. 백그라운드에서 처리됩니다.",
+    "reindexFailed": "인덱싱을 시작하지 못했습니다",
+    "embeddingModelChanged": "임베딩 모델이 변경되었습니다",
+    "embeddingModelChangedDescription": "기존 벡터가 오래된 상태로 표시되었습니다. 인덱스 상태 패널에서 \"남은 항목 인덱싱\"을 클릭하여 이 파일들을 다시 벡터화하세요.",
+    "mimeTypesUpdated": "첨부 파일 MIME 허용 목록이 업데이트되었습니다",
+    "groupUpdated": "{group}이(가) 업데이트되었습니다",
+    "reindexNothing": "인덱싱이 필요한 파일이 없습니다"
+  },
+  "mineruMimeHint": {
+    "missing": "업로드 허용 목록에 선택한 MinerU 형식에 필요한 MIME 유형이 없습니다: {formats}.",
+    "addAndSave": "누락된 MIME 유형 추가 및 저장"
+  },
+  "validation": {
+    "embeddingRequired": "먼저 벡터 검색을 활성화하고 임베딩 서비스 URL과 모델을 모두 설정하세요.",
+    "messageEmbeddingRequired": "먼저 메시지 임베딩을 활성화하세요.",
+    "messageEmbeddingRequiredBeforeSemantic": "의미 기반 컨텍스트 불러오기를 사용하기 전에 메시지 임베딩을 활성화하세요.",
+    "tikaBaseURLRequired": "Tika 서비스 URL이 필요합니다.",
+    "doclingBaseURLRequired": "Docling 서비스 URL이 필요합니다.",
+    "mineruBaseURLRequired": "MinerU 서비스 URL이 필요합니다.",
+    "tesseractBaseURLRequired": "Tesseract OCR 서비스 URL이 필요합니다.",
+    "rapidOCRBaseURLRequired": "Rapid OCR 서비스 URL이 필요합니다.",
+    "paddleOCRBaseURLRequired": "Paddle OCR 서비스 URL이 필요합니다.",
+    "tencentOCRRequired": "Tencent Cloud OCR의 SecretId, SecretKey, 리전이 필요합니다.",
+    "aliyunOCRRequired": "Alibaba Cloud OCR의 AccessKey ID, AccessKey Secret, 리전이 필요합니다.",
+    "mistralOCRBaseURLRequired": "Mistral OCR 서비스 URL이 필요합니다.",
+    "mistralOCRAPIKeyRequired": "Mistral OCR API 키가 필요합니다.",
+    "mistralOCRModelRequired": "Mistral OCR 모델이 필요합니다.",
+    "llmOCRBaseURLRequired": "LLM OCR 서비스 URL이 필요합니다.",
+    "llmOCRModelRequired": "LLM OCR 모델이 필요합니다.",
+    "embeddingModelRequired": "임베딩 모델이 필요합니다.",
+    "embeddingHostRequired": "임베딩 서비스 URL이 필요합니다."
+  },
+  "fields": {
+    "storage": {
+      "max_message_files": {
+        "label": "첨부 파일 수 제한",
+        "description": "채팅 메시지 하나에 허용되는 최대 첨부 파일 수입니다.",
+        "placeholder": "개수를 입력하세요"
+      },
+      "max_upload_file_bytes": {
+        "label": "기본 크기 제한",
+        "description": "첨부 파일 하나의 기본 크기 제한입니다. UI에서는 MB 단위를 사용합니다.",
+        "placeholder": "크기 제한 (MB)"
+      },
+      "user_storage_quota_bytes": {
+        "label": "사용자 스토리지 할당량",
+        "description": "사용자별 파일 스토리지의 최대 총용량입니다. UI에서는 MB 단위를 사용하며 0이면 무제한입니다.",
+        "placeholder": "0이면 무제한"
+      }
+    },
+    "file": {
+      "allowed_mime_types": {
+        "label": "첨부 파일 MIME 허용 목록",
+        "description": "허용되는 첨부 파일 MIME 유형입니다. 여러 값은 쉼표로 구분합니다.",
+        "placeholder": "MIME 유형 (쉼표로 구분)"
+      },
+      "image_max_bytes": {
+        "label": "이미지 크기 제한",
+        "description": "이미지 첨부 파일의 크기 제한을 재정의합니다. UI에서는 MB 단위를 사용하며 비워 두면 기본 첨부 파일 제한을 사용합니다.",
+        "placeholder": "비워 두면 기본 첨부 파일 제한 사용"
+      },
+      "doc_max_bytes": {
+        "label": "문서 크기 제한",
+        "description": "문서 첨부 파일의 크기 제한을 재정의합니다. UI에서는 MB 단위를 사용하며 비워 두면 기본 첨부 파일 제한을 사용합니다.",
+        "placeholder": "비워 두면 기본 첨부 파일 제한 사용"
+      },
+      "full_context_limit_enabled": {
+        "label": "전체 텍스트 주입 제한",
+        "description": "활성화하면 전체 텍스트 주입이 MB 단위 크기, 토큰 예산, PDF 페이지 수로 제한됩니다. 비활성화하면 이 제한은 무시됩니다."
+      },
+      "file_full_context_max_bytes": {
+        "label": "전체 텍스트 크기 제한",
+        "description": "전체 컨텍스트 주입에 허용되는 추출 텍스트의 최대 크기입니다. UI에서는 MB 단위를 사용하며 비워 두거나 0이면 크기 제한이 없습니다.",
+        "placeholder": "크기 제한 (MB), 비우거나 0이면 무제한"
+      },
+      "full_context_max_tokens": {
+        "label": "전체 텍스트 토큰 제한",
+        "description": "전체 컨텍스트 주입에 허용되는 최대 토큰 예산입니다. 비워 두거나 0이면 토큰 제한이 없습니다.",
+        "placeholder": "비우거나 0이면 무제한"
+      },
+      "full_context_pdf_max_pages": {
+        "label": "전체 텍스트 페이지 제한",
+        "description": "전체 컨텍스트 주입에 허용되는 최대 PDF 페이지 수입니다. 비워 두거나 0이면 페이지 제한이 없습니다.",
+        "placeholder": "비우거나 0이면 무제한"
+      },
+      "embedding_enabled": {
+        "label": "임베딩 활성화",
+        "description": "파일 벡터화와 벡터 검색을 활성화합니다. 이 옵션이 꺼져 있으면 관련 파이프라인이 비활성화됩니다."
+      },
+      "embedding_host": {
+        "label": "임베딩 서비스 URL *",
+        "description": "임베딩 서비스의 기본 URL입니다. 예: https://api.openai.com/v1 또는 https://generativelanguage.googleapis.com/v1beta.",
+        "placeholder": "서비스 URL"
+      },
+      "embedding_protocol": {
+        "label": "요청 프로토콜",
+        "description": "임베딩 서비스의 통신 형식입니다. Gemini, Voyage, Jina는 이미지 입력을 받을 수 있으므로 이미지를 OCR 텍스트를 거치지 않고 직접 벡터화합니다.",
+        "options": {
+          "openai": "OpenAI 호환",
+          "gemini": "Gemini",
+          "voyage": "Voyage AI",
+          "jina": "Jina AI"
+        }
+      },
+      "embedding_key": {
+        "label": "임베딩 인증 키",
+        "description": "임베딩 서비스를 호출할 때 사용하는 인증 키입니다.",
+        "placeholder": "인증 키"
+      },
+      "rag_model": {
+        "label": "임베딩 모델 *",
+        "description": "벡터화에 사용하는 모델 이름입니다.",
+        "placeholder": "모델 이름"
+      },
+      "embedding_timeout_seconds": {
+        "label": "임베딩 타임아웃",
+        "description": "임베딩 API 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "embedding_output_dimensions": {
+        "label": "벡터 차원",
+        "description": "저장과 검색에 일관되게 사용하는 벡터 차원입니다.",
+        "placeholder": "벡터 차원"
+      },
+      "embedding_dimensions_policy": {
+        "label": "차원 요청 정책",
+        "description": "요청에 `dimensions` 매개변수를 포함할지 여부입니다. 일부 서비스는 이를 거부합니다.",
+        "options": {
+          "send": "포함",
+          "omit": "생략"
+        }
+      },
+      "embedding_normalize": {
+        "label": "벡터 정규화",
+        "description": "저장과 검색 전에 벡터를 정규화합니다."
+      },
+      "embed_trigger_on_upload": {
+        "label": "자동 벡터화",
+        "description": "파일 업로드가 완료된 뒤 임베딩을 비동기로 실행합니다."
+      },
+      "embed_batch_size": {
+        "label": "배치 크기",
+        "description": "임베딩 API 요청 한 번에 보내는 텍스트 청크 수입니다.",
+        "placeholder": "배치 크기"
+      },
+      "embed_chunk_size_tokens": {
+        "label": "청크 크기",
+        "description": "문서 벡터화 청크의 크기이며 토큰 기준으로 추정합니다.",
+        "placeholder": "청크 크기 (토큰)"
+      },
+      "embed_chunk_overlap_tokens": {
+        "label": "청크 중첩",
+        "description": "인접한 청크 사이에 겹치는 토큰 수입니다.",
+        "placeholder": "청크 중첩 (토큰)"
+      },
+      "rag_top_k": {
+        "label": "검색 청크 수",
+        "description": "반환하여 주입하는 RAG 청크의 수입니다.",
+        "placeholder": "청크 수"
+      }
+    },
+    "extract": {
+      "engine": {
+        "label": "추출 엔진",
+        "description": "파일 콘텐츠 추출에 사용하는 기본 엔진입니다.",
+        "options": {
+          "builtin": "내장",
+          "tika": "Tika",
+          "docling": "Docling",
+          "mineru": "MinerU"
+        }
+      },
+      "tika_base_url": {
+        "label": "Tika 서비스 URL *",
+        "description": "Apache Tika 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "tika_auth_token": {
+        "label": "Tika 인증 키",
+        "description": "Tika 서비스를 호출할 때 보내는 인증 키입니다.",
+        "placeholder": "인증 키 (선택)"
+      },
+      "tika_timeout_seconds": {
+        "label": "Tika 타임아웃",
+        "description": "Tika 파싱 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "docling_base_url": {
+        "label": "Docling 서비스 URL *",
+        "description": "Docling 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "docling_auth_token": {
+        "label": "Docling 인증 키",
+        "description": "Docling 서비스를 호출할 때 보내는 인증 키입니다.",
+        "placeholder": "인증 키 (선택)"
+      },
+      "docling_timeout_seconds": {
+        "label": "Docling 타임아웃",
+        "description": "Docling 파싱 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "mineru_source": {
+        "label": "MinerU 서비스 유형",
+        "description": "MinerU 클라우드 서비스 또는 자체 호스팅 서비스를 선택합니다.",
+        "options": {
+          "cloud": "클라우드",
+          "self_hosted": "자체 호스팅"
+        }
+      },
+      "mineru_base_url": {
+        "label": "MinerU 서비스 URL *",
+        "description": "MinerU 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "mineru_file_types": {
+        "label": "MinerU 파일 형식",
+        "description": "MinerU로 보낼 파일 범주를 선택합니다.",
+        "options": {
+          "pdf": "PDF",
+          "word": "Word",
+          "presentation": "PowerPoint",
+          "excel": "Excel"
+        }
+      },
+      "mineru_auth_token": {
+        "label": "MinerU 인증 키",
+        "description": "MinerU를 호출할 때 사용하는 토큰 또는 API 키입니다.",
+        "placeholder": "인증 키 (선택)"
+      },
+      "mineru_timeout_seconds": {
+        "label": "MinerU 타임아웃",
+        "description": "MinerU 파싱 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "image_ocr_enabled": {
+        "label": "이미지 OCR",
+        "description": "이미지 첨부 파일을 OCR로 처리하여 검색용 텍스트를 생성합니다."
+      },
+      "pdf_ocr_fallback_enabled": {
+        "label": "PDF OCR 폴백",
+        "description": "PDF 기본 텍스트 추출에 실패하거나 품질이 낮을 때 OCR 폴백을 사용합니다."
+      },
+      "ocr_engine": {
+        "label": "OCR 엔진",
+        "description": "이미지 OCR과 PDF OCR 폴백이 함께 사용하는 OCR 엔진입니다.",
+        "options": {
+          "rapidocr": "Rapid OCR",
+          "tesseract": "Tesseract OCR",
+          "paddle": "Paddle OCR",
+          "tencent": "Tencent Cloud OCR",
+          "aliyun": "Alibaba Cloud OCR",
+          "mistral": "Mistral OCR",
+          "llm": "LLM OCR"
+        }
+      },
+      "tesseract_ocr_base_url": {
+        "label": "Tesseract OCR 서비스 URL *",
+        "description": "Tesseract OCR 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "tesseract_ocr_auth_token": {
+        "label": "Tesseract OCR 인증 키",
+        "description": "Tesseract OCR을 호출할 때 보내는 인증 키입니다.",
+        "placeholder": "인증 키 (선택)"
+      },
+      "tesseract_ocr_timeout_seconds": {
+        "label": "Tesseract OCR 타임아웃",
+        "description": "Tesseract OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "rapidocr_base_url": {
+        "label": "Rapid OCR 서비스 URL *",
+        "description": "Rapid OCR 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "rapidocr_auth_token": {
+        "label": "Rapid OCR 인증 키",
+        "description": "Rapid OCR을 호출할 때 보내는 인증 키입니다.",
+        "placeholder": "인증 키 (선택)"
+      },
+      "rapidocr_timeout_seconds": {
+        "label": "Rapid OCR 타임아웃",
+        "description": "Rapid OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "paddle_ocr_base_url": {
+        "label": "Paddle OCR 서비스 URL *",
+        "description": "Paddle OCR 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "paddle_ocr_auth_token": {
+        "label": "Paddle OCR 인증 키",
+        "description": "Paddle OCR을 호출할 때 보내는 인증 키입니다.",
+        "placeholder": "인증 키 (선택)"
+      },
+      "paddle_ocr_timeout_seconds": {
+        "label": "Paddle OCR 타임아웃",
+        "description": "Paddle OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "tencent_ocr_secret_id": {
+        "label": "Tencent Cloud SecretId *",
+        "description": "Tencent Cloud OCR API에 필요한 SecretId입니다.",
+        "placeholder": "SecretId"
+      },
+      "tencent_ocr_secret_key": {
+        "label": "Tencent Cloud SecretKey *",
+        "description": "Tencent Cloud OCR API에 필요한 SecretKey입니다.",
+        "placeholder": "SecretKey"
+      },
+      "tencent_ocr_region": {
+        "label": "Tencent Cloud 리전",
+        "description": "Tencent Cloud OCR API의 요청 리전입니다.",
+        "placeholder": "리전"
+      },
+      "tencent_ocr_endpoint": {
+        "label": "Tencent Cloud 엔드포인트",
+        "description": "Tencent Cloud OCR API의 엔드포인트입니다.",
+        "placeholder": "엔드포인트"
+      },
+      "tencent_ocr_timeout_seconds": {
+        "label": "Tencent Cloud OCR 타임아웃",
+        "description": "Tencent Cloud OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "aliyun_ocr_access_key_id": {
+        "label": "Alibaba Cloud AccessKey ID *",
+        "description": "Alibaba Cloud OCR API에 필요한 AccessKey ID입니다.",
+        "placeholder": "AccessKey ID"
+      },
+      "aliyun_ocr_access_key_secret": {
+        "label": "Alibaba Cloud AccessKey Secret *",
+        "description": "Alibaba Cloud OCR API에 필요한 AccessKey Secret입니다.",
+        "placeholder": "AccessKey Secret"
+      },
+      "aliyun_ocr_region": {
+        "label": "Alibaba Cloud 리전",
+        "description": "Alibaba Cloud OCR API의 요청 리전입니다.",
+        "placeholder": "리전"
+      },
+      "aliyun_ocr_endpoint": {
+        "label": "Alibaba Cloud 엔드포인트",
+        "description": "Alibaba Cloud OCR API의 엔드포인트입니다.",
+        "placeholder": "엔드포인트"
+      },
+      "aliyun_ocr_timeout_seconds": {
+        "label": "Alibaba Cloud OCR 타임아웃",
+        "description": "Alibaba Cloud OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "mistral_ocr_base_url": {
+        "label": "Mistral OCR 서비스 URL *",
+        "description": "Mistral OCR 엔드포인트입니다. 기본값은 https://api.mistral.ai/v1/ocr입니다.",
+        "placeholder": "https://api.mistral.ai/v1/ocr"
+      },
+      "mistral_ocr_auth_token": {
+        "label": "Mistral OCR API 키 *",
+        "description": "Mistral OCR을 호출할 때 사용하는 API 키입니다.",
+        "placeholder": "API Key"
+      },
+      "mistral_ocr_model": {
+        "label": "Mistral OCR 모델 *",
+        "description": "추출에 사용하는 Mistral OCR 모델입니다.",
+        "placeholder": "mistral-ocr-latest"
+      },
+      "mistral_ocr_timeout_seconds": {
+        "label": "Mistral OCR 타임아웃",
+        "description": "Mistral OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "60"
+      },
+      "llm_ocr_base_url": {
+        "label": "LLM OCR 서비스 URL *",
+        "description": "OpenAI 호환 비전 모델 서비스 URL입니다.",
+        "placeholder": "서비스 URL"
+      },
+      "llm_ocr_auth_token": {
+        "label": "LLM OCR 인증 키",
+        "description": "LLM OCR 서비스를 호출할 때 사용하는 API 키입니다.",
+        "placeholder": "API Key (선택)"
+      },
+      "llm_ocr_model": {
+        "label": "LLM OCR 모델 *",
+        "description": "OCR에 사용하는 비전 모델 이름입니다.",
+        "placeholder": "모델 이름"
+      },
+      "llm_ocr_timeout_seconds": {
+        "label": "LLM OCR 타임아웃",
+        "description": "LLM OCR 요청 한 번의 최대 대기 시간(초)입니다.",
+        "placeholder": "타임아웃 (초)"
+      },
+      "llm_ocr_prompt": {
+        "label": "LLM OCR 프롬프트",
+        "description": "비전 모델에 보내는 OCR 지시문입니다.",
+        "placeholder": "프롬프트 (선택)"
+      }
+    },
+    "chat": {
+      "message_embedding_enabled": {
+        "label": "메시지 임베딩",
+        "description": "대화 턴이 끝날 때마다 메시지 벡터를 비동기로 생성합니다. 사용 가능한 임베딩 서비스가 필요합니다."
+      },
+      "semantic_context_enabled": {
+        "label": "의미 기반 컨텍스트 불러오기",
+        "description": "메시지를 보내기 전에 과거의 관련 스니펫을 불러와 컨텍스트에 주입합니다."
+      },
+      "rag_enabled": {
+        "label": "RAG",
+        "description": "파일이 검색 증강 파이프라인에 들어갈 수 있도록 허용합니다. 사용 가능한 임베딩 서비스가 필요합니다."
+      },
+      "rag_min_similarity": {
+        "label": "유사도 임계값",
+        "description": "검색된 청크를 주입하기 위한 최소 유사도 임계값입니다.",
+        "placeholder": "유사도 임계값"
+      },
+      "rag_token_budget": {
+        "label": "주입 토큰 예산",
+        "description": "검색된 청크를 컨텍스트에 주입하는 데 사용할 수 있는 토큰 예산입니다.",
+        "placeholder": "토큰 예산"
+      },
+      "rag_fetch_multiplier": {
+        "label": "가져오기 배수",
+        "description": "후보 검색 배수입니다. 시스템은 재순위화와 필터링에 앞서 추가 후보를 가져옵니다.",
+        "placeholder": "가져오기 배수"
+      },
+      "rag_wait_ready_ms": {
+        "label": "준비 대기",
+        "description": "요청을 보내기 전에 벡터화를 기다리는 최대 시간(밀리초)입니다.",
+        "placeholder": "대기 시간 (ms)"
+      },
+      "rag_query_history_turns": {
+        "label": "쿼리 기록 턴 수",
+        "description": "검색 쿼리를 생성할 때 포함하는 최근 사용자 턴의 수입니다.",
+        "placeholder": "기록 턴 수"
+      },
+      "rag_retrieval_cache_ttl_seconds": {
+        "label": "검색 캐시 TTL",
+        "description": "RAG 검색 결과 캐시의 유지 시간(초)입니다.",
+        "placeholder": "캐시 유지 시간 (초)"
+      },
+      "rag_hybrid_enabled": {
+        "label": "하이브리드 검색 (BM25 + 벡터)",
+        "description": "벡터 검색과 전체 텍스트 검색을 병렬로 실행한 뒤 RRF로 결과를 병합합니다."
+      }
+    }
+  }
+}

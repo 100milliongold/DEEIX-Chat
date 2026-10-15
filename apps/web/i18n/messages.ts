@@ -123,7 +123,13 @@ export async function loadLocaleMessages(locale: AppLocale): Promise<AppMessages
   if (locale === "en-US") {
     return DEFAULT_MESSAGES;
   }
+  if (locale === "ko-KR") {
+    return loadKoreanMessages();
+  }
+  return loadChineseMessages();
+}
 
+async function loadChineseMessages(): Promise<AppMessages> {
   const [
     desktopNetwork,
     desktopSetup,
@@ -192,6 +198,114 @@ export async function loadLocaleMessages(locale: AppLocale): Promise<AppMessages
     import("@/i18n/messages/zh-CN/admin-user-keys.json"),
     import("@/i18n/messages/zh-CN/admin-users.json"),
     import("@/i18n/messages/zh-CN/admin-content-moderation.json"),
+  ]);
+
+  return {
+    desktopNetwork: desktopNetwork.default,
+    desktopSetup: desktopSetup.default,
+    desktopTabs: desktopTabs.default,
+    desktopUpdate: desktopUpdate.default,
+    common: common.default,
+    conversation: conversation.default,
+    errors: errors.default,
+    login: login.default,
+    library: library.default,
+    uiComponents: uiComponents.default,
+    guide: guide.default,
+    chat: chat.default,
+    announcements: announcements.default,
+    recent: recent.default,
+    share: share.default,
+    files: files.default,
+    knowledgeBases: knowledgeBases.default,
+    settings: settings.default,
+    adminAnnouncements: adminAnnouncements.default,
+    adminBilling: adminBilling.default,
+    adminConversation: adminConversation.default,
+    adminFiles: adminFiles.default,
+    adminGroups: adminGroups.default,
+    adminLogin: adminLogin.default,
+    adminLogs: adminLogs.default,
+    adminModels: adminModels.default,
+    adminLibrary: adminLibrary.default,
+    adminStatistics: adminStatistics.default,
+    adminTools: adminTools.default,
+    adminUpstreams: adminUpstreams.default,
+    adminUserKeys: adminUserKeys.default,
+    adminUsers: adminUsers.default,
+    adminContentModeration: adminContentModeration.default,
+  };
+}
+
+async function loadKoreanMessages(): Promise<AppMessages> {
+  const [
+    desktopNetwork,
+    desktopSetup,
+    desktopTabs,
+    desktopUpdate,
+    common,
+    conversation,
+    errors,
+    login,
+    library,
+    uiComponents,
+    guide,
+    chat,
+    announcements,
+    recent,
+    share,
+    files,
+    knowledgeBases,
+    settings,
+    adminAnnouncements,
+    adminBilling,
+    adminConversation,
+    adminFiles,
+    adminGroups,
+    adminLogin,
+    adminLogs,
+    adminModels,
+    adminLibrary,
+    adminStatistics,
+    adminTools,
+    adminUpstreams,
+    adminUserKeys,
+    adminUsers,
+    adminContentModeration,
+  ] = await Promise.all([
+    import("@/i18n/messages/ko-KR/desktop-network.json"),
+    import("@/i18n/messages/ko-KR/desktop-setup.json"),
+    import("@/i18n/messages/ko-KR/desktop-tabs.json"),
+    import("@/i18n/messages/ko-KR/desktop-update.json"),
+    import("@/i18n/messages/ko-KR/common.json"),
+    import("@/i18n/messages/ko-KR/conversation.json"),
+    import("@/i18n/messages/ko-KR/errors.json"),
+    import("@/i18n/messages/ko-KR/login.json"),
+    import("@/i18n/messages/ko-KR/library.json"),
+    import("@/i18n/messages/ko-KR/ui-components.json"),
+    import("@/i18n/messages/ko-KR/guide.json"),
+    import("@/i18n/messages/ko-KR/chat.json"),
+    import("@/i18n/messages/ko-KR/announcements.json"),
+    import("@/i18n/messages/ko-KR/recent.json"),
+    import("@/i18n/messages/ko-KR/share.json"),
+    import("@/i18n/messages/ko-KR/files.json"),
+    import("@/i18n/messages/ko-KR/knowledge-bases.json"),
+    import("@/i18n/messages/ko-KR/settings.json"),
+    import("@/i18n/messages/ko-KR/admin-announcements.json"),
+    import("@/i18n/messages/ko-KR/admin-billing.json"),
+    import("@/i18n/messages/ko-KR/admin-conversation.json"),
+    import("@/i18n/messages/ko-KR/admin-files.json"),
+    import("@/i18n/messages/ko-KR/admin-groups.json"),
+    import("@/i18n/messages/ko-KR/admin-login.json"),
+    import("@/i18n/messages/ko-KR/admin-logs.json"),
+    import("@/i18n/messages/ko-KR/admin-models.json"),
+    import("@/i18n/messages/ko-KR/admin-library.json"),
+    import("@/i18n/messages/ko-KR/admin-statistics.json"),
+    import("@/i18n/messages/ko-KR/admin-tools.json"),
+    import("@/i18n/messages/ko-KR/admin-upstreams.json"),
+    import("@/i18n/messages/ko-KR/admin-user-keys.json"),
+    import("@/i18n/messages/ko-KR/admin-users.json"),
+    import("@/i18n/messages/ko-KR/admin-content-moderation.json"),
   ]);
 
   return {

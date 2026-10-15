@@ -1,0 +1,877 @@
+{
+  "title": "설정",
+  "general": "일반",
+  "account": "계정",
+  "chat": "채팅",
+  "models": "모델",
+  "subscription": "구독",
+  "network": "네트워크",
+  "about": "정보",
+  "navigation": "설정 탐색",
+  "aboutPage": {
+    "title": "정보",
+    "description": "DEEIX Chat은 다중 사용자 AI 애플리케이션을 위한 모델 접근 및 대화 운영 플랫폼입니다. 모델 카탈로그, 다중 공급자 라우팅, 파라미터 거버넌스, 파일과 RAG, MCP 도구, 사용량 결제, 인증 보안, 감사, 운영 설정을 하나의 컨트롤 플레인으로 통합합니다.",
+    "details": "제품 정보",
+    "product": "제품",
+    "version": "버전",
+    "console": "콘솔",
+    "userConsole": "사용자 콘솔",
+    "official": "공식",
+    "website": "웹사이트",
+    "repository": "저장소",
+    "social": "X",
+    "blog": "블로그",
+    "contact": "문의 및 지원",
+    "copyright": "© 2026 DEEIX. DEEIX Chat.",
+    "license": "코드는 Apache License 2.0에 따라 사용이 허가됩니다."
+  },
+  "appearance": "모양",
+  "language": "언어",
+  "languageDescription": "이 브라우저와 내 계정에 적용할 인터페이스 언어를 선택하세요.",
+  "generalPage": {
+    "profile": {
+      "avatar": "아바타",
+      "avatarAlt": "사용자 아바타",
+      "username": "사용자 이름",
+      "usernamePlaceholder": "사용자 이름 설정",
+      "displayName": "표시 이름",
+      "displayNamePlaceholder": "인터페이스에 표시되는 이름",
+      "displayNameInvalid": "표시 이름은 3~16자여야 합니다.",
+      "timezone": "시간대",
+      "conversationPreferences": "대화 선호 사항",
+      "conversationPreferencesPlaceholder": "선호하는 스타일, 언어 습관, 출력 형식, 자주 쓰는 작업 방식을 입력하세요."
+    },
+    "username": {
+      "invalid": "사용자 이름은 3~16자의 영문 소문자, 숫자, 밑줄, 하이픈만 사용할 수 있으며 예약된 이름은 사용할 수 없습니다.",
+      "alreadyChanged": "사용자 이름은 한 번만 설정할 수 있습니다.",
+      "taken": "이미 사용 중인 사용자 이름입니다."
+    },
+    "toast": {
+      "initialUsernameRequired": "초기 사용자 이름을 변경하세요.",
+      "setUsernameFailed": "사용자 이름을 설정하지 못했습니다",
+      "usernameUpdated": "사용자 이름이 업데이트되었습니다",
+      "profileUpdated": "프로필이 업데이트되었습니다",
+      "saveProfileFailed": "프로필을 저장하지 못했습니다"
+    },
+    "notifications": {
+      "responseCompletionTitle": "응답 완료 알림",
+      "responseCompletionDescription": "모델이 응답을 마치면 알려 드립니다. 도구 호출이나 리서치처럼 오래 걸리는 작업에 유용합니다.",
+      "toggleResponseCompletion": "응답 완료 알림 전환",
+      "unsupportedTitle": "이 브라우저는 알림을 지원하지 않습니다",
+      "unsupportedDescription": "Notification API를 지원하는 데스크톱 브라우저를 사용하세요.",
+      "deniedTitle": "알림 권한이 거부되었습니다",
+      "deniedDescription": "이 옵션을 활성화하기 전에 브라우저의 사이트 권한에서 알림을 허용하세요.",
+      "enabledTitle": "알림이 활성화되었습니다",
+      "enabledDescription": "백그라운드에서 답변이 완료되면 시스템 알림을 받습니다.",
+      "defaultHelp": "활성화하면 알림 권한을 요청하고 시스템 알림으로 알려 드립니다.",
+      "unsupportedHelp": "이 브라우저는 시스템 알림을 지원하지 않습니다.",
+      "deniedHelp": "브라우저에서 알림이 차단되었습니다. 브라우저 설정에서 직접 허용하세요.",
+      "grantedHelp": "알림 권한이 허용되었습니다. 모델 답변이 완료되면 시스템 알림이 표시됩니다."
+    },
+    "appearance": {
+      "colorMode": "색상 모드",
+      "themePreset": "테마",
+      "fontSize": "글꼴 크기",
+      "preset": {
+        "default": "기본",
+        "azure": "아주르",
+        "cobalt": "코발트",
+        "graphite": "그래파이트",
+        "lagoon": "라군",
+        "ink": "잉크",
+        "ochre": "오커",
+        "sepia": "세피아"
+      },
+      "theme": {
+        "light": "라이트",
+        "system": "시스템",
+        "dark": "다크"
+      },
+      "fontSizeOption": {
+        "small": "작게",
+        "standard": "표준",
+        "medium": "중간",
+        "large": "크게"
+      },
+      "toastPosition": "알림 위치",
+      "toastPositionOption": {
+        "top-left": "왼쪽 위",
+        "top-center": "가운데 위",
+        "top-right": "오른쪽 위",
+        "bottom-left": "왼쪽 아래",
+        "bottom-center": "가운데 아래",
+        "bottom-right": "오른쪽 아래"
+      },
+      "toastPositionPreview": "알림이 여기에 표시됩니다"
+    },
+    "avatarDialog": {
+      "title": "아바타 편집",
+      "description": "이미지를 업로드하거나 아바타 URL을 입력하거나 픽셀 스타일 아바타를 생성하세요.",
+      "avatarURL": "아바타 URL",
+      "upload": "이미지 업로드",
+      "uploading": "업로드 중",
+      "uploaded": "아바타를 업로드했습니다",
+      "uploadFailed": "아바타를 업로드하지 못했습니다",
+      "uploadInvalid": "이미지 파일을 선택하세요",
+      "generate": "아바타 생성",
+      "apply": "적용"
+    }
+  },
+  "profile": "프로필",
+  "security": "보안",
+  "notifications": "알림",
+  "memory": "AI 선호 메모리",
+  "accountPage": {
+    "title": "계정",
+    "password": "로그인 비밀번호",
+    "twoFactor": "2단계 인증",
+    "logoutAllDevices": "모든 활성 기기에서 로그아웃",
+    "deleteAccount": "계정 삭제",
+    "publicID": "공개 사용자 ID",
+    "copyPublicID": "공개 사용자 ID 복사",
+    "email": {
+      "label": "이메일",
+      "withAddress": "이메일 ({email})",
+      "verified": "인증됨",
+      "unverified": "인증되지 않음"
+    },
+    "actions": {
+      "set": "설정",
+      "update": "업데이트",
+      "manage": "관리",
+      "generating": "생성 중",
+      "logOut": "로그아웃",
+      "loggingOut": "로그아웃 중",
+      "deleteAccount": "계정 삭제",
+      "deleting": "삭제 중",
+      "bind": "연결",
+      "cancel": "취소",
+      "verify": "인증"
+    },
+    "identity": {
+      "title": "연결된 ID 공급자",
+      "provider": "공급자",
+      "username": "사용자 이름",
+      "email": "이메일",
+      "linkedAt": "연결 시각",
+      "empty": "연결된 서드파티 ID 공급자가 없습니다.",
+      "unlink": "ID 공급자 연결 해제",
+      "unlinkDisabled": "먼저 비밀번호를 설정하거나 다른 ID 공급자를 연결하세요."
+    },
+    "session": {
+      "title": "활성 세션",
+      "device": "기기",
+      "location": "위치",
+      "createdAt": "생성 시각",
+      "updatedAt": "업데이트 시각",
+      "empty": "활성 세션이 없습니다.",
+      "current": "현재 세션",
+      "actions": "세션 작업",
+      "logoutThisSession": "이 세션 로그아웃",
+      "unknownDevice": "알 수 없는 기기",
+      "unknownLocation": "알 수 없는 위치",
+      "unknownIP": "알 수 없는 IP"
+    },
+    "logoutAllDialog": {
+      "title": "모든 활성 기기에서 로그아웃하시겠습니까?",
+      "description": "확인하면 다른 브라우저, 데스크톱 앱, 모바일 기기에서 이 계정의 활성 세션이 모두 무효화됩니다. 이 기기도 로그인 페이지로 돌아갑니다.",
+      "confirm": "모든 기기에서 로그아웃"
+    },
+    "deleteDialog": {
+      "title": "계정 삭제",
+      "description": "계정 삭제는 영구적입니다. 계정과 채팅 기록을 복구할 수 없습니다.",
+      "verificationTitle": "계정 삭제 인증",
+      "verificationDescription": {
+        "twoFactor": "계정을 삭제하려면 인증 앱 코드 또는 복구 코드를 입력하세요.",
+        "email": "인증된 이메일로 코드를 전송한 뒤 코드를 입력하여 계정을 삭제하세요."
+      },
+      "verificationUnavailable": "계정을 삭제하려면 본인 인증이 필요합니다. 먼저 이메일을 인증하거나 2단계 인증을 활성화하세요."
+    },
+    "securityDialog": {
+      "common": {
+        "cancel": "취소",
+        "save": "저장",
+        "saving": "저장 중",
+        "sending": "전송 중",
+        "sendCode": "전송",
+        "resendIn": "{seconds}초 후 재전송",
+        "processing": "처리 중",
+        "done": "완료",
+        "verify": "인증",
+        "continue": "계속",
+        "back": "뒤로",
+        "debugCode": "개발용 코드: {code}",
+        "copiedLabel": "{label}을(를) 복사했습니다",
+        "copyFailed": "복사하지 못했습니다",
+        "copyManually": "내용을 직접 선택하세요."
+      },
+      "password": {
+        "title": {
+          "required": "첫 비밀번호 설정",
+          "change": "비밀번호 변경",
+          "set": "비밀번호 설정"
+        },
+        "description": {
+          "required": "계속하려면 초기 비밀번호를 변경해야 합니다. 변경 후 이 세션은 만료됩니다.",
+          "change": "비밀번호를 변경하면 현재 세션이 만료됩니다. 새 비밀번호로 다시 로그인하세요.",
+          "set": "비밀번호를 설정하면 사용자 이름과 비밀번호로 로그인할 수 있으며, ID 공급자 연결을 해제하기 전에 대체 인증 수단으로 사용할 수 있습니다."
+        },
+        "verificationTitle": "비밀번호 변경 인증",
+        "verificationDescription": {
+          "twoFactor": "계속하려면 인증 앱 코드 또는 복구 코드를 입력하세요.",
+          "email": "인증된 이메일로 코드를 전송한 뒤 코드를 입력하여 계속하세요."
+        },
+        "labels": {
+          "currentPassword": "현재 비밀번호",
+          "newPassword": "새 비밀번호",
+          "loginPassword": "로그인 비밀번호",
+          "twoFactorCode": "2단계 인증 코드",
+          "emailCode": "이메일 코드"
+        },
+        "placeholders": {
+          "password": "8자 이상, 숫자만으로 구성할 수 없음",
+          "otpOrRecovery": "코드 또는 복구 코드",
+          "sixDigitCode": "6자리 코드"
+        }
+      },
+      "email": {
+        "title": {
+          "set": "이메일 설정",
+          "change": "이메일 변경"
+        },
+        "description": {
+          "bootstrapVerified": "첫 이메일을 설정하려면 새 주소의 소유권을 인증해야 합니다.",
+          "saveOnly": "저장하면 이메일 주소가 업데이트됩니다.",
+          "change": "DEEIX Chat은 이 변경 사항을 저장하기 전에 계정에 필요한 인증을 요청합니다."
+        },
+        "labels": {
+          "newEmail": "새 이메일"
+        }
+      },
+      "verification": {
+        "title": {
+          "emailBootstrap": "새 이메일 인증",
+          "emailChange": "이메일 변경 인증",
+          "currentEmail": "이메일 인증"
+        },
+        "description": {
+          "emailBootstrap": "새 이메일 주소로 코드를 전송한 뒤 코드를 입력하여 이메일을 저장하세요.",
+          "emailChange": "이메일 변경을 저장하기 전에 필요한 인증을 완료하세요.",
+          "currentEmail": "{email}(으)로 코드를 전송한 뒤 코드를 입력하여 주소를 인증하세요."
+        },
+        "labels": {
+          "twoFactorCode": "2단계 인증 코드",
+          "emailCode": "이메일 코드",
+          "currentEmailCode": "현재 이메일 코드",
+          "newEmail": "새 이메일",
+          "newEmailCode": "새 이메일 코드",
+          "verificationCode": "인증 코드"
+        },
+        "placeholders": {
+          "otpOrRecovery": "코드 또는 복구 코드",
+          "sixDigitCode": "6자리 코드"
+        },
+        "actions": {
+          "useEmail": "이메일로 인증",
+          "useTwoFactor": "2단계 인증으로 인증"
+        }
+      },
+      "twoFactor": {
+        "title": {
+          "setup": "2단계 인증 활성화",
+          "manage": "2단계 인증 관리",
+          "recovery": "복구 코드 저장"
+        },
+        "description": {
+          "setup": "인증 앱으로 QR 코드를 스캔하거나 키를 직접 입력하세요.",
+          "manage": "계속하려면 코드 또는 복구 코드를 입력하세요.",
+          "recovery": "복구 코드는 한 번만 표시됩니다. 안전한 곳에 저장하세요."
+        },
+        "tabs": {
+          "qr": "QR 코드",
+          "manual": "수동 설정"
+        },
+        "errors": {
+          "codeRequired": "인증 코드를 입력하세요."
+        },
+        "qrLabel": "2단계 인증 QR 코드",
+        "setupExpired": "이 설정이 만료되었습니다.",
+        "qrUnavailable": "QR 코드를 사용할 수 없습니다. 수동 키를 사용하세요.",
+        "scanThenVerify": "코드를 스캔한 뒤 인증 코드를 입력하여 설정을 완료하세요.",
+        "regenerate": "다시 생성",
+        "validUntil": "{time}까지 유효",
+        "secret": "비밀 키",
+        "copySecret": "비밀 키 복사",
+        "otpAuthUri": "OTP Auth URI",
+        "copyOtpUri": "URI 복사",
+        "code": "인증 코드",
+        "sixDigitCode": "6자리 코드",
+        "codeOrRecovery": "인증 코드 또는 복구 코드",
+        "regenerateRecoveryCodes": "코드 다시 생성",
+        "recoveryCodes": "복구 코드",
+        "copyRecoveryCodes": "코드 복사",
+        "enable": "활성화",
+        "disable": "비활성화"
+      }
+    },
+    "toasts": {
+      "retryLater": "잠시 후 다시 시도하세요.",
+      "sessionMissing": "활성 세션을 찾을 수 없습니다.",
+      "loadFailed": "계정 정보를 불러오지 못했습니다",
+      "publicIDCopied": "공개 ID를 복사했습니다",
+      "copyFailed": "복사하지 못했습니다",
+      "codeSent": "인증 코드를 전송했습니다",
+      "sendCodeFailed": "인증 코드를 전송하지 못했습니다",
+      "passwordChanged": "비밀번호가 변경되었습니다",
+      "passwordChangedDescription": "새 비밀번호로 다시 로그인하세요.",
+      "changePasswordFailed": "비밀번호를 변경하지 못했습니다",
+      "emailSet": "이메일이 설정되었습니다",
+      "setEmailFailed": "이메일을 설정하지 못했습니다",
+      "emailVerified": "이메일이 인증되었습니다",
+      "verifyEmailFailed": "이메일을 인증하지 못했습니다",
+      "currentEmailCodeSent": "현재 이메일 인증 코드를 전송했습니다",
+      "newEmailCodeSent": "새 이메일 인증 코드를 전송했습니다",
+      "deleteAccountCodeSent": "계정 삭제 코드를 전송했습니다",
+      "emailChanged": "이메일이 변경되었습니다",
+      "changeEmailFailed": "이메일을 변경하지 못했습니다",
+      "deleteAccountFailed": "계정을 삭제하지 못했습니다",
+      "sessionLoggedOut": "세션에서 로그아웃했습니다",
+      "logoutSessionFailed": "세션에서 로그아웃하지 못했습니다",
+      "identityUnlinked": "ID 공급자 연결을 해제했습니다",
+      "unlinkIdentityFailed": "ID 공급자 연결을 해제하지 못했습니다",
+      "startTwoFactorFailed": "2단계 인증 설정을 시작하지 못했습니다",
+      "twoFactorEnabled": "2단계 인증이 활성화되었습니다",
+      "enableTwoFactorFailed": "2단계 인증을 활성화하지 못했습니다",
+      "twoFactorDisabled": "2단계 인증이 비활성화되었습니다",
+      "disableTwoFactorFailed": "2단계 인증을 비활성화하지 못했습니다",
+      "recoveryCodesRegenerated": "복구 코드를 다시 생성했습니다",
+      "regenerateRecoveryCodesFailed": "복구 코드를 다시 생성하지 못했습니다",
+      "providerUnavailable": "이 ID 공급자는 연결할 수 없습니다.",
+      "bindIdentityFailed": "ID 공급자를 연결하지 못했습니다"
+    }
+  },
+  "chatPage": {
+    "defaultModel": {
+      "sectionTitle": "대화 기본 설정",
+      "title": "새 채팅의 기본 모델",
+      "description": "새 채팅에서 미리 선택되는 모델입니다. 비워 두면 사용 가능한 첫 번째 시스템 추천 모델을 사용합니다.",
+      "systemRecommended": "시스템 기본값",
+      "autoTitle": "제목 자동 생성",
+      "autoTitleDescription": "비활성화하면 새 채팅의 제목으로 첫 메시지의 앞 16자를 사용합니다.",
+      "autoLabels": "라벨 자동 생성",
+      "autoLabelsDescription": "비활성화하면 대화 라벨이 자동으로 생성되지 않아 보조 모델 호출과 이에 따른 토큰 사용량이 줄어듭니다."
+    },
+    "input": {
+      "sectionTitle": "입력 및 전송",
+      "shortcutTitle": "전송 단축키",
+      "shortcutDescription": "이 플랫폼에서는 {shortcut}으로 메시지를 전송하고 메시지 편집을 저장합니다.",
+      "heightTitle": "입력 영역 높이",
+      "heightDescription": "입력 상자가 자동으로 확장될 때 허용되는 최대 높이를 조절합니다.",
+      "height": {
+        "compact": "좁게",
+        "standard": "표준",
+        "loose": "넓게"
+      },
+      "restoreDraftTitle": "실패 시 초안 복원",
+      "restoreDraftDescription": "전송에 실패했을 때 해당 시도의 텍스트와 첨부 파일을 자동으로 복원할지 설정합니다.",
+      "preserveDraftTitle": "대화 초안 보존",
+      "preserveDraftDescription": "대화를 전환할 때 전송하지 않은 내용을 보존하고 복원할지 설정합니다.",
+      "reuseModelOptionsTitle": "모델 설정 재사용",
+      "reuseModelOptionsDescription": "활성화하면 같은 모델을 사용하는 새 채팅에 지난번에 사용한 모델 파라미터가 자동으로 채워집니다.",
+      "deleteFilesDefaultTitle": "채팅 삭제 시 기본적으로 파일도 삭제",
+      "deleteFilesDefaultDescription": "활성화하면 삭제 확인 창에서 파일 삭제가 기본으로 선택됩니다. 다른 대화에서 참조 중인 파일은 유지됩니다."
+    },
+    "display": {
+      "sectionTitle": "표시 및 렌더링",
+      "markdownTitle": "Markdown 렌더링",
+      "markdownDescription": "AI 답변을 서식이 적용된 Markdown으로 렌더링할지 설정합니다.",
+      "autoExpandThinkingTitle": "심층 사고 자동 펼치기",
+      "autoExpandThinkingDescription": "답변이 생성되는 동안 진행 중인 사고 단계를 자동으로 펼칩니다.",
+      "autoExpandToolCallsTitle": "도구 호출 자동 펼치기",
+      "autoExpandToolCallsDescription": "실행 중인 도구 호출을 자동으로 펼칩니다.",
+      "modelTitle": "호출된 모델 표시",
+      "modelDescription": "이번 호출에 사용된 모델을 AI 답변 아래에 표시할지 설정합니다.",
+      "tokenTitle": "토큰 사용량 표시",
+      "tokenDescription": "요청의 토큰 사용량을 AI 답변 아래에 표시할지 설정합니다.",
+      "latencyTitle": "총 지연 시간 표시",
+      "latencyDescription": "호출의 총 지연 시간을 AI 답변 아래에 표시할지 설정합니다.",
+      "costTitle": "총 비용 표시",
+      "costDescription": "호출의 총 비용을 AI 답변 아래에 표시할지 설정합니다.",
+      "processTraceTitle": "처리 단계 표시",
+      "processTraceDescription": "컨텍스트 계획, 검색, 도구 요약 같은 답변의 처리 단계를 AI 답변 위에 표시할지 설정합니다.",
+      "widthTitle": "채팅 영역 너비",
+      "width": {
+        "compact": "좁게",
+        "standard": "표준",
+        "wide": "넓게"
+      },
+      "chatFont": "채팅 글꼴",
+      "chatFontWeight": "채팅 글꼴 두께",
+      "font": {
+        "default": "기본",
+        "songti": "세리프",
+        "heiti": "산세리프",
+        "mono": "고정폭"
+      },
+      "fontWeight": {
+        "regular": "보통",
+        "medium": "중간",
+        "semibold": "약간 굵게",
+        "bold": "굵게"
+      }
+    },
+    "context": {
+      "sectionTitle": "컨텍스트 관리",
+      "autoCompactTitle": "컨텍스트 자동 압축",
+      "autoCompactDescription": "대화가 턴 수 또는 토큰 임계값을 넘으면 시스템이 이전 메시지를 요약하고 최근 턴은 그대로 유지하여 컨텍스트 크기를 줄입니다. 자동 컨텍스트 압축을 사용하지 않으려면 끄세요.",
+      "reasoningPassbackTitle": "추론 컨텍스트 다시 전달",
+      "reasoningPassbackDescription": "활성화하면 지원되는 Chat Completions 추론 모델이 이전 추론 내용을 이후 턴에 포함하여 다단계 작업의 연속성을 높입니다."
+    },
+    "file": {
+      "sectionTitle": "파일 처리",
+      "modeTitle": "파일 처리 모드",
+      "mode": {
+        "auto": "자동",
+        "fullContext": "전체 컨텍스트",
+        "rag": "벡터 검색"
+      },
+      "modeDescription": {
+        "auto": "현재: 자동. 시스템이 파일 크기, 유형, 컨텍스트 예산, 검색 기능에 따라 전체 컨텍스트 삽입과 RAG 중 하나를 선택합니다.",
+        "fullContext": "현재: 전체 컨텍스트. 이후 턴에서 대화 파일의 내용을 직접 포함하려고 시도하며, 작은 파일을 정밀하게 분석할 때 가장 적합합니다.",
+        "rag": "현재: RAG. 이후 턴에서 관련 파일 청크를 먼저 검색하고, 검색을 사용할 수 없으면 전체 컨텍스트 삽입으로 대체합니다."
+      }
+    },
+    "memory": {
+      "sectionTitle": "AI 선호 메모리",
+      "save": "저장",
+      "cancel": "취소",
+      "delete": "삭제",
+      "edit": "선호 사항 편집",
+      "confirmDelete": "이 선호 사항을 삭제하시겠습니까?",
+      "separator": ": ",
+      "addTitle": "선호 사항 추가",
+      "addDescription": "저장된 선호 사항은 AI 답변의 장기 지침으로 사용됩니다.",
+      "name": "이름",
+      "namePlaceholder": "예: 답변 스타일",
+      "content": "선호 사항 내용",
+      "contentPlaceholder": "예: 간결하고 직접적으로, 불필요한 말은 생략",
+      "adding": "추가 중",
+      "add": "추가",
+      "added": "선호 사항을 추가했습니다",
+      "addFailed": "선호 사항을 추가하지 못했습니다",
+      "updated": "업데이트했습니다",
+      "updateFailed": "업데이트하지 못했습니다",
+      "deleted": "삭제했습니다",
+      "deleteFailed": "삭제하지 못했습니다",
+      "full": "가득 참",
+      "addPreference": "선호 사항 추가",
+      "empty": "아직 선호 메모리가 없습니다."
+    },
+    "toasts": {
+      "saveFailed": "저장하지 못했습니다",
+      "retryLater": "잠시 후 다시 시도하세요."
+    }
+  },
+  "subscriptionPage": {
+    "title": "구독",
+    "actions": {
+      "cancel": "취소",
+      "processing": "처리 중"
+    },
+    "interval": {
+      "lifetime": "평생",
+      "year": "년",
+      "month": "월"
+    },
+    "currentSubscription": {
+      "title": "현재 구독",
+      "none": "구독 없음",
+      "empty": "사용 가능한 구독 플랜이 없습니다.",
+      "subscribe": "구독"
+    },
+    "periodUsage": {
+      "title": "플랜 사용량",
+      "currentPeriod": "현재 결제 기간",
+      "used": "사용 {value}",
+      "total": "합계 {value}"
+    },
+    "periodOverage": {
+      "title": "초과 사용 결제",
+      "balance": "사용 가능 잔액 {value}"
+    },
+    "entitlements": {
+      "title": "구독 권한",
+      "count": "구간 {count}개",
+      "current": "현재",
+      "upcoming": "예정",
+      "range": "{start} - {end}",
+      "credit": "크레딧 {credit}"
+    },
+    "usageBilling": {
+      "title": "사용량 결제",
+      "balanceLabel": "계정 잔액",
+      "totalSpentLabel": "총 지출",
+      "topUp": "충전"
+    },
+    "selfMode": {
+      "title": "결제 모드",
+      "value": "자체 사용 모드"
+    },
+    "activity": {
+      "title": "지난 1년간의 활동",
+      "tokens": "토큰",
+      "requests": "요청",
+      "peakDayTokens": "일일 최대 토큰",
+      "currentStreak": "현재 연속 일수",
+      "longestStreak": "최장 연속 일수",
+      "totalActiveDays": "활동 일수",
+      "dayCount": "{count, plural, other {#일}}",
+      "totalRequests": "지난 1년간 모델 요청 {count}건",
+      "less": "적음",
+      "more": "많음",
+      "empty": "지난 1년간 활동이 없습니다",
+      "loadFailed": "활동을 불러오지 못했습니다",
+      "tooltip": {
+        "requests": "요청",
+        "tokens": "토큰"
+      }
+    },
+    "usageTrend": {
+      "dailyTitle": "일별 사용량 추이",
+      "monthlyTitle": "월별 사용량 추이",
+      "daily": "일별",
+      "monthly": "월별",
+      "dailyUsage": "일별 사용량",
+      "monthlyUsage": "월별 사용량",
+      "otherModels": "기타",
+      "empty": "사용량 데이터가 없습니다.",
+      "metrics": {
+        "periodCost": "기간 비용",
+        "yearCost": "12개월 비용",
+        "totalTokens": "총 토큰",
+        "totalCalls": "총 호출 수",
+        "averageLatency": "평균 지연 시간"
+      },
+      "tooltip": {
+        "cost": "비용",
+        "calls": "호출 수",
+        "latency": "평균 지연 시간"
+      }
+    },
+    "usageLog": {
+      "title": "사용량 로그",
+      "searchModel": "모델 검색",
+      "type": "유형",
+      "filters": {
+        "all": "전체",
+        "free": "무료 모델",
+        "billable": "유료 모델"
+      },
+      "sort": {
+        "newest": "최신 호출순",
+        "oldest": "오래된 호출순",
+        "tokensDesc": "토큰 많은 순",
+        "costDesc": "비용 높은 순",
+        "latencyDesc": "지연 시간 긴 순"
+      },
+      "columns": {
+        "time": "시간",
+        "model": "모델",
+        "baseBilling": "기본 요금",
+        "serviceBilling": "서비스 요금",
+        "balanceAfter": "정산 후 잔액",
+        "latency": "지연 시간"
+      },
+      "empty": "사용량 로그가 없습니다."
+    },
+    "billingTooltip": {
+      "cacheWrite": "캐시 쓰기",
+      "cacheWrite5m": "캐시 쓰기 5분",
+      "cacheWrite1h": "캐시 쓰기 1시간",
+      "cacheWrite5m1h": "캐시 쓰기 5분/1시간",
+      "cacheWritePricingLabel": "캐시 쓰기 5분",
+      "cacheWritePricingNote": "Claude 캐시 읽기는 설정된 가격을 사용하며, 캐시 쓰기 5분은 1.25배, 1시간은 2배가 적용되고 Fast Mode는 여기에 6배가 추가로 적용됩니다.",
+      "claudeCacheWriteMixedNote": "Claude 캐시 쓰기는 설정된 가격에 {multiplier}를 적용합니다.",
+      "claudeCacheWriteNote": "Claude {timeout} 캐시 쓰기는 설정된 가격에 {multiplier}를 적용합니다.",
+      "claudeFastModeNote": "Claude Fast Mode는 입력, 출력, 캐시 사용량에 {multiplier}를 적용하여 청구합니다.",
+      "openaiServiceTierNote": "OpenAI service_tier={tier}는 {multiplier}로 청구됩니다.",
+      "scheduleRateNote": "시간대별 요율 \"{period}\": {multiplier}로 청구됩니다.",
+      "baseService": "기본 서비스",
+      "input": "입력",
+      "output": "출력",
+      "cacheRead": "캐시 읽기",
+      "rateNote": "배율",
+      "cacheNote": "캐시",
+      "total": "합계",
+      "subtotal": "소계",
+      "freeModelNoBilling": "무료 모델, 청구되지 않음",
+      "perCall": "호출당",
+      "perSecond": "초당",
+      "callUnit": "회",
+      "secondUnit": "초",
+      "tieredRangeBounded": "원래 입력 구간 {from}-{upTo}",
+      "tieredRangeOpen": "원래 입력 구간 {from} 이상",
+      "table": {
+        "item": "청구 항목",
+        "usage": "사용량",
+        "unitPrice": "단가",
+        "amount": "금액"
+      }
+    },
+    "plans": {
+      "title": "구독 플랜",
+      "actions": {
+        "current": "현재 플랜",
+        "unavailable": "사용 불가",
+        "renew": "갱신",
+        "subscribe": "구독",
+        "switch": "전환",
+        "upgrade": "업그레이드",
+        "freeBlocked": "기본 플랜"
+      },
+      "features": {
+        "monthlyCredit": "월 크레딧 {credit}",
+        "freeModelsNotIncluded": "무료 모델은 크레딧에서 차감되지 않습니다."
+      }
+    },
+    "payment": {
+      "title": "결제 수단",
+      "renewTitle": "구독 갱신",
+      "upgradeTitle": "구독 업그레이드",
+      "description": "계속하려면 결제 수단을 확인하세요.",
+      "renewDescription": "갱신하면 현재 플랜의 이용 기간이 연장됩니다.",
+      "renewAfterHigherDescription": "선택한 플랜으로 갱신됩니다. 현재 상위 플랜의 권한과 크레딧은 그대로 유지되며, 새 플랜은 상위 플랜의 권한이 끝난 뒤에 시작됩니다.",
+      "upgradeDescription": "상위 플랜이 즉시 시작되며 사용하지 않은 권한은 그 이후에 보존됩니다.",
+      "method": "결제 수단",
+      "card": "카드",
+      "disabled": "비활성화됨",
+      "continue": "계속",
+      "epay": {
+        "alipay": "Alipay",
+        "wxpay": "WeChat Pay",
+        "qqpay": "QQ Wallet",
+        "custom": "사용자 지정 · {type}"
+      }
+    },
+    "topUp": {
+      "title": "충전",
+      "description": "충전 금액을 입력하고 결제 수단을 확인하세요.",
+      "currentBalance": "현재 잔액 {value}",
+      "amount": "충전 금액",
+      "amountAria": "충전 금액",
+      "confirm": "충전"
+    },
+    "redemption": {
+      "open": "코드 사용",
+      "title": "쿠폰 코드",
+      "description": "관리자가 제공한 쿠폰 코드를 입력하세요.",
+      "code": "쿠폰 코드",
+      "confirm": "사용"
+    },
+    "toasts": {
+      "retryLater": "잠시 후 다시 시도하세요.",
+      "subscriptionLoadFailed": "구독 정보를 불러오지 못했습니다",
+      "usageLogLoadFailed": "사용량 로그를 불러오지 못했습니다",
+      "checkoutCreateFailed": "결제를 생성하지 못했습니다",
+      "checkoutURLMissing": "결제 공급자가 결제 URL을 반환하지 않았습니다.",
+      "planUpdated": "구독 플랜이 업데이트되었습니다",
+      "subscribeFailed": "구독하지 못했습니다",
+      "invalidTopUpAmount": "잘못된 충전 금액입니다",
+      "invalidTopUpAmountDescription": "0보다 큰 USD 금액을 입력하세요.",
+      "planUnavailable": "플랜을 사용할 수 없습니다",
+      "planUnavailableDescription": "이 플랜에는 사용 가능한 가격이 없습니다. 관리자에게 결제 설정을 확인해 달라고 요청하세요.",
+      "paymentDisabled": "결제 공급자가 비활성화되어 있습니다",
+      "paymentDisabledDescription": "유료 플랜을 구독하려면 먼저 관리 콘솔에서 결제 공급자를 설정하세요.",
+      "freeSwitchBlocked": "활성 구독 권한이 있습니다",
+      "freeSwitchBlockedDescription": "유료 권한이 만료되기 전에는 무료 플랜으로 전환할 수 없습니다. 대신 갱신하거나 다른 유료 플랜을 선택하세요.",
+      "noPlanSelected": "선택된 플랜이 없습니다",
+      "noPlanSelectedDescription": "구독하기 전에 플랜을 선택하세요.",
+      "invalidRedemptionCode": "쿠폰 코드를 입력하세요.",
+      "redemptionSucceeded": "쿠폰이 적용되었습니다",
+      "redemptionFailed": "쿠폰을 적용하지 못했습니다"
+    }
+  },
+  "modelsPage": {
+    "title": "사용자 지정 공급자",
+    "add": "공급자 추가",
+    "limitReached": "한도에 도달했습니다 ({max})",
+    "empty": "공급자가 없습니다",
+    "footnote": "API 키는 이 사이트에 암호화되어 저장되며 해당 공급자에게만 전송됩니다. 공급자는 최대 {max}개까지 추가할 수 있습니다.",
+    "columns": {
+      "name": "이름",
+      "baseURL": "기본 URL",
+      "models": "모델",
+      "status": "상태"
+    },
+    "status": {
+      "active": "활성",
+      "disabled": "비활성화됨",
+      "suspended": "차단됨",
+      "error": "연결 오류"
+    },
+    "suspendedHint": "관리자가 차단했습니다",
+    "actions": {
+      "more": "더 많은 작업",
+      "edit": "편집",
+      "check": "연결 테스트",
+      "enable": "활성화",
+      "disable": "비활성화",
+      "delete": "삭제"
+    },
+    "protocols": {
+      "openai_chat_completions": "Chat Completions (OpenAI)",
+      "openai_responses": "Responses (OpenAI)",
+      "anthropic_messages": "Messages (Anthropic)",
+      "google_generate_content": "Generate Content (Google)",
+      "gemini_interactions": "Interactions (Google)",
+      "xai_responses": "Responses (xAI)",
+      "openrouter_chat_completions": "Chat Completions (OpenRouter)",
+      "openrouter_responses": "Responses (OpenRouter)"
+    },
+    "toasts": {
+      "loadFailed": "불러오지 못했습니다",
+      "saveFailed": "저장하지 못했습니다",
+      "saved": "저장되었습니다",
+      "deleted": "삭제되었습니다",
+      "enabled": "활성화되었습니다",
+      "disabled": "비활성화되었습니다",
+      "checkPassed": "{count, plural, other {연결됨 · 모델 #개}}",
+      "checkFailed": "연결하지 못했습니다",
+      "added": "추가되었습니다"
+    },
+    "deleteDialog": {
+      "title": "공급자를 삭제하시겠습니까?",
+      "description": "“{name}”과(와) 해당 API 키가 삭제됩니다. 이 작업은 되돌릴 수 없습니다."
+    },
+    "dialog": {
+      "title": "공급자 추가",
+      "importTitle": "공급자 가져오기",
+      "description": "기본 URL과 API 키를 입력한 뒤 모델 목록을 가져오세요.",
+      "name": "이름",
+      "namePlaceholder": "기본값은 도메인입니다",
+      "baseURL": "기본 URL",
+      "baseURLHint": "공개 HTTPS만 지원하며 보통 /v1로 끝납니다.",
+      "apiKey": "API 키",
+      "apiKeyPlaceholder": "API 키를 붙여넣으세요",
+      "models": "모델",
+      "probeFailed": "모델을 가져오지 못했습니다",
+      "saveFailed": "저장하지 못했습니다"
+    },
+    "editDialog": {
+      "title": "공급자 편집",
+      "name": "이름",
+      "rotateKey": "API 키 교체",
+      "rotateKeyPlaceholder": "현재 키를 유지하려면 비워 두세요",
+      "baseURL": "기본 URL",
+      "endpointLocked": "기본 URL은 변경할 수 없습니다. 전환하려면 새 공급자를 추가하세요.",
+      "models": "활성화된 모델",
+      "loadFailed": "모델을 가져오지 못했습니다",
+      "loadFailedHint": "{reason} 활성화된 모델만 변경할 수 있습니다."
+    },
+    "iconPicker": {
+      "choose": "아이콘 선택",
+      "search": "아이콘 검색",
+      "auto": "자동",
+      "empty": "일치하는 아이콘이 없습니다",
+      "refine": "입력하여 결과를 좁히세요"
+    },
+    "selectDialog": {
+      "title": "모델 선택",
+      "description": "사용할 모델을 선택하세요. 프로토콜은 모델 이름에서 감지됩니다.",
+      "placeholder": "모델 선택",
+      "all": "전체",
+      "selected": "선택됨",
+      "search": "모델 검색",
+      "column": "모델",
+      "selectVisible": "목록 전체 선택",
+      "loading": "모델을 가져오는 중",
+      "refresh": "다시 가져오기",
+      "empty": "일치하는 모델이 없습니다",
+      "emptySelected": "선택된 모델이 없습니다",
+      "protocolColumn": "프로토콜",
+      "protocolFor": "{model}의 프로토콜"
+    },
+    "importLink": {
+      "open": "가져오기 링크",
+      "title": "가져오기 링크",
+      "description": "사용자가 링크를 열고 확인하면 공급자가 추가됩니다.",
+      "link": "링크",
+      "linkHint": "표를 채워 링크를 만드세요. 비워 둔 항목은 {address}와(과) {key} 자리 표시자로 유지됩니다.",
+      "copyLink": "링크 복사",
+      "columns": {
+        "name": "파라미터",
+        "value": "값"
+      },
+      "required": "필수",
+      "parameters": {
+        "url": "기본 URL",
+        "key": "API 키",
+        "protocol": "프로토콜",
+        "name": "이름"
+      },
+      "protocolAuto": "자동 감지",
+      "copied": "복사되었습니다",
+      "linkHintMultiple": "서비스가 여러 개이면 각 서비스의 기본 URL과 API 키를 입력하세요.",
+      "entryTitle": "서비스 {index}",
+      "addEntry": "서비스 추가",
+      "removeEntry": "{title} 제거"
+    }
+  },
+  "importPage": {
+    "title": "공급자 가져오기",
+    "loading": "불러오는 중",
+    "backToChat": "채팅으로 돌아가기",
+    "fields": {
+      "key": "API 키"
+    },
+    "warning": "대화 내용이 {host}(으)로 전송됩니다. 신뢰할 수 있는 링크만 가져오세요.",
+    "duplicate": "“{name}”(으)로 이미 추가되어 있습니다.",
+    "limitReached": "한도 {max}개에 도달했습니다. 가져오려면 하나를 삭제하세요.",
+    "manage": "사용자 지정 공급자 관리",
+    "continue": "계속",
+    "cancel": "취소",
+    "imported": "가져왔습니다",
+    "unavailable": {
+      "title": "가져올 수 없습니다",
+      "description": "이 계정에서는 사용자 지정 공급자를 사용할 수 없습니다."
+    },
+    "invalid": {
+      "title": "잘못된 링크",
+      "empty": "링크가 비어 있습니다.",
+      "unsupported_version": "지원하지 않는 링크 버전입니다.",
+      "unknown_parameter": "링크에 알 수 없는 파라미터가 있습니다.",
+      "duplicate_parameter": "링크에 중복된 파라미터가 있습니다.",
+      "missing_url": "주소가 없습니다.",
+      "invalid_url": "잘못된 주소입니다.",
+      "insecure_url": "HTTPS 주소만 지원합니다.",
+      "missing_key": "API 키가 없습니다.",
+      "invalid_key": "API 키 형식이 올바르지 않습니다.",
+      "invalid_protocol": "지원하지 않는 API 프로토콜입니다.",
+      "invalid_name": "잘못된 이름입니다.",
+      "entry": "서비스 {entry}: {reason}",
+      "too_many_entries": "링크에 서비스가 너무 많습니다.",
+      "duplicate_entry": "링크에 같은 주소와 API 키가 반복되어 있습니다."
+    },
+    "titleMultiple": "공급자 {count}개 가져오기",
+    "warningMultiple": "대화 내용이 아래 주소로 전송됩니다. 신뢰할 수 있는 링크만 가져오세요.",
+    "slotsLeft": "{count}개를 더 추가할 수 있으며 나머지는 가져오지 않습니다.",
+    "importAll": "모두 가져오기",
+    "done": "완료",
+    "batchDone": "공급자 {count}개를 가져왔습니다",
+    "status": {
+      "pending": "가져올 준비 완료",
+      "probing": "모델을 가져오는 중",
+      "saving": "저장 중",
+      "throttled": "요청이 너무 많습니다. {seconds}초 후 계속합니다",
+      "imported": "가져옴 · 모델 {count}개",
+      "needsSelection": "모델 {count}개, 활성화할 모델을 선택하세요",
+      "noModels": "모델을 찾을 수 없습니다",
+      "overLimit": "공급자 한도를 초과했습니다",
+      "existing": "“{name}”(으)로 이미 추가되어 있습니다"
+    },
+    "actions": {
+      "selectModels": "모델 선택",
+      "retry": "재시도"
+    }
+  }
+}

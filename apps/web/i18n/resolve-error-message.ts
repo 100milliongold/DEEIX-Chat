@@ -2,6 +2,8 @@ import enCommon from "@/i18n/messages/en-US/common.json";
 import enErrors from "@/i18n/messages/en-US/errors.json";
 import zhCommon from "@/i18n/messages/zh-CN/common.json";
 import zhErrors from "@/i18n/messages/zh-CN/errors.json";
+import koCommon from "@/i18n/messages/ko-KR/common.json";
+import koErrors from "@/i18n/messages/ko-KR/errors.json";
 import { DEFAULT_LOCALE, LOCALE_COOKIE_NAME, normalizeAppLocale, resolveBrowserLocale, type AppLocale } from "@/i18n/config";
 import { disabledFeatureOf } from "@deeix/core";
 import { ApiError } from "@/shared/api/http-client";
@@ -10,16 +12,19 @@ import { isRecord } from "@/shared/lib/type-guards";
 const ERROR_MESSAGES: Record<AppLocale, unknown> = {
   "en-US": enErrors,
   "zh-CN": zhErrors,
+  "ko-KR": koErrors,
 };
 
 const FALLBACK_MESSAGES: Record<AppLocale, string> = {
   "en-US": "Request failed. Please try again later.",
   "zh-CN": "请求失败，请稍后重试。",
+  "ko-KR": "요청에 실패했습니다. 잠시 후 다시 시도하세요.",
 };
 
 const ERROR_REFERENCE_TEMPLATES: Record<AppLocale, string> = {
   "en-US": enCommon.errors.errorReference,
   "zh-CN": zhCommon.errors.errorReference,
+  "ko-KR": koCommon.errors.errorReference,
 };
 
 // Server-side failures carry a request ID so an administrator can find the raw cause in the backend
@@ -120,6 +125,35 @@ const REQUEST_FIELD_LABELS: Record<AppLocale, Record<string, string>> = {
     subscriptionTier: "订阅方案",
     timezone: "时区",
     username: "用户名",
+  },
+  "ko-KR": {
+    apiKeys: "API 키",
+    avatarURL: "아바타 URL",
+    baseURL: "Base URL",
+    cbDurationMin: "서킷 지속 시간",
+    cbFailureThreshold: "실패 임계값",
+    cbModelThreshold: "모델 임계값",
+    cbThresholdLogic: "임계값 로직",
+    cbWindowMin: "서킷 윈도",
+    compatible: "호환 모드",
+    connectTimeoutMS: "연결 타임아웃",
+    displayName: "표시 이름",
+    email: "이메일",
+    headersJSON: "헤더 JSON",
+    locale: "언어",
+    maskFileID: "마스크 파일",
+    name: "이름",
+    password: "비밀번호",
+    phone: "전화번호",
+    protocolDefaultsJSON: "프로토콜 기본값 JSON",
+    readTimeoutMS: "읽기 타임아웃",
+    status: "상태",
+    systemPrompt: "시스템 프롬프트",
+    streamIdleTimeoutMS: "스트림 유휴 타임아웃",
+    subscriptionExpiresAt: "구독 만료",
+    subscriptionTier: "구독 요금제",
+    timezone: "시간대",
+    username: "사용자명",
   },
 };
 
@@ -226,6 +260,58 @@ const SETTINGS_FIELD_LABELS: Record<AppLocale, Record<string, string>> = {
     "file:file_full_context_max_bytes": "全文大小上限",
     "file:full_context_max_tokens": "全文 Token 上限",
     "file:full_context_pdf_max_pages": "全文页数上限",
+    "mcp:mcp_enable": "MCP",
+  },
+  "ko-KR": {
+    "auth:auto_link_verified_email": "같은 이메일 자동 연결",
+    "auth:email_login_enabled": "이메일 로그인",
+    "auth:email_registration_allowed_domains": "허용 이메일 도메인",
+    "auth:email_registration_block_plus_alias": "플러스 별칭 차단",
+    "auth:email_registration_enabled": "이메일 등록",
+    "auth:email_verification_enabled": "이메일 인증",
+    "auth:password_reset_enabled": "비밀번호 재설정",
+    "auth:login_default_next_path": "기본 리다이렉트 경로",
+    "auth:login_lock_minutes": "잠금 시간",
+    "auth:login_max_failures": "로그인 실패 한도",
+    "auth:rate_limit_enabled": "플랫폼 속도 제한",
+    "auth:rate_limit_rpm": "사용자 API 속도 제한",
+    "auth:public_auth_rate_limit_rpm": "공개 인증 속도 제한",
+    "auth:refresh_token_ttl_hours": "리프레시 토큰 TTL",
+    "auth:smtp_from": "SMTP 발신자",
+    "auth:smtp_host": "SMTP 호스트",
+    "auth:smtp_password": "SMTP 비밀번호",
+    "auth:smtp_port": "SMTP 포트",
+    "auth:smtp_username": "SMTP 사용자명",
+    "auth:third_party_login_enabled": "서드파티 로그인",
+    "auth:token_ttl_hours": "액세스 토큰 TTL",
+    "auth:turnstile_registration_enabled": "Turnstile 등록 인증",
+    "auth:turnstile_secret_key": "Turnstile Secret Key",
+    "auth:turnstile_site_key": "Turnstile Site Key",
+    "auth:username_login_enabled": "사용자명 로그인",
+    "billing:epay_gateway_url": "EPay 게이트웨이 URL",
+    "billing:epay_key": "EPay 키",
+    "billing:epay_pid": "EPay 가맹점 ID",
+    "billing:epay_types": "EPay 결제 수단",
+    "billing:mode": "결제 모드",
+    "billing:payment_providers": "결제 공급자",
+    "billing:prepaid_amount_usd": "요청당 예약 금액",
+    "billing:stripe_publishable_key": "Stripe publishable key",
+    "billing:stripe_secret_key": "Stripe secret key",
+    "billing:stripe_webhook_secret": "Stripe webhook secret",
+    "billing:usd_to_cny_rate": "USD-CNY 환율",
+    "chat:model_option_allowed_paths": "모델 옵션 허용 목록",
+    "chat:default_system_prompt": "전역 기본 시스템 프롬프트",
+    "chat:model_option_denied_paths": "모델 옵션 차단 목록",
+    "chat:model_option_policy_mode": "모델 옵션 정책",
+    "desktop:download_enabled": "데스크톱 다운로드 입구",
+    "desktop:download_url": "다운로드 URL",
+    "personal_provider:blocked_hosts": "차단 도메인",
+    "personal_provider:max_per_user": "공급자 한도",
+    "file:embedding_enabled": "임베딩",
+    "file:full_context_limit_enabled": "전문 주입 제한",
+    "file:file_full_context_max_bytes": "전문 크기 제한",
+    "file:full_context_max_tokens": "전문 토큰 제한",
+    "file:full_context_pdf_max_pages": "전문 페이지 제한",
     "mcp:mcp_enable": "MCP",
   },
 };

@@ -1,0 +1,575 @@
+{
+  "admin": {
+    "defaultPermissionGroupDeleteNotAllowed": "기본 권한 그룹은 삭제할 수 없습니다.",
+    "permissionGroupNotFound": "권한 그룹을 찾을 수 없습니다.",
+    "invalidPermissionGroupName": "권한 그룹 이름을 입력하세요.",
+    "invalidPermissionGroupRateMultiplier": "요율 배율이 올바르지 않습니다. 1에서 10000 사이여야 합니다.",
+    "invalidPermissionGroupModels": "권한 그룹의 모델 설정이 올바르지 않습니다.",
+    "invalidPermissionGroupUsers": "권한 그룹의 구성원 설정이 올바르지 않습니다.",
+    "defaultPermissionGroupUsersImplicit": "기본 권한 그룹의 구성원은 자동으로 관리됩니다.",
+    "permissionGroupReferencedByPlan": "이 권한 그룹은 결제 플랜에서 참조하고 있습니다. 삭제하기 전에 연결을 해제하세요.",
+    "permissionGroupRepoUnavailable": "권한 그룹 서비스를 일시적으로 사용할 수 없습니다."
+  },
+  "announcement": {
+    "invalidId": "공지 ID가 올바르지 않습니다.",
+    "notFound": "공지를 찾을 수 없습니다."
+  },
+  "avatar": {
+    "notFound": "아바타를 찾을 수 없습니다."
+  },
+  "beforeMessage": {
+    "invalidId": "메시지 커서 ID가 올바르지 않습니다."
+  },
+  "auth": {
+    "accountLocked": "로그인 시도가 너무 많이 실패하여 이 계정이 일시적으로 잠겼습니다. 나중에 다시 시도하세요.",
+    "adminRequired": "관리자 권한이 필요합니다.",
+    "authorizationCodeRequired": "인증 코드가 필요합니다.",
+    "emailAliasNotAllowed": "이메일 별칭은 사용할 수 없습니다.",
+    "emailAlreadyExists": "이미 사용 중인 이메일입니다.",
+    "emailBootstrapNotAllowed": "이 계정에서는 이메일을 설정할 수 없습니다.",
+    "emailDomainNotAllowed": "허용되지 않는 이메일 도메인입니다.",
+    "emailNotVerified": "이메일 주소가 인증되지 않았습니다.",
+    "emailRegistrationDisabled": "이메일 등록이 비활성화되어 있습니다.",
+    "emailUnchanged": "새 이메일은 기존 이메일과 달라야 합니다.",
+    "emailVerificationDisabled": "이메일 인증이 비활성화되어 있습니다.",
+    "forbidden": "이 작업을 수행할 권한이 없습니다.",
+    "invalidCredentials": "사용자 이름 또는 비밀번호가 올바르지 않습니다.",
+    "invalidCurrentPassword": "현재 비밀번호가 올바르지 않습니다.",
+    "invalidEmail": "이메일 주소가 올바르지 않습니다.",
+    "invalidLocalGrant": "로컬 로그인 권한이 올바르지 않거나 이미 사용되었습니다. 앱을 다시 시작한 뒤 다시 시도하세요.",
+    "invalidPassword": "비밀번호는 8자 이상이어야 하며 숫자만으로 구성할 수 없습니다.",
+    "invalidPkce": "로그인 검증 파라미터가 올바르지 않습니다. 다시 로그인하세요.",
+    "invalidRedirectUri": "콜백 URL이 올바르지 않습니다.",
+    "invalidRefreshToken": "세션이 만료되었습니다. 다시 로그인하세요.",
+    "invalidToken": "세션 토큰이 올바르지 않습니다. 다시 로그인하세요.",
+    "invalidTwoFactorCode": "2단계 인증 코드가 올바르지 않습니다.",
+    "lastLoginMethodRequired": "먼저 비밀번호를 설정하거나 다른 ID 공급자를 연결하세요.",
+    "oauthIntentMismatch": "OAuth 흐름이 일치하지 않습니다. 다시 시도하세요.",
+    "oauthStateExpired": "OAuth 상태가 만료되었습니다. 다시 로그인하세요.",
+    "oauthStateInvalid": "OAuth 상태가 올바르지 않습니다. 다시 로그인하세요.",
+    "passwordResetFailed": "비밀번호를 재설정하지 못했습니다. 이메일, 코드, 새 비밀번호를 확인하세요.",
+    "passwordResetRequired": "비밀번호 재설정이 필요합니다.",
+    "passwordReuseNotAllowed": "새 비밀번호는 초기 비밀번호와 달라야 합니다.",
+    "providerAccountNotRegistered": "등록되지 않은 공급자 계정입니다.",
+    "providerAlreadyBound": "이미 연결된 공급자입니다.",
+    "providerAuthUrlNotConfigured": "공급자 인증 URL이 설정되지 않았습니다.",
+    "providerBindEndpointRequired": "이 공급자를 연결하려면 계정 연결 절차를 사용하세요.",
+    "providerCallbackMisconfigured": "공급자 콜백 URL이 잘못 설정되어 있습니다.",
+    "providerClientIdRequired": "공급자 클라이언트 ID를 입력하세요.",
+    "providerClientSecretRequired": "공급자 클라이언트 시크릿을 입력하세요.",
+    "providerDefaultRoleInvalid": "공급자 기본 역할이 올바르지 않습니다.",
+    "providerEmailConflict": "다른 계정에서 사용 중인 이메일입니다.",
+    "providerIdRequired": "공급자 ID를 입력하세요.",
+    "providerIdentityConflict": "이 공급자 ID는 이미 다른 계정에 연결되어 있습니다.",
+    "providerInvalid": "공급자 인증에 실패했습니다.",
+    "providerLoginDisabled": "공급자 로그인이 비활성화되어 있습니다.",
+    "providerLogoUrlInvalid": "공급자 로고 URL이 올바르지 않습니다.",
+    "providerNameRequired": "공급자 이름을 입력하세요.",
+    "providerOauthUrlsRequired": "OAuth2 인증 URL, 토큰 URL, 사용자 정보 URL을 입력하세요.",
+    "providerOidcIssuerRequired": "OIDC 발급자 URL 또는 디스커버리 URL을 입력하세요.",
+    "providerOrderInvalid": "공급자 ID는 중복될 수 없습니다.",
+    "providerRegistrationDisabled": "공급자 등록이 비활성화되어 있습니다.",
+    "providerRegistrationRequiresLogin": "공급자 등록을 사용하려면 먼저 공급자 로그인을 활성화해야 합니다.",
+    "providerSlugRequired": "공급자 슬러그를 입력하세요.",
+    "providerSubjectMissing": "공급자 주체 정보가 없습니다.",
+    "providerSuperadminDefaultRoleProtected": "공급자 기본 역할을 superadmin으로 설정할 수 있는 사람은 최고 관리자뿐입니다.",
+    "providerTypeInvalid": "공급자 유형이 올바르지 않습니다.",
+    "providerUpstreamFailed": "공급자 인증에 실패했습니다.",
+    "sessionInvalid": "세션이 만료되었습니다. 다시 로그인하세요.",
+    "superadminRequired": "최고 관리자 권한이 필요합니다.",
+    "turnstileInvalid": "사람 인증에 실패했습니다. 다시 시도하세요.",
+    "turnstileNotConfigured": "사람 인증이 설정되지 않았습니다.",
+    "turnstileRequired": "먼저 사람 인증을 완료하세요.",
+    "twoFactorAlreadyEnabled": "2단계 인증이 이미 활성화되어 있습니다.",
+    "twoFactorChallengeExpired": "2단계 인증이 만료되었습니다. 다시 로그인하세요.",
+    "twoFactorExpired": "2단계 인증이 만료되었습니다. 다시 시도하세요.",
+    "twoFactorNotStarted": "2단계 인증이 시작되지 않았습니다.",
+    "unauthorized": "세션이 만료되었습니다. 다시 로그인하세요.",
+    "usernameChangeRequired": "초기 사용자 이름을 변경하세요.",
+    "verificationCodeAttemptsExceeded": "인증 시도가 너무 많습니다. 새 코드를 요청하세요.",
+    "verificationCodeInvalid": "인증 코드가 올바르지 않거나 만료되었습니다.",
+    "verificationCodeRecent": "최근에 인증 코드를 이미 전송했습니다. 나중에 다시 시도하세요.",
+    "verificationMethodUnavailable": "선택한 인증 방법을 사용할 수 없습니다."
+  },
+  "billing": {
+    "insufficientBalance": "잔액이 부족합니다.",
+    "insufficientFunds": "잔액이 부족합니다.",
+    "concurrencyLimitExceeded": "유료 요청은 동시에 최대 5개까지 실행할 수 있습니다.",
+    "reservationConflict": "이미 제출된 요청입니다.",
+    "invalidPlan": "결제 플랜이 올바르지 않습니다.",
+    "planNotFound": "결제 플랜을 찾을 수 없습니다.",
+    "invalidPermissionGroup": "권한 그룹이 올바르지 않습니다.",
+    "invalidDailyUsageDateRange": "사용량 날짜 범위가 올바르지 않습니다.",
+    "invalidDailyUsageDays": "사용량 일수가 올바르지 않습니다.",
+    "invalidModelPricing": "모델 가격이 올바르지 않습니다.",
+    "invalidAccountBalance": "결제 계정 잔액이 올바르지 않습니다.",
+    "invalidNativeToolPricing": "기본 도구 가격이 올바르지 않습니다.",
+    "subscribeFailed": "구독하지 못했습니다. 나중에 다시 시도하세요.",
+    "subscriptionEntitlementActive": "유료 구독 권한이 아직 유효하므로 무료 플랜을 선택할 수 없습니다.",
+    "invalidRedemptionCode": "쿠폰 코드가 올바르지 않습니다.",
+    "redemptionCodeConflict": "이미 존재하는 쿠폰 코드입니다.",
+    "redemptionCodeUnavailable": "쿠폰 코드를 사용할 수 없거나 만료되었습니다.",
+    "redemptionCodePlaintextUnavailable": "이 코드에는 복사할 수 있는 암호화된 내용이 없어 전체 코드를 복사할 수 없습니다.",
+    "redemptionCodeExhausted": "쿠폰 코드의 남은 사용 횟수가 없습니다.",
+    "redemptionSecretUnavailable": "쿠폰 코드 서비스를 사용할 수 없습니다.",
+    "redemptionUserLimitExceeded": "이 계정은 이 코드의 사용자당 사용 한도에 도달했습니다.",
+    "redemptionValidation": {
+      "codeFormat": "코드는 영문 대문자, 숫자, 하이픈, 밑줄로 구성된 3~64자여야 합니다.",
+      "quantity": "수량은 1에서 100 사이의 정수여야 합니다.",
+      "manualQuantity": "수동 코드는 한 번만 만들 수 있습니다.",
+      "mode": "결제 모드가 올바르지 않습니다.",
+      "credit": "크레딧 금액은 0보다 커야 합니다.",
+      "plan": "활성 상태의 무료가 아닌 플랜을 선택하세요.",
+      "duration": "기간 일수는 0보다 커야 합니다.",
+      "expiresAt": "만료 시각은 현재 시각보다 이후여야 합니다.",
+      "maxRedemptions": "총 사용 횟수는 양의 정수여야 하며, 비워 두면 무제한입니다.",
+      "perUserLimit": "사용자당 사용 횟수는 양의 정수여야 합니다.",
+      "limitRelationship": "사용자당 한도는 총 한도를 초과할 수 없습니다.",
+      "status": "쿠폰 코드 상태가 올바르지 않습니다."
+    },
+    "invalidSubscriptionExpiry": "구독 만료일이 올바르지 않습니다.",
+    "invalidSubscriptionTier": "구독 등급이 올바르지 않습니다.",
+    "paymentRequired": "결제가 필요합니다.",
+    "periodCreditExceeded": "기간 크레딧을 모두 사용했습니다.",
+    "pricingRequired": "모델 가격을 입력하세요.",
+    "subscriptionExpiryRequired": "구독 만료일을 입력하세요."
+  },
+  "config": {
+    "invalidJson": "JSON 설정이 올바르지 않습니다."
+  },
+  "conversation": {
+    "invalidId": "대화 ID가 올바르지 않습니다.",
+    "invalidTitle": "대화 제목이 올바르지 않습니다.",
+    "messageDeleteRootInvalid": "대화의 첫 메시지는 삭제할 수 없습니다.",
+    "messageDeleteStateInvalid": "이 메시지의 생성이 끝날 때까지 기다린 뒤 삭제하세요.",
+    "messageDeleteTargetInvalid": "이 메시지는 삭제할 수 없습니다.",
+    "messageForkHistoryIncomplete": "대화가 너무 깊거나 메시지 기록이 불완전하여 여기에서 분기할 수 없습니다.",
+    "messageForkStateInvalid": "이 메시지의 생성이 끝날 때까지 기다린 뒤 대화를 분기하세요.",
+    "messageForkTargetInvalid": "어시스턴트 메시지만 새 대화로 분기할 수 있습니다.",
+    "messageParentDeleted": "답장 대상 메시지가 삭제되었습니다. 다시 시도하세요.",
+    "noTitleableContent": "이 대화에는 제목을 생성하는 데 사용할 수 있는 내용이 없습니다.",
+    "projectLimitExceeded": "대화 프로젝트 한도에 도달했습니다.",
+    "notFound": "대화를 찾을 수 없습니다."
+  },
+  "conversationEvent": {
+    "invalidId": "대화 이벤트 ID가 올바르지 않습니다.",
+    "notFound": "대화 이벤트를 찾을 수 없습니다."
+  },
+  "conversationProject": {
+    "invalidId": "대화 프로젝트 ID가 올바르지 않습니다.",
+    "notFound": "대화 프로젝트를 찾을 수 없습니다."
+  },
+  "conversationRun": {
+    "canceled": "생성이 취소되었습니다.",
+    "streamInterrupted": "생성 연결이 끊어졌습니다. 이 메시지를 재시도하세요.",
+    "streamNotFound": "생성 스트림을 찾을 수 없습니다."
+  },
+  "conversationShare": {
+    "invalid": "대화 공유가 올바르지 않습니다.",
+    "invalidId": "공유 ID가 올바르지 않습니다.",
+    "notFound": "공유를 찾을 수 없습니다.",
+    "schemaOutdated": "공유 스키마가 오래되었습니다. 데이터베이스를 다시 빌드하세요."
+  },
+  "contextArtifact": {
+    "invalidId": "컨텍스트 아티팩트 ID가 올바르지 않습니다.",
+    "notFound": "컨텍스트 아티팩트를 찾을 수 없습니다."
+  },
+  "cors": {
+    "originForbidden": "허용되지 않는 출처입니다."
+  },
+  "embedding": {
+    "reindexInProgress": "인덱스 재구축이 이미 실행 중입니다. 나중에 다시 시도하세요.",
+    "serviceNotConfigured": "먼저 임베딩 서비스를 활성화하고 설정하세요.",
+    "serviceUnavailable": "임베딩 서비스를 사용할 수 없습니다.",
+    "submitFailed": "벡터화 작업을 제출하지 못했습니다. 나중에 다시 시도하세요.",
+    "tooManyFiles": "한 번에 최대 100개의 파일을 벡터화 작업으로 제출할 수 있습니다."
+  },
+  "file": {
+    "embeddingUnavailable": "이 파일은 임베딩을 사용할 수 없습니다.",
+    "extractNotReady": "파일 추출이 아직 준비되지 않았습니다.",
+    "invalidId": "파일 ID가 올바르지 않습니다.",
+    "invalidName": "파일 이름이 올바르지 않습니다.",
+    "invalidReference": "파일 참조가 올바르지 않습니다.",
+    "invalidStream": "파일 스트림이 올바르지 않습니다.",
+    "inUse": "사용 중인 파일은 삭제할 수 없습니다.",
+    "notFound": "파일을 찾을 수 없습니다.",
+    "notReady": "파일이 아직 준비되지 않았습니다.",
+    "required": "파일을 선택하세요.",
+    "tooLarge": "파일이 너무 큽니다.",
+    "tooLargeForContext": "파일이 너무 커서 전체 컨텍스트에 삽입할 수 없습니다.",
+    "typeBlocked": "허용되지 않는 파일 형식입니다."
+  },
+  "identityProvider": {
+    "deleteConflict": "이 ID 공급자를 삭제하면 일부 사용자의 유일한 로그인 수단이 사라집니다."
+  },
+  "identity": {
+    "invalidId": "ID가 올바르지 않습니다.",
+    "notFound": "ID를 찾을 수 없습니다."
+  },
+  "internal": {
+    "error": "서버 내부 오류가 발생했습니다. 나중에 다시 시도하세요."
+  },
+  "knowledgeBase": {
+    "conflict": "같은 범위에 이름이 같은 지식 베이스가 이미 있습니다.",
+    "disabled": "지식 베이스 검색이 비활성화되어 있습니다.",
+    "fileCleanupUnavailable": "플랫폼 소스 정리를 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요.",
+    "internal": "지식 베이스 작업에 실패했습니다. 나중에 다시 시도하세요.",
+    "invalid": "지식 베이스 설정이 올바르지 않습니다.",
+    "invalidReference": "선택한 지식 베이스를 사용할 수 없거나 더 이상 접근 권한이 없습니다.",
+    "notFound": "지식 베이스를 찾을 수 없습니다.",
+    "notReady": "선택한 지식 베이스에 아직 검색 가능한 파일이 없습니다. 인덱싱이 끝날 때까지 기다리세요.",
+    "ownerFileReference": "이 계정이 소유한 파일을 기본 제공 지식 베이스에서 아직 참조하고 있습니다. 해당 파일을 제거하거나 다른 관리자가 대체 파일을 먼저 업로드하게 하세요.",
+    "platformFileInUse": "이 플랫폼 소스를 다른 리소스에서 아직 참조하고 있습니다. 삭제하기 전에 참조를 제거하세요.",
+    "unavailable": "지식 베이스 검색을 일시적으로 사용할 수 없습니다. 나중에 다시 시도하고, 문제가 계속되면 관리자에게 임베딩 서비스 점검을 요청하세요."
+  },
+  "toolRun": {
+    "finalAnswerMissing": "모델이 최종 답변을 생성하기 전에 도구 실행 한도에 도달했습니다. 재시도하거나 이 메시지에 사용할 도구 수를 줄이세요."
+  },
+  "llm": {
+    "apiKeysRequired": "API 키를 입력하세요.",
+    "circuitBreakerDisabled": "모델 서킷 브레이커가 비활성화되어 있습니다. 이 작업을 수행하기 전에 활성화하세요.",
+    "emptyResponse": "모델이 빈 응답을 반환했습니다.",
+    "invalidAdapter": "지원하지 않는 인터페이스 프로토콜입니다. 다른 프로토콜을 선택하세요.",
+    "invalidApiKeysConfig": "API 키 설정이 올바르지 않습니다.",
+    "invalidCompatible": "호환 모드가 올바르지 않습니다.",
+    "invalidHeadersConfig": "헤더 설정이 올바르지 않습니다.",
+    "invalidKinds": "모델 종류가 올바르지 않습니다.",
+    "invalidModelCapabilities": "컨텍스트 윈도우는 4,096~16,000,000 토큰 사이여야 하며, 출력 토큰 한도는 컨텍스트 윈도우보다 작아야 합니다.",
+    "invalidPlatformModelName": "플랫폼 모델 이름이 올바르지 않습니다.",
+    "invalidRouteProtocolCombination": "사용할 수 없는 프로토콜 조합입니다. 바인딩에는 하나의 프로토콜 또는 같은 공급자의 이미지 생성 및 이미지 편집 프로토콜만 사용할 수 있습니다.",
+    "systemPromptTooLong": "시스템 프롬프트는 최대 20000자까지 입력할 수 있습니다.",
+    "invalidProtocolDefaultsConfig": "프로토콜 기본값 설정이 올바르지 않습니다.",
+    "modelAccessDenied": "이 모델에 접근할 권한이 없습니다.",
+    "modelRouteNotConfigured": "모델 라우트가 설정되지 않았습니다.",
+    "modelIconInvalid": "모델 아이콘이 올바르지 않습니다. 기본 제공 아이콘 이름, 업로드한 아이콘 또는 http(s) 이미지 URL을 사용하세요.",
+    "modelIconFileInvalid": "아이콘 파일이 올바르지 않습니다. PNG, JPEG, WebP만 지원합니다.",
+    "modelIconFileTooLarge": "아이콘 파일은 1 MiB를 초과할 수 없습니다.",
+    "modelIconAssetNotFound": "아이콘 에셋이 더 이상 존재하지 않습니다. 다시 업로드하세요.",
+    "modelIconAssetUnavailable": "아이콘 에셋을 일시적으로 사용할 수 없습니다.",
+    "modelIconAssetInUse": "이 아이콘을 아직 사용 중입니다. 먼저 참조를 제거하세요.",
+    "modelVendorBuiltin": "기본 제공 벤더는 삭제할 수 없습니다.",
+    "modelVendorInUse": "이 벤더에 연결된 모델이 아직 있습니다. 먼저 모델을 이동하세요.",
+    "noActiveApiKey": "사용 가능한 활성 API 키가 없습니다.",
+    "platformModelNameExists": "이미 존재하는 플랫폼 모델 이름입니다.",
+    "platformModelNameRequired": "플랫폼 모델 이름을 입력하세요.",
+    "protocolRequired": "프로토콜을 선택하세요.",
+    "remoteModelsEmptyConfirmationRequired": "업스트림이 빈 모델 카탈로그를 반환했습니다. 새로 고침하고 확인한 뒤 동기화하세요.",
+    "remoteModelsSnapshotChanged": "미리 보기 이후 업스트림 모델 카탈로그가 변경되었습니다. 확인할 수 있도록 최신 변경 사항을 다시 불러왔습니다.",
+    "remoteModelsUnavailable": "원격 모델을 사용할 수 없습니다.",
+    "upstreamModelBindingChanged": "업스트림 모델 바인딩이 변경되었습니다. 다시 불러온 뒤 시도하세요.",
+    "upstreamModelConflict": "이 모델에는 충돌하는 업스트림 소스가 이미 있습니다.",
+    "upstreamSourceUnavailable": "업스트림 모델 소스를 사용할 수 없습니다.",
+    "routeConflict": "이 업스트림 모델에는 같은 플랫폼 모델과 프로토콜의 바인딩이 이미 있습니다. 저장하기 전에 중복된 바인딩을 제거하세요.",
+    "routesUnavailable": "사용 가능한 모델 라우트가 없습니다.",
+    "reasoningInvalidFormat": "추론 형식이 올바르지 않거나 이 모델의 프로토콜과 맞지 않습니다.",
+    "reasoningInvalidLevels": "추론 단계가 올바르지 않습니다. 선택한 형식에서 지원하는 단계를 중복 없이 하나 이상 선택하세요.",
+    "reasoningInvalidDefault": "기본 추론 단계는 선택한 단계 중 하나여야 합니다.",
+    "reasoningInvalidBudgets": "추론 토큰 예산이 올바르지 않습니다. 활성화한 모든 단계에 0 이상의 정수 예산이 필요합니다(Anthropic 예산은 1024 이상).",
+    "modelCatalogFetchFailed": "models.dev를 동기화하지 못했습니다. 마지막으로 동기화한 데이터를 유지합니다."
+  },
+  "mcp": {
+    "clientUnavailable": "MCP 클라이언트를 사용할 수 없습니다.",
+    "imageProcessingFailed": "MCP 이미지 처리 도구가 실패했습니다.",
+    "invalidAttachmentConfiguration": "MCP 도구 첨부 파일 설정이 올바르지 않습니다.",
+    "invalidServerBaseUrl": "MCP 서버 기본 URL이 올바르지 않습니다.",
+    "invalidServerHeaders": "MCP 서버 헤더가 올바르지 않습니다.",
+    "invalidServerName": "MCP 서버 이름이 올바르지 않습니다.",
+    "invalidServerStatus": "MCP 서버 상태가 올바르지 않습니다.",
+    "invalidToolDescription": "MCP 도구 설명이 올바르지 않습니다.",
+    "invalidToolName": "MCP 도구 이름이 올바르지 않습니다.",
+    "invalidToolSelection": "MCP 도구 선택이 올바르지 않습니다.",
+    "invalidToolStatus": "MCP 도구 상태가 올바르지 않습니다.",
+    "serverLimitExceeded": "MCP 서버 한도에 도달했습니다.",
+    "server": {
+      "invalidId": "MCP 서버 ID가 올바르지 않습니다."
+    },
+    "tool": {
+      "invalidId": "MCP 도구 ID가 올바르지 않습니다."
+    }
+  },
+  "memory": {
+    "keyRequired": "메모리 키를 입력하세요.",
+    "limitExceeded": "메모리 한도에 도달했습니다."
+  },
+  "media": {
+    "imagePromptRequired": "이미지 프롬프트를 입력하세요.",
+    "imageGenerationRejectsInputs": "이미지 생성에는 입력 이미지를 사용할 수 없습니다. 첨부 파일을 제거하거나 이미지 편집을 선택하세요.",
+    "imageEditInputRequired": "이미지 편집에는 입력 이미지가 하나 이상 필요합니다.",
+    "imageEditTooManyInputs": "이미지 편집에 사용할 입력 이미지가 너무 많습니다.",
+    "imageEditInputInvalid": "이미지 편집에는 올바른 이미지 파일만 사용할 수 있습니다.",
+    "artifactUnavailable": "생성된 결과를 일시적으로 사용할 수 없습니다. 다시 시도하고, 문제가 계속되면 관리자에게 문의하세요.",
+    "imageStreamUnsupported": "팁: 업스트림이 스트리밍 응답을 지원하지 않을 수 있습니다. 관리자에게 모델 기능에서 \"이미지 스트리밍 호출\"을 비활성화(image.stream=false로 설정)해 달라고 요청한 뒤 다시 시도하세요.",
+    "routeProtocolMismatch": "현재 모델 라우트 프로토콜이 이 이미지 작업과 일치하지 않습니다. 모델 바인딩을 확인하세요.",
+    "invalidTask": "이미지 작업 파라미터가 올바르지 않습니다.",
+    "videoInputInvalid": "동영상 생성 입력이 올바르지 않습니다.",
+    "videoPromptRequired": "동영상 프롬프트를 입력하세요.",
+    "videoTooManyInputs": "동영상 생성에 사용할 입력 이미지가 너무 많습니다."
+  },
+  "message": {
+    "feedbackTargetInvalid": "메시지 피드백 대상이 올바르지 않습니다.",
+    "editStateInvalid": "현재 상태에서는 이 메시지를 편집할 수 없습니다.",
+    "editTargetInvalid": "AI 답변만 편집할 수 있습니다.",
+    "invalidBranch": "메시지 분기가 올바르지 않습니다.",
+    "invalidContent": "메시지 내용이 올바르지 않습니다.",
+    "invalidFeedback": "메시지 피드백이 올바르지 않습니다.",
+    "invalidId": "메시지 ID가 올바르지 않습니다.",
+    "invalidUiState": "컴포넌트 상태가 올바르지 않거나 너무 큽니다.",
+    "uiStateTargetInvalid": "지금은 이 메시지의 컴포넌트 상태를 저장할 수 없습니다.",
+    "multipleImageProcessors": "이미지 첨부 파일 처리기는 하나만 선택하세요.",
+    "notFound": "메시지를 찾을 수 없습니다.",
+    "tooManyFiles": "한 메시지에 첨부한 파일이 너무 많습니다.",
+    "tooManySelectedSkills": "이 메시지에 선택한 스킬이 너무 많습니다.",
+    "tooManySelectedTools": "이 메시지에 선택한 도구가 너무 많습니다."
+  },
+  "messageGenerationRun": {
+    "alreadyExists": "이미 제출된 메시지 생성 요청입니다."
+  },
+  "temporaryChat": {
+    "contextTooLarge": "임시 채팅의 컨텍스트가 너무 큽니다. 새 임시 채팅을 시작하거나 대화를 줄이세요."
+  },
+  "payment": {
+    "checkoutFailed": "결제를 생성하지 못했습니다.",
+    "epayGatewayInvalid": "EPay 리디렉션 게이트웨이 URL이 올바르지 않습니다.",
+    "epayTypeUnsupported": "지원하지 않는 EPay 결제 유형입니다.",
+    "invalidEvent": "결제 이벤트가 올바르지 않습니다.",
+    "invalidOrder": "결제 주문이 올바르지 않습니다.",
+    "invalidSignature": "결제 서명이 올바르지 않습니다.",
+    "invalidWebhookBody": "웹훅 본문이 올바르지 않습니다.",
+    "notificationMismatch": "결제 알림이 주문과 일치하지 않습니다.",
+    "orderNoRequired": "주문 번호를 입력하세요.",
+    "orderNotFound": "결제 주문을 찾을 수 없습니다.",
+    "orderStateInvalid": "결제 주문 상태가 올바르지 않습니다.",
+    "providerUnavailable": "결제 공급자를 사용할 수 없습니다.",
+    "returnUrlCrossOrigin": "결제 반환 URL은 설정된 공개 웹 출처를 사용해야 합니다.",
+    "returnUrlInvalid": "결제 반환 URL이 올바르지 않습니다.",
+    "webhookBodyTooLarge": "웹훅 본문이 너무 큽니다.",
+    "webhookNotConfigured": "결제 웹훅이 설정되지 않았습니다."
+  },
+  "quota": {
+    "exceeded": "저장 공간이 가득 찼습니다. 파일에서 사용하지 않는 파일을 삭제하세요."
+  },
+  "rateLimit": {
+    "authenticationExceeded": "인증 시도가 너무 많습니다. 나중에 다시 시도하세요.",
+    "exceeded": "요청이 너무 많습니다. 나중에 다시 시도하세요.",
+    "refreshExceeded": "세션 갱신 시도가 너무 많습니다. 나중에 다시 시도하세요."
+  },
+  "request": {
+    "invalid": "요청이 올바르지 않습니다. 입력 내용을 확인한 뒤 다시 시도하세요.",
+    "invalid_": "요청 파라미터가 올바르지 않습니다.",
+    "invalidBody": "요청이 올바르지 않습니다. 입력 내용을 확인한 뒤 다시 시도하세요.",
+    "invalidId": "ID가 올바르지 않습니다.",
+    "invalidQuery": "쿼리 파라미터가 올바르지 않습니다.",
+    "required": "필수 항목이 누락되었습니다.",
+    "invalidAnnouncement": "공지 요청이 올바르지 않습니다.",
+    "invalidAppearancePreferences": "모양 설정이 올바르지 않습니다.",
+    "invalidConversationLabels": "대화 라벨이 올바르지 않습니다.",
+    "invalidConversationProject": "대화 프로젝트 요청이 올바르지 않습니다.",
+    "invalidConversationRunIds": "대화 실행 ID가 올바르지 않습니다.",
+    "invalidDailyActivityDays": "일별 활동 일수가 올바르지 않습니다.",
+    "invalidFile": "파일이 올바르지 않습니다.",
+    "invalidImageIndex": "이미지 인덱스가 올바르지 않습니다.",
+    "invalidImportCreditMultiplier": "가져오기 크레딧 배율이 올바르지 않습니다.",
+    "invalidImportDsn": "가져오기 데이터 소스가 올바르지 않습니다.",
+    "invalidLocationPayload": "위치 데이터가 올바르지 않습니다.",
+    "invalidLogCleanupBefore": "로그 정리 기준 시각이 올바르지 않습니다.",
+    "invalidLogCleanupType": "로그 정리 유형이 올바르지 않습니다.",
+    "invalidMcpToolPrice": "MCP 도구 가격이 올바르지 않습니다.",
+    "invalidModelAccessScope": "모델 접근 범위가 올바르지 않습니다.",
+    "invalidModelDisplayGroup": "모델 표시 그룹이 올바르지 않습니다.",
+    "invalidModelOrder": "모델 순서가 올바르지 않습니다.",
+    "invalidModelVendor": "모델 벤더가 올바르지 않습니다.",
+    "invalidOverwriteCustomizedMetadata": "메타데이터 덮어쓰기 옵션이 올바르지 않습니다.",
+    "invalidPromptPreset": "프롬프트 프리셋이 올바르지 않습니다.",
+    "invalidRunIds": "실행 ID가 올바르지 않습니다.",
+    "invalidSkill": "스킬이 올바르지 않습니다.",
+    "invalidUiComponent": "컴포넌트가 올바르지 않습니다.",
+    "invalidSkillUse": "스킬 설정이 올바르지 않습니다.",
+    "invalidTemporaryChatMessages": "임시 채팅 메시지가 올바르지 않습니다.",
+    "invalidTwoFactorChallenge": "2단계 인증 챌린지가 올바르지 않습니다.",
+    "invalidUpstreamBaseUrl": "업스트림 기본 URL이 올바르지 않습니다.",
+    "invalidUserid": "사용자 ID가 올바르지 않습니다."
+  },
+  "resource": {
+    "conflict": "리소스가 충돌했습니다. 새로 고침한 뒤 다시 시도하세요.",
+    "notFound": "리소스를 찾을 수 없습니다."
+  },
+  "model": {
+    "invalidId": "모델 ID가 올바르지 않습니다.",
+    "notFound": "모델을 찾을 수 없습니다."
+  },
+  "modelDisplayGroup": {
+    "alreadyExists": "이미 존재하는 모델 표시 그룹입니다.",
+    "invalidId": "모델 표시 그룹 ID가 올바르지 않습니다.",
+    "notFound": "모델 표시 그룹을 찾을 수 없습니다."
+  },
+  "modelUpstreamSources": {
+    "notFound": "모델 업스트림 소스를 찾을 수 없습니다."
+  },
+  "modelVendor": {
+    "alreadyExists": "이미 존재하는 모델 벤더입니다.",
+    "invalidId": "모델 벤더 ID가 올바르지 않습니다.",
+    "notFound": "모델 벤더를 찾을 수 없습니다."
+  },
+  "permissionGroup": {
+    "invalidId": "권한 그룹 ID가 올바르지 않습니다."
+  },
+  "plan": {
+    "invalidId": "플랜 ID가 올바르지 않습니다."
+  },
+  "promptPreset": {
+    "invalidId": "프롬프트 프리셋 ID가 올바르지 않습니다.",
+    "notFound": "프롬프트 프리셋을 찾을 수 없습니다."
+  },
+  "promptPresetTrigger": {
+    "alreadyExists": "이미 존재하는 프롬프트 프리셋 트리거입니다."
+  },
+  "redemptionCode": {
+    "invalidId": "쿠폰 코드 ID가 올바르지 않습니다.",
+    "notFound": "쿠폰 코드를 찾을 수 없습니다."
+  },
+  "route": {
+    "invalidId": "라우트 ID가 올바르지 않습니다.",
+    "notFound": "라우트를 찾을 수 없습니다."
+  },
+  "run": {
+    "invalidId": "실행 ID가 올바르지 않습니다."
+  },
+  "share": {
+    "invalidId": "공유 ID가 올바르지 않습니다."
+  },
+  "sharedFile": {
+    "notFound": "공유 파일을 찾을 수 없습니다."
+  },
+  "runtime": {
+    "doclingUnavailable": "Docling 런타임을 사용할 수 없습니다.",
+    "mineruUnavailable": "MinerU 런타임을 사용할 수 없습니다.",
+    "rapidocrUnavailable": "RapidOCR 런타임을 사용할 수 없습니다.",
+    "tesseractUnavailable": "Tesseract 런타임을 사용할 수 없습니다.",
+    "tikaUnavailable": "Tika 런타임을 사용할 수 없습니다."
+  },
+  "logCleanup": {
+    "beforeInFuture": "로그 정리 기준 시각은 미래일 수 없습니다."
+  },
+  "service": {
+    "unavailable": "서비스를 사용할 수 없습니다. 나중에 다시 시도하세요."
+  },
+  "settings": {
+    "billingPaymentInvalid": "결제 설정이 올바르지 않습니다.",
+    "embeddingInvalid": "임베딩 설정이 올바르지 않습니다.",
+    "extractInvalid": "파일 추출 설정이 올바르지 않습니다.",
+    "invalidKey": "설정 키가 올바르지 않습니다.",
+    "invalidNamespace": "설정 네임스페이스가 올바르지 않습니다.",
+    "invalidValue": "설정 값이 올바르지 않습니다.",
+    "modelOptionPolicyInvalid": "모델 옵션 정책 설정이 올바르지 않습니다.",
+    "notFound": "설정을 찾을 수 없습니다.",
+    "serviceUnavailable": "설정 서비스를 사용할 수 없습니다.",
+    "smtpInvalid": "SMTP 설정이 올바르지 않습니다."
+  },
+  "skill": {
+    "invalidId": "스킬 ID가 올바르지 않습니다.",
+    "notFound": "스킬을 찾을 수 없습니다.",
+    "tooManyIds": "선택한 스킬이 너무 많습니다."
+  },
+  "skillTrigger": {
+    "alreadyExists": "이미 존재하는 스킬 트리거입니다."
+  },
+  "uiComponent": {
+    "invalidId": "컴포넌트 ID가 올바르지 않습니다.",
+    "notFound": "컴포넌트를 찾을 수 없습니다.",
+    "alreadyExists": "같은 범위에 이름이 같은 컴포넌트가 이미 있습니다.",
+    "builtinProtected": "기본 제공 컴포넌트는 삭제하거나 계약을 변경할 수 없습니다."
+  },
+  "toolCall": {
+    "invalidId": "도구 호출 ID가 올바르지 않습니다.",
+    "notFound": "도구 호출을 찾을 수 없습니다."
+  },
+  "upstream": {
+    "invalidId": "업스트림 ID가 올바르지 않습니다.",
+    "notFound": "업스트림을 찾을 수 없습니다.",
+    "rateLimited": "업스트림에서 요청을 제한하고 있습니다. 잠시 후 다시 시도하세요.",
+    "unavailable": "업스트림 서비스를 사용할 수 없습니다."
+  },
+  "upstreamModel": {
+    "notFound": "업스트림 모델을 찾을 수 없습니다."
+  },
+  "usageStatistics": {
+    "invalidBillingScope": "결제 범위가 올바르지 않습니다.",
+    "invalidDateRange": "사용량 통계 날짜 범위가 올바르지 않습니다.",
+    "invalidRankBy": "사용량 순위 기준 필드가 올바르지 않습니다.",
+    "invalidSection": "사용량 통계 섹션이 올바르지 않습니다.",
+    "subjectConflict": "사용자 필터와 권한 그룹 필터는 함께 사용할 수 없습니다."
+  },
+  "upstreamEmptyResponse": "업스트림이 빈 응답을 반환했습니다. 나중에 다시 시도하거나 관리자에게 모델 라우트 점검을 요청하세요.",
+  "upstreamRequestFailed": "업스트림 요청에 실패했습니다. 나중에 다시 시도하거나 관리자에게 모델 라우트 점검을 요청하세요.",
+  "user": {
+    "accountDeleteVerificationRequired": "계정을 삭제하기 전에 본인 인증을 완료하세요.",
+    "emptyPatch": "사용자 항목을 하나 이상 변경하세요.",
+    "invalidAvatarUrl": "아바타 URL이 올바르지 않습니다.",
+    "invalidId": "사용자 ID가 올바르지 않습니다.",
+    "invalidEmail": "사용자 이메일이 올바르지 않습니다.",
+    "invalidLocale": "언어가 올바르지 않습니다.",
+    "invalidLocation": "위치가 올바르지 않습니다.",
+    "invalidPhone": "전화번호가 올바르지 않습니다.",
+    "invalidRole": "사용자 역할이 올바르지 않습니다.",
+    "invalidStatus": "사용자 상태가 올바르지 않습니다.",
+    "invalidTimeZone": "시간대가 올바르지 않습니다.",
+    "notFound": "사용자를 찾을 수 없습니다.",
+    "invalidUsername": "사용자 이름은 3~16자여야 합니다.",
+    "invalidDisplayName": "표시 이름은 3~16자여야 합니다.",
+    "lastSuperadminRoleProtected": "마지막 최고 관리자의 역할은 변경할 수 없습니다.",
+    "selfDeleteNotAllowed": "여기에서는 본인 계정을 삭제할 수 없습니다.",
+    "selfRoleChangeNotAllowed": "본인의 역할은 변경할 수 없습니다.",
+    "selfStatusChangeNotAllowed": "본인의 상태는 변경할 수 없습니다.",
+    "superadminDeleteProtected": "최고 관리자 계정은 삭제할 수 없습니다.",
+    "superadminPasswordResetProtected": "최고 관리자의 비밀번호는 재설정할 수 없습니다.",
+    "superadminManagementProtected": "관리자는 최고 관리자 계정을 관리할 수 없습니다.",
+    "superadminStatusProtected": "최고 관리자의 상태는 변경할 수 없습니다.",
+    "superadminTwoFactorResetProtected": "최고 관리자의 2단계 인증은 초기화할 수 없습니다.",
+    "usernameAlreadyExists": "이미 사용 중인 사용자 이름입니다.",
+    "usernameChangeUsed": "사용자 이름 변경 기회를 이미 사용했습니다.",
+    "usernameTaken": "이미 사용 중인 사용자 이름입니다."
+  },
+  "userSettings": {
+    "invalidValue": "사용자 설정 값이 올바르지 않습니다.",
+    "unknownKey": "알 수 없는 사용자 설정 키입니다."
+  },
+  "contentModeration": {
+    "blocked": "안전 검사에서 이 콘텐츠가 차단되었습니다.",
+    "invalidConfig": "콘텐츠 검열 설정이 올바르지 않습니다.",
+    "configRequired": "콘텐츠 검열을 활성화하려면 완전한 서비스 설정과 하나 이상의 정책 범주가 필요합니다.",
+    "probeFailed": "콘텐츠 검열 연결 테스트에 실패했습니다.",
+    "eventNotFound": "콘텐츠 검열 이벤트를 찾을 수 없습니다."
+  },
+  "feature": {
+    "disabled": "이 서버에서는 사용할 수 없는 기능입니다.",
+    "byFeature": {
+      "multiUser": "이 서버에는 계정이 하나뿐이므로 사용자 및 그룹 관리를 사용할 수 없습니다.",
+      "registration": "이 서버에서는 등록을 사용할 수 없습니다.",
+      "identityProviders": "이 서버에서는 서드파티 로그인을 사용할 수 없습니다.",
+      "accountSecurity": "이 서버에서는 비밀번호, 이메일, 2단계 인증, 세션 관리를 사용할 수 없습니다.",
+      "announcements": "이 서버에서는 공지를 사용할 수 없습니다.",
+      "billingGating": "이 서버에서는 플랜, 잔액, 결제를 사용할 수 없습니다.",
+      "usageMetering": "이 서버에서는 사용량 측정을 사용할 수 없습니다.",
+      "contentModeration": "이 서버에서는 콘텐츠 검열을 사용할 수 없습니다.",
+      "sharing": "이 서버에서는 공개 공유를 사용할 수 없습니다."
+    }
+  },
+  "personalProvider": {
+    "disabled": "이 계정에서는 사용자 지정 공급자를 사용할 수 없습니다.",
+    "notFound": "공급자를 찾을 수 없습니다.",
+    "limitReached": "공급자 한도에 도달했습니다.",
+    "invalidName": "이름이 올바르지 않습니다.",
+    "invalidProtocol": "지원하지 않는 API 프로토콜입니다.",
+    "invalidBaseUrl": "주소가 올바르지 않습니다. HTTPS만 지원합니다.",
+    "blockedHost": "허용되지 않는 주소입니다.",
+    "invalidApiKey": "API 키 형식이 올바르지 않습니다.",
+    "invalidModels": "모델 선택이 올바르지 않습니다.",
+    "invalidModelProtocol": "이 모델은 선택한 프로토콜을 지원하지 않습니다.",
+    "invalidIcon": "아이콘이 올바르지 않습니다.",
+    "suspended": "관리자가 이 공급자를 차단했습니다.",
+    "upstreamRejected": "공급자가 요청을 거부했습니다. API 키를 확인하세요.",
+    "upstreamUnavailable": "공급자에 연결할 수 없습니다. 주소와 프로토콜을 확인하세요.",
+    "modelUnavailable": "이 모델을 사용할 수 없습니다. 사용자 지정 공급자를 확인하거나 다른 모델을 선택하세요.",
+    "duplicate": "이미 추가된 API 키입니다."
+  }
+}

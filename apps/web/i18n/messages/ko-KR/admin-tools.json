@@ -1,0 +1,202 @@
+{
+  "title": "도구",
+  "sections": {
+    "mcpTools": "MCP 도구",
+    "servers": "MCP 서버",
+    "tools": "MCP 도구"
+  },
+  "fields": {
+    "mcpEnable": {
+      "label": "MCP 도구 활성화",
+      "description": "사용자가 대화에서 활성화된 MCP 도구를 선택할 수 있도록 허용합니다."
+    },
+    "toolPrompt": {
+      "label": "MCP 도구 프롬프트",
+      "description": "모델이 MCP 도구를 언제, 어떻게 호출할지 제어합니다. 비워 두면 내장 기본 프롬프트를 사용합니다."
+    },
+    "defaultPromptPlaceholder": "비워 두면 내장 기본 프롬프트를 사용합니다",
+    "maxSelectedTools": {
+      "label": "메시지당 선택 가능한 도구 수",
+      "description": "사용자가 메시지 하나에 선택할 수 있는 MCP 도구의 최대 개수입니다. 기본값 32, 최대 128입니다."
+    },
+    "maxLLMCalls": {
+      "label": "최대 LLM 요청 수",
+      "description": "메시지 하나에서 허용되는 전체 LLM 요청 수이며 첫 요청과 최종 요약을 포함합니다. 기본값 5, 최소 2입니다."
+    },
+    "maxToolCalls": {
+      "label": "최대 MCP 도구 호출 수",
+      "description": "메시지 하나에서 허용되는 전체 MCP 도구 호출 수입니다. 실패한 호출도 한도에 포함됩니다. 기본값 8입니다."
+    },
+    "maxConcurrentCalls": {
+      "label": "MCP 도구 동시 실행 수",
+      "description": "서비스 인스턴스당 동시에 실행할 수 있는 MCP 도구 호출의 최대 개수입니다. 기본값 8입니다."
+    },
+    "toolTimeout": {
+      "label": "MCP 도구 타임아웃",
+      "description": "MCP 도구 호출 하나를 기다리는 최대 시간(초)입니다. 기본값 10입니다."
+    },
+    "toolRetry": {
+      "label": "MCP 도구 재시도",
+      "description": "MCP 도구 호출이 실패한 뒤 재시도하는 횟수입니다. 기본값 0입니다."
+    }
+  },
+  "status": {
+    "active": "켜짐",
+    "inactive": "꺼짐",
+    "all": "전체",
+    "enabled": "활성화됨",
+    "disabled": "비활성화됨"
+  },
+  "sort": {
+    "customOrder": "사용자 지정 순서",
+    "nameAsc": "이름 가나다순",
+    "nameDesc": "이름 가나다 역순",
+    "statusAsc": "상태",
+    "updatedDesc": "최근 업데이트순",
+    "updatedAsc": "오래된 업데이트순"
+  },
+  "table": {
+    "name": "이름",
+    "url": "URL",
+    "status": "상태",
+    "tools": "도구",
+    "lastSynced": "마지막 동기화",
+    "tool": "도구",
+    "description": "설명",
+    "schema": "스키마",
+    "enabled": "활성화",
+    "emptyServers": "MCP 서버가 없습니다",
+    "emptyTools": "도구가 없습니다. 먼저 동기화하세요.",
+    "emptyFilteredTools": "일치하는 도구가 없습니다",
+    "noDescription": "설명 없음",
+    "unsynced": "동기화 안 됨"
+  },
+  "toolbar": {
+    "searchServers": "서버 이름 또는 URL 검색",
+    "searchTools": "도구 이름 또는 설명 검색",
+    "add": "추가",
+    "sync": "동기화",
+    "syncTools": "동기화",
+    "editServer": "편집",
+    "deleteServer": "삭제",
+    "viewTools": "{name} MCP 도구 보기",
+    "toggleServer": "MCP 서버 {name} 전환",
+    "selectPageTools": "페이지 선택",
+    "selectTool": "도구 {name} 선택",
+    "editTool": "편집",
+    "viewSchema": "스키마",
+    "viewToolSchema": "{name} 스키마 보기",
+    "toggleTool": "도구 {name} 전환",
+    "activateSelected": "활성화",
+    "deactivateSelected": "비활성화",
+    "order": "순서"
+  },
+  "order": {
+    "title": "MCP 표시 순서",
+    "description": "대화 선택기에서 MCP 서버와 그 도구가 표시되는 순서를 설정합니다.",
+    "loading": "MCP 순서를 불러오는 중",
+    "empty": "순서를 지정할 MCP 서버가 없습니다",
+    "loadFailed": "MCP 순서를 불러오지 못했습니다",
+    "serverHeader": "MCP 서버",
+    "toolHeader": "도구",
+    "itemCount": "{count}",
+    "dragServer": "끌어서 MCP 서버 {name} 순서 변경",
+    "dragTool": "끌어서 {name} 순서 변경",
+    "statusActive": "활성화됨",
+    "statusInactive": "비활성화됨",
+    "emptyTools": "이 서버에는 순서를 지정할 도구가 없습니다",
+    "saveSuccess": "MCP 표시 순서를 저장했습니다",
+    "saveFailed": "MCP 표시 순서를 저장하지 못했습니다"
+  },
+  "bulkConfirm": {
+    "title": "일괄 작업 확인",
+    "description": "선택한 도구 {count}개에 이 일괄 작업을 실행합니다.",
+    "confirm": "확인",
+    "pending": "처리 중"
+  },
+  "syncConfirm": {
+    "title": "MCP 도구 동기화",
+    "description": "\"{name}\" 의 도구 이름과 설명을 처리하는 방식을 선택하세요.",
+    "preserve": "현재 내용 유지",
+    "preserveDescription": "이름과 설명은 유지하고 나머지 도구 데이터를 동기화합니다",
+    "overwrite": "서버 내용 사용",
+    "overwriteDescription": "MCP 서버가 반환한 이름과 설명을 동기화합니다"
+  },
+  "serverDialog": {
+    "createTitle": "MCP 서버 추가",
+    "editTitle": "MCP 서버 편집",
+    "description": "MCP Streamable HTTP 엔드포인트와 자격 증명을 설정합니다.",
+    "name": "서버 이름",
+    "namePlaceholder": "서버 이름",
+    "status": "서버 상태",
+    "url": "서버 URL",
+    "authToken": "인증 토큰",
+    "authTokenCreatePlaceholder": "선택 사항",
+    "authTokenEditPlaceholder": "비워 두면 변경하지 않습니다",
+    "headers": "헤더",
+    "quickFillHeaders": "빠른 채우기",
+    "commonHeaderPresets": "공통 헤더",
+    "signedUserContextHeader": "서명된 사용자 컨텍스트"
+  },
+  "toolDialog": {
+    "title": "MCP 도구 편집",
+    "description": "도구 이름, 설명, 선택적 호출 기능을 편집합니다.",
+    "displayName": "표시 이름",
+    "displayNamePlaceholder": "도구 표시 이름",
+    "toolDescription": "설명",
+    "toolDescriptionPlaceholder": "이 도구가 어떤 용도로 유용한지 설명하세요",
+    "imageRoutingTitle": "이미지 첨부 처리",
+    "imageRoutingTooltip": "이미지 데이터를 받는 도구에만 사용합니다. 백엔드가 이 도구를 먼저 호출하고 메인 모델은 그 텍스트 결과만 받습니다. 파라미터는 도구 스키마를 보고 직접 매핑하세요. 필드는 자동으로 감지되지 않습니다.",
+    "imageArgument": "이미지 데이터 인자",
+    "imageArgumentTooltip": "도구 스키마에서 인코딩된 이미지 데이터를 실제로 받는 문자열 인자를 선택하세요.",
+    "selectImageArgument": "이미지 데이터 인자 선택",
+    "noStringArguments": "이 도구 스키마에는 이미지 데이터를 받을 문자열 인자가 없어 이 기능을 활성화할 수 없습니다.",
+    "schemaArgumentRequired": "필수",
+    "imageEncoding": "전송 형식",
+    "imageEncodingTooltip": "도구의 규약에 맞추세요. Data URL 은 MIME 유형을 포함하고, 원시 Base64 는 인코딩된 데이터만 포함합니다.",
+    "imageEncodingDataURL": "Data URL (MIME 유형 포함)",
+    "imageEncodingBase64": "원시 Base64",
+    "passUserPrompt": "사용자 요청도 함께 전달",
+    "passUserPromptTooltip": "현재 사용자 입력도 도구에 함께 보냅니다. 분석 지시가 필요한 비전 도구에 사용하세요.",
+    "promptArgument": "사용자 요청 인자",
+    "selectPromptArgument": "사용자 요청 인자 선택",
+    "unmappedRequiredArguments": "매핑되지 않은 필수 인자: {names}"
+  },
+  "schemaDialog": {
+    "fallbackTitle": "도구 스키마",
+    "description": "{name} 입력 파라미터 JSON Schema",
+    "fallbackDescription": "입력 파라미터 JSON Schema"
+  },
+  "confirm": {
+    "deleteServer": "MCP 서버 \"{name}\" 을(를) 삭제하시겠습니까?"
+  },
+  "toast": {
+    "settingsUpdated": "도구 설정을 업데이트했습니다",
+    "settingsLoadFailed": "도구 설정을 불러오지 못했습니다",
+    "saveFailed": "도구 설정을 저장하지 못했습니다",
+    "serversLoadFailed": "MCP 서버를 불러오지 못했습니다",
+    "toolsLoadFailed": "MCP 도구를 불러오지 못했습니다",
+    "toolsSynced": "MCP 도구를 동기화했습니다",
+    "toolsSyncFailed": "MCP 도구를 동기화하지 못했습니다",
+    "serverUpdated": "MCP 서버를 업데이트했습니다",
+    "serverCreated": "MCP 서버를 만들었습니다",
+    "serverSaveFailed": "MCP 서버를 저장하지 못했습니다",
+    "invalidHeaders": "헤더 JSON 이 올바르지 않습니다",
+    "headerPresetConflict": "같은 헤더가 다른 값으로 이미 있어 아무것도 변경하지 않았습니다",
+    "serverDeleted": "MCP 서버를 삭제했습니다",
+    "serverDeleteFailed": "MCP 서버를 삭제하지 못했습니다",
+    "serverStatusUpdated": "MCP 서버 {status}",
+    "serverStatusFailed": "MCP 서버 상태를 업데이트하지 못했습니다",
+    "toolStatusFailed": "도구 상태를 업데이트하지 못했습니다",
+    "selectedToolsEnabled": "선택한 도구를 활성화했습니다",
+    "selectedToolsDisabled": "선택한 도구를 비활성화했습니다",
+    "selectedToolsUpdateFailed": "선택한 도구를 업데이트하지 못했습니다",
+    "toolUpdated": "도구를 업데이트했습니다",
+    "toolSaveFailed": "도구를 저장하지 못했습니다",
+    "schemaCopied": "스키마를 복사했습니다",
+    "copyFailed": "복사하지 못했습니다",
+    "unknownError": "요청에 실패했습니다. 잠시 후 다시 시도하세요.",
+    "sessionExpired": "세션이 만료되었습니다.",
+    "sessionExpiredDescription": "계속하려면 다시 로그인하세요."
+  }
+}

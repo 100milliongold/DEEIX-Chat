@@ -1,0 +1,68 @@
+{
+  "policy": {
+    "title": "BYOK",
+    "securityLabel": "보안 상세",
+    "enabled": {
+      "label": "연결 허용",
+      "description": "사용자가 자신의 API 키로 공급자를 연결할 수 있으며, 비용은 공급자가 청구합니다. 이 설정을 끄면 모든 사용자 공급자가 즉시 비활성화됩니다."
+    },
+    "maxPerUser": {
+      "label": "공급자 한도",
+      "description": "사용자별로 추가할 수 있는 공급자 수입니다. 1에서 50 사이로 설정하세요."
+    },
+    "blockedHosts": {
+      "label": "차단 도메인",
+      "description": "한 줄에 하나씩 입력하며 정확히 일치하는 경우만 차단합니다. *.example.com은 모든 하위 도메인과 일치합니다. 기존 공급자에도 즉시 적용됩니다."
+    },
+    "importLink": "가져오기 링크",
+    "securityNote": "공개 HTTPS 주소만 허용됩니다. 사설, 로컬, 클라우드 메타데이터 주소는 항상 거부되며 리디렉션은 따라가지 않습니다. API 키는 암호화되어 관리자에게도 표시되지 않습니다."
+  },
+  "list": {
+    "title": "공급자",
+    "searchPlaceholder": "공급자, 도메인 또는 사용자 검색",
+    "allStatus": "모든 상태",
+    "columns": {
+      "name": "이름",
+      "baseURL": "Base URL",
+      "models": "모델",
+      "owner": "소유자",
+      "status": "상태",
+      "created": "추가일"
+    },
+    "selectedCount": "{count, plural, one {선택한 공급자} other {선택한 공급자 #개}}",
+    "selectAll": "전체 선택",
+    "selectOne": "{name} 선택",
+    "moreActions": "더 보기",
+    "empty": "공급자가 없습니다",
+    "searchEmpty": "일치하는 항목이 없습니다",
+    "unknownUser": "삭제된 사용자"
+  },
+  "status": {
+    "active": "활성",
+    "disabled": "비활성",
+    "suspended": "차단됨",
+    "error": "연결 오류"
+  },
+  "actions": {
+    "filterOwner": "이 사용자만 보기",
+    "suspend": "차단",
+    "resume": "차단 해제",
+    "suspendHost": "도메인 {host} 차단",
+    "delete": "삭제"
+  },
+  "confirm": {
+    "suspendTitle": "공급자를 차단하시겠습니까?",
+    "suspendDescription": "{name}이(가) 즉시 작동을 멈추며, 사용자가 다시 활성화할 수 없습니다.",
+    "suspendHostTitle": "도메인 전체를 차단하시겠습니까?",
+    "suspendHostDescription": "{host}의 모든 공급자가 차단됩니다. 새 공급자 추가도 막으려면 차단 도메인에도 추가하세요.",
+    "deleteTitle": "공급자를 삭제하시겠습니까?",
+    "deleteDescription": "{name}과(와) 해당 API 키가 삭제됩니다. 이 작업은 되돌릴 수 없습니다."
+  },
+  "toasts": {
+    "loadFailed": "불러오지 못했습니다",
+    "saveFailed": "저장하지 못했습니다",
+    "saved": "저장했습니다",
+    "actionFailed": "작업에 실패했습니다",
+    "affected": "{count, plural, one {공급자 #개를 업데이트했습니다} other {공급자 #개를 업데이트했습니다}}"
+  }
+}

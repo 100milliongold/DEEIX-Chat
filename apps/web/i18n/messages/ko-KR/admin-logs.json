@@ -1,0 +1,521 @@
+{
+  "title": "로그",
+  "centerTitle": "로그 센터",
+  "audit": {
+    "searchPlaceholder": "사용자 ID, 작업, 리소스, 요청 ID, IP, 상세 내용 검색",
+    "empty": "감사 로그가 없습니다",
+    "resources": {
+      "user": "사용자 및 계정",
+      "conversation": "대화",
+      "conversation_project": "프로젝트",
+      "message": "메시지",
+      "file": "파일",
+      "memory": "메모리",
+      "settings": "시스템 설정",
+      "logs": "로그"
+    },
+    "actions": {
+      "login": "로그인",
+      "stream_message": "메시지 전송",
+      "create_conversation": "대화 만들기",
+      "fork_conversation": "대화 분기",
+      "rename_conversation": "대화 이름 변경",
+      "update_conversation_labels": "대화 라벨 업데이트",
+      "export_conversation": "대화 내보내기",
+      "delete_conversation": "대화 삭제",
+      "set_conversation_star": "대화 즐겨찾기",
+      "set_conversation_archive": "대화 보관",
+      "set_conversation_project": "대화를 프로젝트로 이동",
+      "batch_set_conversation_project": "대화 일괄 이동",
+      "create_conversation_project": "프로젝트 만들기",
+      "update_conversation_project": "프로젝트 업데이트",
+      "delete_conversation_project": "프로젝트 삭제",
+      "reorder_conversation_projects": "프로젝트 순서 변경",
+      "create_conversation_share": "공유 만들기",
+      "regenerate_conversation_share": "공유 다시 생성",
+      "revoke_conversation_share": "공유 해제",
+      "revoke_conversation_shares": "공유 일괄 해제",
+      "clone_shared_conversation": "공유 대화 복제",
+      "update_message": "메시지 업데이트",
+      "set_message_feedback": "메시지 피드백",
+      "upload_file": "파일 업로드",
+      "update_file": "파일 업데이트",
+      "delete_file": "파일 삭제",
+      "upsert_user_memory": "메모리 저장",
+      "delete_user_memory": "메모리 삭제",
+      "settings_update": "시스템 설정 업데이트",
+      "admin_create_user": "관리자 사용자 생성",
+      "admin_patch_user": "관리자 사용자 업데이트",
+      "admin_update_user_status": "관리자 사용자 상태 업데이트",
+      "admin_revoke_user_sessions": "관리자 사용자 세션 해제",
+      "admin_reset_user_password": "관리자 비밀번호 재설정",
+      "admin_reset_user_2fa": "관리자 2단계 인증 재설정",
+      "admin_delete_user": "관리자 사용자 삭제",
+      "admin_cleanup_logs": "관리자 로그 정리",
+      "admin_cleanup_conversation_runs": "관리자 대화 실행 추적 삭제"
+    }
+  },
+  "usage": {
+    "searchPlaceholder": "사용자 ID, 플랫폼 모델, 업스트림 모델, 업스트림 이름, 바인딩 코드, 프로토콜, 실행 ID, 오류 ID 검색",
+    "empty": "사용량 로그가 없습니다",
+    "filters": {
+      "billingMode": "결제 모드",
+      "all": "전체",
+      "allModels": "전체",
+      "model": "모델"
+    },
+    "billingModes": {
+      "token": "사용량",
+      "call": "호출당",
+      "duration": "초당",
+      "tiered": "구간별"
+    },
+    "modelTooltip": {
+      "upstreamName": "업스트림",
+      "upstreamModel": "실제 모델",
+      "bindingCode": "바인딩 코드",
+      "protocol": "프로토콜",
+      "personalKey": "BYOK"
+    },
+    "tokens": {
+      "inputShort": "입력",
+      "outputShort": "출력",
+      "cacheReadShort": "읽기",
+      "cacheWriteShort": "쓰기",
+      "input": "입력",
+      "output": "출력",
+      "reasoning": "추론",
+      "outputTotal": "출력 합계",
+      "imageCount": "{count, plural, one {이미지 #개} other {이미지 #개}}",
+      "secondCount": "{count, plural, one {#초} other {#초}}"
+    },
+    "billing": {
+      "cacheWrite": "캐시 쓰기",
+      "cacheWrite5m": "캐시 쓰기 5분",
+      "cacheWrite1h": "캐시 쓰기 1시간",
+      "cacheWrite5m1h": "캐시 쓰기 5분/1시간",
+      "cacheWritePricingLabel": "캐시 쓰기 5분",
+      "cacheWritePricingNote": "Claude 캐시 읽기는 설정된 가격을 사용합니다. 캐시 쓰기 5분은 1.25배, 1시간은 2배를 적용하고, Fast Mode 는 그 위에 6배를 추가로 적용합니다.",
+      "claudeCacheWriteMixedNote": "Claude 캐시 쓰기는 설정된 가격에 {multiplier} 를 적용합니다.",
+      "claudeCacheWriteNote": "Claude {timeout} 캐시 쓰기는 설정된 가격에 {multiplier} 를 적용합니다.",
+      "claudeFastModeNote": "Claude Fast Mode 는 입력, 출력, 캐시 사용량을 {multiplier} 로 결제합니다.",
+      "openaiServiceTierNote": "OpenAI service_tier={tier} 는 {multiplier} 로 결제합니다.",
+      "scheduleRateNote": "시간대별 요율 \"{period}\": {multiplier} 로 결제합니다.",
+      "input": "입력",
+      "output": "출력",
+      "cacheRead": "캐시 읽기",
+      "rateNote": "배율",
+      "cacheNote": "캐시",
+      "total": "합계",
+      "freeModelNoBilling": "무료",
+      "perCall": "호출당",
+      "perSecond": "초당",
+      "callUnit": "호출",
+      "secondUnit": "초",
+      "tieredRangeBounded": "원본 입력 범위 {from}-{upTo}",
+      "tieredRangeOpen": "원본 입력 범위 {from}+",
+      "table": {
+        "item": "결제 항목",
+        "usage": "사용량",
+        "unitPrice": "단가",
+        "amount": "금액"
+      }
+    }
+  },
+  "tabs": {
+    "audit": "작업 감사",
+    "usage": "모델 호출",
+    "auth": "인증 보안",
+    "orders": "주문 기록",
+    "redemptions": "리딤 내역",
+    "conversation": "대화 이벤트",
+    "moderation": "검열 이벤트",
+    "errors": "오류"
+  },
+  "cleanup": {
+    "trigger": "로그 정리",
+    "title": "과거 로그 정리",
+    "description": "선택한 날짜 00:00 이전의 데이터가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
+    "typeLabel": "로그 유형",
+    "dateLabel": "기준 날짜",
+    "datePlaceholder": "날짜 선택",
+    "impactTitle": "영향",
+    "highRisk": "고위험",
+    "boundary": "{date} 00:00 이전의 데이터가 삭제됩니다. 선택한 날짜의 데이터는 포함되지 않습니다.",
+    "confirm": "정리",
+    "deleting": "정리 중",
+    "types": {
+      "audit": "작업 감사",
+      "auth": "인증 보안",
+      "usage": "모델 호출",
+      "orders": "주문 기록",
+      "conversation": "대화 이벤트",
+      "moderation": "검열 이벤트",
+      "errors": "오류"
+    },
+    "impacts": {
+      "audit": "작업 추적 기록만 삭제합니다. 사용자, 대화 등 다른 업무 데이터는 삭제되지 않습니다.",
+      "auth": "로그인, 2단계 인증, 비밀번호 등 보안 이벤트 이력을 삭제합니다. 활성 세션과 자격 증명은 변경되지 않습니다.",
+      "usage": "사용량 및 비용 원장을 삭제합니다. 과거 일별, 월별 사용량과 현재 주기의 할당량 계산, 결제 추적 가능성에 영향이 있으며, 정리된 기간의 소진 할당량이 낮게 표시될 수 있습니다.",
+      "orders": "결제 주문과 콜백 연관 데이터를 삭제합니다. 이미 지급된 잔액과 구독은 회수되지 않지만, 이전 콜백이 실패할 수 있고 결제 추적 및 멱등성 증거를 잃게 됩니다.",
+      "conversation": "메시지 처리 추적, 도구 호출, 실행 이벤트를 삭제합니다. 대화와 메시지 내용은 유지되지만 과거의 처리 및 도구 상세 정보가 더 이상 표시되지 않을 수 있습니다.",
+      "moderation": "콘텐츠 검열 이벤트와 판정 결과를 삭제합니다. 검열 설정과 대화 내용에는 영향이 없습니다.",
+      "errors": "실패한 요청의 원본 원인을 삭제합니다. 해당 요청은 더 이상 오류 ID 로 조회할 수 없습니다. 대화, 사용량 등 다른 업무 데이터에는 영향이 없습니다."
+    },
+    "toast": {
+      "sessionExpired": "세션이 만료되었습니다",
+      "signInAgain": "계속하려면 다시 로그인하세요.",
+      "success": "로그 정리를 완료했습니다. {count}건을 삭제했습니다",
+      "failed": "로그를 정리하지 못했습니다"
+    }
+  },
+  "toast": {
+    "sessionExpired": "세션이 만료되었습니다",
+    "signInAgain": "계속하려면 다시 로그인하세요.",
+    "auditLoadFailed": "감사 로그를 불러오지 못했습니다",
+    "authLoadFailed": "인증 로그를 불러오지 못했습니다",
+    "usageLoadFailed": "사용량 로그를 불러오지 못했습니다",
+    "ordersLoadFailed": "주문 기록을 불러오지 못했습니다",
+    "redemptionsLoadFailed": "리딤 내역을 불러오지 못했습니다",
+    "conversationEventsLoadFailed": "대화 이벤트를 불러오지 못했습니다",
+    "conversationEventDetailLoadFailed": "대화 이벤트 상세 정보를 불러오지 못했습니다",
+    "modelFilterLoadFailed": "모델 필터를 불러오지 못했습니다"
+  },
+  "sort": {
+    "idDesc": "ID 최신순",
+    "idAsc": "ID 오래된순",
+    "createdDesc": "생성 최신순",
+    "createdAsc": "생성 오래된순",
+    "occurredDesc": "발생 최신순",
+    "occurredAsc": "발생 오래된순",
+    "callTimeDesc": "호출 시간 최신순",
+    "callTimeAsc": "호출 시간 오래된순",
+    "costDesc": "비용 높은순",
+    "tokensDesc": "토큰 많은순",
+    "latencyDesc": "지연 시간 긴순",
+    "paidDesc": "결제 최신순",
+    "amountDesc": "금액 높은순",
+    "sequenceAsc": "이벤트 순서 오래된순"
+  },
+  "filters": {
+    "allResources": "전체",
+    "allActions": "전체",
+    "allSources": "전체",
+    "allEvents": "전체",
+    "allResults": "전체",
+    "allLevels": "전체",
+    "timeRange": "시간 범위",
+    "levels": {
+      "info": "정보",
+      "warn": "경고",
+      "error": "오류"
+    }
+  },
+  "columns": {
+    "actor": "수행자",
+    "action": "작업",
+    "resource": "리소스",
+    "time": "시간",
+    "requestID": "요청 ID",
+    "user": "사용자",
+    "event": "이벤트",
+    "result": "결과",
+    "reason": "사유",
+    "caller": "호출자",
+    "model": "모델",
+    "usage": "사용량",
+    "billing": "결제",
+    "balanceAfter": "정산 후 잔액",
+    "latency": "지연 시간",
+    "orderNo": "주문 번호",
+    "type": "유형",
+    "provider": "공급자",
+    "status": "상태",
+    "upstream": "업스트림",
+    "amount": "금액",
+    "scope": "범위",
+    "tool": "도구",
+    "runID": "실행 ID",
+    "code": "코드",
+    "reward": "사용 내용",
+    "balanceAfterRedemption": "사용 후 잔액"
+  },
+  "auth": {
+    "searchPlaceholder": "사용자 ID 또는 이벤트 유형 검색",
+    "empty": "인증 로그가 없습니다"
+  },
+  "orders": {
+    "searchPlaceholder": "사용자 ID, 주문 번호, 공급자, 상태, 외부 결제 ID 검색",
+    "empty": "주문 기록이 없습니다",
+    "filters": {
+      "all": "전체",
+      "orderType": "주문 유형",
+      "provider": "공급자",
+      "status": "결제 상태"
+    },
+    "types": {
+      "subscription": "구독",
+      "topup": "충전"
+    },
+    "status": {
+      "pending": "대기 중",
+      "paid": "결제 완료",
+      "expired": "만료됨",
+      "failed": "실패"
+    }
+  },
+  "redemptions": {
+    "searchPlaceholder": "리딤 참조 번호, 코드 힌트, 메모 검색",
+    "empty": "리딤 내역이 없습니다",
+    "filters": {
+      "all": "전체",
+      "rewardType": "보상 유형",
+      "codeID": "코드 ID",
+      "codeIDPlaceholder": "코드 ID 입력",
+      "userID": "사용자 ID",
+      "userIDPlaceholder": "사용자 ID 입력",
+      "clearCodeID": "코드 ID 지우기",
+      "clearUserID": "사용자 ID 지우기"
+    },
+    "rewards": {
+      "balance": "잔액",
+      "subscription": "구독 요금제",
+      "durationDays": "{count}일"
+    }
+  },
+  "conversation": {
+    "searchPlaceholder": "사용자 ID, 실행 ID, 오류 ID, 이벤트, 단계, 제목, 도구 검색",
+    "empty": "대화 이벤트가 없습니다",
+    "filters": {
+      "all": "전체",
+      "scope": "범위",
+      "eventType": "이벤트 유형",
+      "status": "상태"
+    },
+    "scopes": {
+      "trace_block": "추적 블록",
+      "trace_event": "추적 이벤트",
+      "tool_call": "도구 호출"
+    },
+    "status": {
+      "streaming": "스트리밍 중",
+      "completed": "완료됨",
+      "error": "오류"
+    }
+  },
+  "detail": {
+    "titles": {
+      "audit": "감사 로그 상세",
+      "auth": "인증 로그 상세",
+      "usage": "사용량 로그 상세",
+      "order": "주문 기록 상세",
+      "redemption": "리딤 내역 상세",
+      "conversation": "대화 이벤트 상세"
+    },
+    "fallbacks": {
+      "authEvent": "인증 이벤트",
+      "modelCall": "모델 호출",
+      "order": "주문 기록",
+      "redemption": "리딤 내역",
+      "conversationEvent": "대화 이벤트",
+      "auditEvent": "감사 이벤트"
+    },
+    "blocks": {
+      "event": "이벤트",
+      "actor": "수행자",
+      "request": "요청",
+      "user": "사용자",
+      "resource": "리소스",
+      "call": "호출",
+      "modelRoute": "모델 라우트",
+      "usageBilling": "사용량 결제",
+      "order": "주문",
+      "payment": "결제",
+      "redemption": "리딤",
+      "redemptionCode": "리딤 코드",
+      "reward": "보상",
+      "conversationEvent": "대화 이벤트",
+      "tool": "도구"
+    },
+    "codeStatus": {
+      "active": "활성",
+      "inactive": "비활성",
+      "deleted": "삭제됨"
+    },
+    "rewardTypes": {
+      "balance": "잔액",
+      "subscription": "구독 요금제"
+    },
+    "fields": {
+      "action": "작업",
+      "resource": "리소스",
+      "resourceID": "리소스 ID",
+      "createdAt": "생성 일시",
+      "user": "사용자",
+      "userID": "사용자 ID",
+      "requestID": "요청 ID",
+      "event": "이벤트",
+      "result": "결과",
+      "reason": "사유",
+      "occurredAt": "발생 일시",
+      "caller": "호출자",
+      "conversationID": "대화 ID",
+      "callTime": "호출 시간",
+      "platformModel": "플랫폼 모델",
+      "upstreamName": "업스트림 이름",
+      "upstreamModel": "업스트림 모델",
+      "bindingCode": "바인딩 코드",
+      "protocol": "프로토콜",
+      "billing": "결제",
+      "balanceAfter": "정산 후 잔액",
+      "totalTokens": "총 토큰",
+      "reasoning": "추론",
+      "callCount": "호출 횟수",
+      "latency": "지연 시간",
+      "orderNo": "주문 번호",
+      "orderType": "주문 유형",
+      "provider": "공급자",
+      "status": "상태",
+      "paidAt": "결제 일시",
+      "amount": "금액",
+      "credit": "크레딧",
+      "interval": "주기",
+      "externalPaymentID": "외부 결제 ID",
+      "externalCheckoutID": "외부 체크아웃 ID",
+      "runID": "실행 ID",
+      "eventScope": "이벤트 범위",
+      "stage": "단계",
+      "seq": "순서",
+      "refNo": "리딤 참조 번호",
+      "redeemedAt": "사용 일시",
+      "codeHint": "코드",
+      "codeID": "코드 ID",
+      "codeDescription": "코드 메모",
+      "codeStatus": "코드 상태",
+      "rewardType": "보상 유형",
+      "planName": "구독 요금제",
+      "subscriptionID": "구독 ID",
+      "balanceBefore": "사용 전 잔액",
+      "balanceAfterRedemption": "사용 후 잔액",
+      "durationDays": "요금제 기간",
+      "messageID": "메시지 ID",
+      "toolName": "도구 이름",
+      "toolCallID": "도구 호출 ID",
+      "title": "제목",
+      "summary": "요약",
+      "payloadSize": "페이로드 크기"
+    },
+    "result": {
+      "success": "성공",
+      "failure": "실패",
+      "blocked": "차단됨"
+    },
+    "rewardDurationDays": "{count}일",
+    "rawUsageJsonTitle": "원본 Usage JSON",
+    "jsonTitle": "상세 JSON",
+    "jsonFields": {
+      "payload": "이벤트 페이로드",
+      "input": "도구 입력",
+      "output": "도구 출력",
+      "error": "도구 오류"
+    },
+    "loading": "상세 정보를 불러오는 중",
+    "jsonEmpty": "이 이벤트에는 표시할 JSON 상세 정보가 없습니다",
+    "jsonOmitted": "{label} 의 크기가 {size} 로 안전한 조회 한도를 넘어 불러오지 않았습니다.",
+    "copied": "{label} 을(를) 복사했습니다",
+    "copyFailed": "복사하지 못했습니다"
+  },
+  "moderation": {
+    "searchPlaceholder": "정확한 이벤트 ID, 사용자, 결과, 실행 ID 검색…",
+    "empty": "아직 검열 이벤트가 없습니다.",
+    "loadFailed": "검열 이벤트를 불러오지 못했습니다",
+    "viewDetail": "상세 보기",
+    "detailTitle": "검열 이벤트 상세",
+    "detailFailed": "이벤트 상세 정보를 불러오지 못했습니다",
+    "detailText": "복호화된 텍스트",
+    "detailImages": "격리된 이미지",
+    "detailImageAlt": "검열 이미지 {index}",
+    "imageLoadFailed": "격리된 이미지를 하나 이상 불러오지 못했습니다",
+    "filters": {
+      "all": "전체"
+    },
+    "results": {
+      "passed": "통과",
+      "hit": "적중",
+      "failedOpen": "실패 시 허용"
+    },
+    "directions": {
+      "input": "입력",
+      "output": "출력"
+    },
+    "modalities": {
+      "text": "텍스트",
+      "image": "이미지"
+    },
+    "columns": {
+      "eventId": "이벤트 ID",
+      "user": "사용자",
+      "result": "결과",
+      "direction": "방향",
+      "modality": "모달리티",
+      "latency": "지연 시간",
+      "createdAt": "생성",
+      "actions": "작업",
+      "model": "모델",
+      "userID": "사용자 ID",
+      "runID": "실행 ID"
+    },
+    "blocks": {
+      "event": "이벤트"
+    }
+  },
+  "errors": {
+    "searchPlaceholder": "정확히 일치시키려면 오류 ID 를 붙여 넣고, 그 외에는 라우트, 코드, 업스트림 응답을 검색하세요",
+    "empty": "오류 로그가 없습니다",
+    "noCause": "호출자가 원인을 기록하지 않았습니다",
+    "statusClass": {
+      "label": "유형",
+      "all": "전체",
+      "server": "서버 오류 (5xx)",
+      "stream": "스트림 실패"
+    },
+    "columns": {
+      "requestID": "오류 ID",
+      "user": "사용자",
+      "route": "라우트",
+      "status": "상태",
+      "errorCode": "오류 코드",
+      "cause": "원인",
+      "latency": "지연 시간",
+      "time": "시간"
+    },
+    "detail": {
+      "title": "오류 상세",
+      "request": "요청",
+      "cause": "원본 원인",
+      "client": "클라이언트",
+      "requestID": "오류 ID",
+      "traceID": "추적 ID",
+      "method": "메서드",
+      "route": "라우트",
+      "path": "경로",
+      "status": "HTTP 상태",
+      "errorCode": "공개 오류 코드",
+      "user": "사용자",
+      "latency": "지연 시간",
+      "clientIP": "IP",
+      "userAgent": "User-Agent",
+      "time": "시간",
+      "copyCause": "원인 복사",
+      "copied": "복사했습니다",
+      "copyFailed": "복사하지 못했습니다",
+      "relatedHint": "생성 요청인 경우 대화 이벤트와 모델 호출에서 같은 오류 ID 를 검색하면 이벤트와 사용량을 확인할 수 있습니다.",
+      "upstream": "원본 업스트림 응답",
+      "viewRaw": "원본",
+      "viewFormatted": "서식 적용",
+      "copyUpstream": "업스트림 응답 복사",
+      "noUpstream": "이 오류에는 업스트림 응답 본문이 없습니다"
+    },
+    "loadFailed": "오류 로그를 불러오지 못했습니다"
+  }
+}

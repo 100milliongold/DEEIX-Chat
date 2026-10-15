@@ -1,0 +1,38 @@
+{
+  "untitled": "새 채팅",
+  "labelsDialog": {
+    "labels": "대화 라벨",
+    "labelsDescription": "라벨을 최대 {count}개까지 추가하여 이 대화를 정리하고 쉽게 찾을 수 있습니다.",
+    "labelsEmpty": "라벨 없음",
+    "labelPlaceholder": "라벨 추가",
+    "addLabel": "라벨 추가",
+    "removeLabel": "라벨 {label} 제거",
+    "labelsSaveFailed": "대화 라벨을 저장하지 못했습니다"
+  },
+  "shareDialog": {
+    "title": "이 대화 공유",
+    "statusShared": "공유됨",
+    "statusNotShared": "공유 안 됨",
+    "publicLink": "공개 링크",
+    "emptyLink": "생성된 공개 링크가 없습니다",
+    "copyLink": "링크 복사",
+    "openLink": "링크 열기",
+    "loadFailed": "공유 상태를 불러오지 못했습니다",
+    "noMessages": "공유할 메시지가 없습니다",
+    "signInRequired": "계속하려면 로그인하세요",
+    "closed": "공유가 종료되었습니다",
+    "regenerated": "공유 링크가 다시 생성되었습니다",
+    "created": "공유 링크가 생성되었습니다",
+    "operationFailed": "작업에 실패했습니다",
+    "linkCopied": "링크가 복사되었습니다",
+    "copyFailed": "복사에 실패했습니다",
+    "closing": "종료 중",
+    "closeShare": "공유 중지",
+    "regenerating": "다시 생성 중",
+    "regenerate": "다시 생성",
+    "copyAndClose": "복사 후 닫기",
+    "creating": "생성 중",
+    "createLink": "생성",
+    "snapshotMessages": "{title} - 스냅샷 메시지 {count}개"
+  }
+}

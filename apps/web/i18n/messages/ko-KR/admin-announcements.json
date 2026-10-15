@@ -1,0 +1,72 @@
+{
+  "title": "공지",
+  "description": "로그인 후 표시되는 공지, 모델 변경 사항, 운영 메시지를 관리합니다.",
+  "create": "만들기",
+  "edit": "편집",
+  "delete": "삭제",
+  "enable": "활성화",
+  "disable": "비활성화",
+  "deleting": "삭제하는 중",
+  "searchPlaceholder": "제목 또는 내용 검색",
+  "statusFilter": "상태",
+  "allStatuses": "전체",
+  "typeFilter": "유형",
+  "allTypes": "전체",
+  "pinnedFilter": "고정",
+  "allPinned": "전체",
+  "createTitle": "공지 만들기",
+  "editTitle": "공지 편집",
+  "dialogDescription": "공지 내용을 Markdown으로 작성하세요. 내용을 수정하면 새 버전으로 다시 표시됩니다.",
+  "deleteTitle": "공지 삭제",
+  "deleteDescription": "삭제된 공지는 더 이상 표시되지 않으며 다른 사용자 데이터에는 영향을 주지 않습니다.",
+  "empty": "공지가 없습니다",
+  "previewEmpty": "미리보기",
+  "status": {
+    "active": "활성",
+    "inactive": "비활성"
+  },
+  "pinned": {
+    "yes": "고정됨",
+    "no": "고정 안 됨"
+  },
+  "types": {
+    "critical": "긴급",
+    "warning": "경고",
+    "info": "안내",
+    "normal": "일반",
+    "general": "기타"
+  },
+  "columns": {
+    "title": "공지",
+    "type": "유형",
+    "pinned": "고정",
+    "status": "상태",
+    "priority": "우선순위",
+    "window": "표시 시간"
+  },
+  "fields": {
+    "title": "제목",
+    "priority": "우선순위",
+    "type": "유형",
+    "pinned": "고정",
+    "status": "상태",
+    "timeRange": "표시 시간",
+    "alwaysActive": "항상 활성",
+    "startsAt": "시작 시각",
+    "expiresAt": "만료 시각",
+    "contentMarkdown": "내용",
+    "preview": "미리보기"
+  },
+  "toast": {
+    "loadFailed": "공지를 불러오지 못했습니다",
+    "invalid": "제목과 내용을 입력하세요.",
+    "created": "공지를 만들었습니다",
+    "createFailed": "공지를 만들지 못했습니다",
+    "updated": "공지를 수정했습니다",
+    "updateFailed": "공지를 수정하지 못했습니다",
+    "priorityInvalid": "우선순위는 숫자여야 합니다",
+    "statusFailed": "상태를 변경하지 못했습니다",
+    "deleted": "공지를 삭제했습니다",
+    "deleteFailed": "공지를 삭제하지 못했습니다"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "types": {
+    "components": "컴포넌트"
+  },
+  "libraryTitle": "컴포넌트 라이브러리",
+  "searchPlaceholder": "컴포넌트 이름 또는 설명 검색",
+  "create": "새 컴포넌트",
+  "empty": "컴포넌트가 없습니다",
+  "scope": {
+    "builtin": "기본 제공",
+    "platform": "플랫폼",
+    "user": "내 컴포넌트"
+  },
+  "enable": "활성화",
+  "disable": "비활성화",
+  "delete": "삭제",
+  "cancel": "취소",
+  "deleteTitle": "컴포넌트 삭제",
+  "deleteDescription": "모델이 더 이상 이 컴포넌트를 출력하지 않습니다. 기존 메시지에는 원본 데이터가 대신 표시됩니다.",
+  "editor": {
+    "createTitle": "새 컴포넌트",
+    "editTitle": "컴포넌트 편집",
+    "description": "이름과 props 요약은 모델 프롬프트에 포함되며, 렌더러는 브라우저 샌드박스에서만 실행됩니다.",
+    "builtinDescription": "기본 제공 컴포넌트는 코드에 정의되어 있으며, 여기서는 활성화와 비활성화만 변경할 수 있습니다.",
+    "readOnlyDescription": "이 컴포넌트는 플랫폼에서 제공하며 읽기 전용입니다.",
+    "fields": {
+      "name": "이름",
+      "nameHint": "영문 소문자, 숫자, 하이픈 사용 (예: stock-glance)",
+      "description": "설명",
+      "descriptionHint": "이 컴포넌트의 용도를 모델에게 한 문장으로 알려 주세요",
+      "propsSummary": "Props 요약",
+      "propsSummaryHint": "모델에게 전달할 간략한 props 설명 (예: '{'symbol, name?'}')",
+      "rendererSource": "렌더러",
+      "rendererSourceHint": "HTML과 스크립트는 네트워크에 접근할 수 없는 샌드박스 iframe에서 실행됩니다. deeix.onProps로 데이터를, deeix.onTheme으로 테마 변수를 받습니다. deeix.onState / setState로 대화와 함께 저장되는 상태(최대 4 KB)를 읽고 쓸 수 있으며, deeix.ask(text)는 사용자가 전송할 수 있도록 메시지 입력창에 텍스트를 넣습니다",
+      "propsSchema": "Props 스키마",
+      "propsSchemaHint": "모델 출력을 검증하는 데 사용하는 선택 사항인 JSON Schema입니다. 비워 두면 검증하지 않습니다",
+      "enabled": "활성화됨"
+    },
+    "preview": {
+      "title": "미리보기",
+      "apply": "현재 코드 적용",
+      "invalidProps": "미리보기 데이터는 올바른 JSON 객체여야 합니다"
+    },
+    "cancel": "취소",
+    "save": "저장",
+    "saving": "저장하는 중..."
+  },
+  "toast": {
+    "loadFailed": "컴포넌트를 불러오지 못했습니다",
+    "invalid": "이름, 설명, props 요약, 렌더러를 입력하세요",
+    "invalidSchema": "Props 스키마는 올바른 JSON 객체여야 합니다",
+    "tooLong": "내용이 길이 제한을 초과했습니다",
+    "created": "컴포넌트를 만들었습니다",
+    "updated": "컴포넌트를 수정했습니다",
+    "deleted": "컴포넌트를 삭제했습니다",
+    "createFailed": "만들지 못했습니다",
+    "updateFailed": "수정하지 못했습니다",
+    "deleteFailed": "삭제하지 못했습니다"
+  },
+  "builtin": {
+    "card-grid": {
+      "title": "카드 그리드",
+      "summary": "뉴스나 검색 결과처럼 같은 종류의 항목을 보여 주며 태그로 필터링할 수 있습니다"
+    },
+    "chart": {
+      "title": "차트",
+      "summary": "꺾은선, 막대, 영역, 산점도, 원형, 레이더, 깔때기 등을 지원하며 계열을 전환할 수 있습니다"
+    },
+    "function-plot": {
+      "title": "함수 그래프",
+      "summary": "수식을 실시간으로 편집하고 확대, 이동, 곡선 전환을 할 수 있습니다"
+    },
+    "stat-grid": {
+      "title": "통계 카드",
+      "summary": "KPI를 나란히 표시하며 스파크라인에서 마우스를 올리면 값을 확인할 수 있습니다"
+    },
+    "image-gallery": {
+      "title": "이미지 갤러리",
+      "summary": "여러 이미지를 나란히 표시하며 클릭해 확대하고, 넘겨 보고, 캡션과 출처를 확인할 수 있습니다"
+    },
+    "gantt": {
+      "title": "간트 차트",
+      "summary": "일정, 마일스톤, 의존 관계를 표시하며 단위 전환, 연결 강조, 그룹 접기를 지원합니다"
+    },
+    "data-table": {
+      "title": "데이터 테이블",
+      "summary": "정렬, 검색, 페이지 나누기, CSV 내보내기를 지원합니다"
+    },
+    "calculator": {
+      "title": "계산기",
+      "summary": "입력값을 드래그하면 수식에 따라 출력값이 다시 계산됩니다"
+    },
+    "decision-tree": {
+      "title": "의사 결정 트리",
+      "summary": "선택지를 단계별로 따라가며 이전 단계로 돌아가거나 초기화할 수 있습니다"
+    },
+    "diff": {
+      "title": "Diff",
+      "summary": "통합 / 분할 보기, 변경 위치 이동, 단어 강조, 결과 복사를 지원합니다"
+    },
+    "quiz": {
+      "title": "퀴즈",
+      "summary": "해설과 함께 즉시 채점하며 답변에 따라 분기할 수 있습니다"
+    },
+    "panel": {
+      "title": "인터랙티브 패널",
+      "summary": "드래그하면 다시 계산되는 수식, 슬라이더, 다이어그램을 제공하며 계산기를 대체합니다"
+    },
+    "widget": {
+      "title": "인터랙티브 일러스트",
+      "summary": "재생, 일시 정지, 탐색이 가능한 애니메이션, 3D 스케치, 과정 도해를 제공합니다"
+    }
+  }
+}

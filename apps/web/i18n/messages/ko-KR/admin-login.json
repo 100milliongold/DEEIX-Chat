@@ -1,0 +1,221 @@
+{
+  "groups": {
+    "loginPage": {
+      "title": "로그인 페이지",
+      "description": "로그인 페이지의 브라우저 제목과 로그인 후 기본 이동 경로를 설정합니다."
+    },
+    "loginAndRegistration": {
+      "title": "로그인 및 등록",
+      "description": "사용 가능한 로그인 방식과 이메일 등록 진입점을 설정합니다."
+    },
+    "humanVerification": {
+      "title": "사람 확인",
+      "description": "이메일 등록에 Cloudflare Turnstile을 활성화합니다. 서드파티 로그인에는 영향을 주지 않습니다."
+    },
+    "bindingAndVerification": {
+      "title": "바인딩 및 확인",
+      "description": "이메일 확인, 등록 도메인 정책, 서드파티 ID 연결을 설정합니다."
+    },
+    "loginSecurity": {
+      "title": "로그인 보안",
+      "description": "토큰 유효 기간, 로그인 실패 잠금, 플랫폼 HTTP 429 속도 제한을 설정합니다."
+    }
+  },
+  "fields": {
+    "loginDefaultNextPath": {
+      "label": "기본 이동 경로",
+      "description": "/login에 next 매개변수가 없을 때 로그인 후 이동하는 기본 경로입니다."
+    },
+    "emailLoginEnabled": {
+      "label": "이메일 로그인",
+      "description": "사용자가 이메일과 비밀번호로 로그인할 수 있도록 허용합니다."
+    },
+    "emailRegistrationEnabled": {
+      "label": "이메일 등록",
+      "description": "사용자가 이메일로 계정을 만들 수 있도록 허용합니다."
+    },
+    "passwordResetEnabled": {
+      "label": "비밀번호 재설정",
+      "description": "사용자가 로그인 페이지에서 비밀번호를 재설정할 수 있도록 허용합니다. 이메일 확인이 필요합니다."
+    },
+    "usernameLoginEnabled": {
+      "label": "사용자 이름 로그인",
+      "description": "사용자가 사용자 이름과 비밀번호로 로그인할 수 있도록 허용합니다."
+    },
+    "thirdPartyLoginEnabled": {
+      "label": "서드파티 로그인",
+      "description": "설정된 OIDC / OAuth2 ID 공급자를 활성화하고 표시합니다."
+    },
+    "emailVerificationEnabled": {
+      "label": "이메일 확인",
+      "description": "이메일 등록 시 이메일 확인 코드를 요구합니다."
+    },
+    "smtpHost": {
+      "label": "SMTP 호스트",
+      "description": "등록 확인 코드를 보내는 데 사용하는 SMTP 서버 주소입니다."
+    },
+    "smtpPort": {
+      "label": "SMTP 포트",
+      "description": "SMTP 서버 포트이며 보통 465 또는 587입니다."
+    },
+    "smtpUsername": {
+      "label": "SMTP 사용자 이름",
+      "description": "SMTP 로그인 계정이며 보통 전체 이메일 주소입니다."
+    },
+    "smtpPassword": {
+      "label": "SMTP 비밀번호",
+      "description": "SMTP 로그인 비밀번호 또는 앱 전용 비밀번호입니다."
+    },
+    "smtpFrom": {
+      "label": "발신자",
+      "description": "확인 이메일에 표시되는 발신자입니다. 비워 두면 SMTP 사용자 이름을 사용합니다."
+    },
+    "emailRegistrationAllowedDomains": {
+      "label": "등록 도메인 허용 목록",
+      "description": "등록을 허용할 이메일 도메인입니다. 비워 두면 모든 도메인을 허용합니다."
+    },
+    "emailRegistrationBlockPlusAlias": {
+      "label": "플러스 별칭 차단",
+      "description": "+ 별칭이 포함된 이메일 주소로의 등록을 차단합니다."
+    },
+    "autoLinkVerifiedEmail": {
+      "label": "동일 이메일 자동 연결",
+      "description": "서드파티 이메일이 일치하고 공급자의 이메일 확인 필드(기본값 email_verified)가 true인 경우에만 기존 로컬 계정에 자동으로 연결합니다."
+    },
+    "turnstileRegistrationEnabled": {
+      "label": "등록 사람 확인",
+      "description": "이메일 등록에 Cloudflare Turnstile을 요구합니다. OIDC / OAuth2 로그인에는 필요하지 않습니다."
+    },
+    "turnstileSiteKey": {
+      "label": "Turnstile Site Key",
+      "description": "가입 양식에서 사용하는 공개 Cloudflare Turnstile 사이트 키입니다."
+    },
+    "turnstileSecretKey": {
+      "label": "Turnstile Secret Key",
+      "description": "서버 측 Cloudflare Turnstile 검증 키입니다. 저장 후에는 표시되지 않습니다."
+    },
+    "tokenTTLHours": {
+      "label": "액세스 토큰 유효 기간",
+      "description": "Access Token의 유효 기간(시간 단위)입니다. 범위는 1-168입니다."
+    },
+    "refreshTokenTTLHours": {
+      "label": "로그인 유지",
+      "description": "Refresh Token과 세션의 유효 기간(시간 단위)입니다. 범위는 1-8760입니다."
+    },
+    "loginMaxFailures": {
+      "label": "실패 잠금 임계값",
+      "description": "로그인에 연속으로 이 횟수만큼 실패하면 계정을 잠급니다. 0으로 설정하면 계정 잠금을 비활성화합니다."
+    },
+    "loginLockMinutes": {
+      "label": "잠금 시간",
+      "description": "로그인 실패가 많을 때 계정을 잠그는 시간(분 단위)입니다. 0으로 설정하면 계정 잠금을 비활성화합니다."
+    },
+    "rateLimitEnabled": {
+      "label": "플랫폼 속도 제한",
+      "description": "활성화하면 플랫폼이 HTTP 429를 반환합니다. Traefik, 게이트웨이 등 외부 계층에서 속도 제한을 처리한다면 비활성화하세요."
+    },
+    "rateLimitRPM": {
+      "label": "사용자 API 속도 제한",
+      "description": "로그인한 사용자 API의 분당 기본 요청 한도입니다. 플랫폼 속도 제한이 비활성화되어 있으면 효과가 없습니다."
+    },
+    "publicAuthRateLimitRPM": {
+      "label": "공개 인증 속도 제한",
+      "description": "공개 로그인, 등록, 토큰 갱신 API의 분당 기본 요청 한도입니다. 플랫폼 속도 제한이 비활성화되어 있으면 효과가 없습니다."
+    }
+  },
+  "providers": {
+    "title": "OIDC / OAuth2 ID 공급자",
+    "create": "ID 공급자 추가",
+    "customOIDC": "사용자 지정 OIDC",
+    "customOAuth2": "사용자 지정 OAuth2",
+    "name": "이름",
+    "type": "유형",
+    "loginControl": "로그인",
+    "registrationControl": "등록",
+    "dragToReorder": "{name}을(를) 드래그하여 순서 변경",
+    "loginControlFor": "{name} 로그인 제어",
+    "registrationControlFor": "{name} 등록 제어",
+    "edit": "ID 공급자 편집",
+    "delete": "ID 공급자 삭제",
+    "empty": "ID 공급자가 없습니다",
+    "bridgeMissingTitle": "서드파티 로그인을 사용할 수 없습니다",
+    "bridgeMissingDescription": "서버에 PUBLIC_API_BASE_URL이 설정되어 있지 않아 공급자 콜백 URL을 생성할 수 없습니다. 서버 환경 변수 또는 config.yaml에 설정하고 다시 시작한 뒤, 아래에 표시되는 콜백 URL을 각 공급자에 등록하세요."
+  },
+  "providerDialog": {
+    "createTitle": "ID 공급자 추가",
+    "editTitle": "ID 공급자 편집",
+    "description": "Client Secret은 저장 후에 표시되지 않습니다. 편집 중에 비워 두면 기존 시크릿이 유지됩니다.",
+    "loginControlDescription": "플랫폼 로그인을 허용합니다.",
+    "registrationControlDescription": "계정 자동 생성을 허용합니다.",
+    "callbackURL": "콜백 URL",
+    "callbackURLUnavailable": "콜백 URL을 생성하려면 PUBLIC_API_BASE_URL을 설정하세요",
+    "copyCallbackURL": "URL 복사",
+    "logoURL": "로고 URL",
+    "clientID": "Client ID",
+    "clientSecret": "Client Secret",
+    "oidcEndpoint": "OIDC 엔드포인트",
+    "issuerURL": "Issuer URL",
+    "discoveryURL": "Discovery URL",
+    "authURL": "Auth URL",
+    "tokenURL": "Token URL",
+    "userinfoURL": "UserInfo URL",
+    "scopes": "스코프",
+    "advancedSettings": "고급 설정",
+    "sourceField": "원본 필드",
+    "systemField": "시스템 필드",
+    "systemFields": {
+      "userID": "사용자 ID",
+      "email": "이메일",
+      "emailVerified": "이메일 확인됨",
+      "displayName": "표시 이름",
+      "avatar": "아바타"
+    }
+  },
+  "deleteDialog": {
+    "title": "ID 공급자 삭제",
+    "thisProvider": "이 ID 공급자",
+    "description": "{name}을(를) 삭제하면 해당 설정이 제거되고 이를 사용하는 모든 계정의 연결이 해제됩니다. 이 작업은 되돌릴 수 없습니다."
+  },
+  "forceDeleteDialog": {
+    "title": "ID 공급자 강제 삭제",
+    "description": "일부 계정은 이 ID 공급자에만 의존합니다. 강제로 삭제하면 해당 계정은 더 이상 이 공급자로 로그인할 수 없습니다.",
+    "confirm": "강제 삭제"
+  },
+  "validation": {
+    "defaultNextPath": "기본 이동 경로는 /chat처럼 내부 경로여야 합니다.",
+    "passwordLoginRequired": "사용자 이름 및 이메일 로그인을 비활성화하기 전에 서드파티 로그인을 활성화하고, 관리자 한 명 이상에게 연결된 ID 공급자가 있는지 확인하세요.",
+    "missingSMTP": "이메일 확인에는 {fields}이(가) 필요합니다.",
+    "invalidSMTPPort": "SMTP 포트는 1에서 65535 사이의 정수여야 합니다.",
+    "missingTurnstile": "Turnstile 확인에는 {fields}이(가) 필요합니다.",
+    "turnstileRegistrationRequired": "Turnstile 확인을 활성화하기 전에 이메일 등록을 활성화하세요."
+  },
+  "punctuation": {
+    "listSeparator": ", "
+  },
+  "toast": {
+    "sessionExpired": "세션이 만료되었습니다",
+    "signInAgain": "계속하려면 다시 로그인해 주세요.",
+    "loadFailed": "인증 설정을 불러오지 못했습니다",
+    "saveFailed": "인증 설정을 저장하지 못했습니다",
+    "settingsUpdated": "인증 설정이 업데이트되었습니다",
+    "cannotDisableLoginMethod": "로그인 방식을 비활성화할 수 없습니다",
+    "thirdPartyOnlyRequiresAdminBinding": "서드파티 전용 로그인은 관리자에게 연결된 서드파티 ID가 있어야 허용됩니다.",
+    "providerSaved": "ID 공급자가 저장되었습니다",
+    "providerSaveFailed": "ID 공급자를 저장하지 못했습니다",
+    "providerDeleted": "ID 공급자가 삭제되었습니다",
+    "providerDeleteFailed": "ID 공급자를 삭제하지 못했습니다",
+    "enableLoginFirst": "먼저 로그인을 활성화하세요",
+    "registrationRequiresLogin": "이 ID 공급자가 로그인을 허용해야 등록을 활성화할 수 있습니다.",
+    "providerControlUpdated": "ID 공급자 제어가 업데이트되었습니다",
+    "providerControlSaveFailed": "ID 공급자 제어를 저장하지 못했습니다",
+    "providerOrderUpdated": "ID 공급자 순서가 업데이트되었습니다",
+    "providerOrderSaveFailed": "ID 공급자 순서를 저장하지 못했습니다",
+    "callbackCopied": "콜백 URL을 복사했습니다"
+  },
+  "bridgeNotice": {
+    "title": "서드파티 로그인을 사용할 수 없습니다",
+    "description": "ID 공급자가 설정되어 있지만 서버에 PUBLIC_API_BASE_URL이 없어 사용자가 이를 통해 로그인하거나 계정을 연결할 수 없습니다. 설정한 뒤 서버를 다시 시작하면 로그인이 복원됩니다.",
+    "dismiss": "이번 세션에서 다시 표시 안 함",
+    "openSettings": "로그인 설정 열기"
+  }
+}

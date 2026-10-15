@@ -1,0 +1,175 @@
+{
+  "sections": {
+    "conversation": "대화 설정",
+    "contextManagement": "컨텍스트 관리",
+    "optionPassthrough": "옵션 전달",
+    "dataExport": "데이터 내보내기"
+  },
+  "defaultModel": {
+    "systemRecommended": "시스템 추천"
+  },
+  "taskModel": {
+    "follow": "현재 모델 따르기"
+  },
+  "policy": {
+    "allowlist": "허용 목록",
+    "denylist": "차단 목록",
+    "disabled": "비활성화"
+  },
+  "fields": {
+    "defaultModel": {
+      "label": "새 대화 기본 모델",
+      "description": "사용자가 시스템 추천을 선택했거나 개인 기본 모델이 없을 때 우선 사용합니다. 비워 두면 사용 가능한 첫 번째 모델을 사용합니다."
+    },
+    "taskModel": {
+      "label": "작업 모델",
+      "description": "대화 제목과 라벨을 생성하는 데 사용하는 채팅 모델입니다."
+    },
+    "defaultSystemPrompt": {
+      "label": "전역 기본 시스템 프롬프트",
+      "description": "모든 채팅 모델에 적용되는 전역 동작 지침입니다. 비워 두면 아무것도 주입하지 않으며, 모델별 프롬프트는 이 뒤에 추가됩니다.",
+      "placeholder": "예: 답변은 정확하고 명확하게 작성하고 플랫폼 안전 요구 사항을 따르세요."
+    },
+    "uiComponentsEnabled": {
+      "label": "인터랙티브 컴포넌트",
+      "description": "모델이 답변에 인터랙티브 컴포넌트(차트, 표, 계산기, 간트 차트 등)를 출력하도록 허용합니다. 끄면 카탈로그를 주입하지 않고 선택기가 숨겨지며, 기존 블록은 원본 내용으로 표시됩니다. 관리자 라이브러리는 계속 편집할 수 있습니다."
+    },
+    "processTraceEnabled": {
+      "label": "처리 단계",
+      "description": "각 답변의 처리 단계(컨텍스트 계획, 검색, 도구 요약)를 기록하고 표시합니다. 끄면 추적 데이터를 기록하지 않으며 해당 사용자 설정도 숨겨집니다."
+    },
+    "contextCompactEnabled": {
+      "label": "컨텍스트 압축",
+      "description": "이전 대화 턴을 요약해 누적 컨텍스트로 만듭니다. 사용자는 채팅 설정에서 계속 사용을 끌 수 있습니다."
+    },
+    "contextTokenBudget": {
+      "label": "토큰 예산 보호",
+      "description": "모델의 컨텍스트 예산을 초과하는 기록을 자동으로 잘라냅니다."
+    },
+    "contextMaxTurns": {
+      "label": "압축 시작 턴 수",
+      "description": "대화가 이 턴 수를 초과하면 컨텍스트 압축을 시작합니다. 0으로 설정하면 이 조건을 사용하지 않습니다.",
+      "placeholder": "시작 턴 수"
+    },
+    "contextWindowFallbackTokens": {
+      "label": "기본 컨텍스트 윈도우",
+      "description": "모델의 컨텍스트 윈도우를 확인할 수 없을 때 사용합니다.",
+      "placeholder": "기본값 128000"
+    },
+    "contextCompactTriggerPercent": {
+      "label": "압축 시작 비율",
+      "description": "누적 컨텍스트가 현재 모델의 유효 입력 예산 대비 이 비율에 도달하면 압축을 시작합니다. 0으로 설정하면 토큰 기준 시작을 사용하지 않습니다.",
+      "placeholder": "기본값 80"
+    },
+    "contextCompactPreserveTurns": {
+      "label": "유지할 최근 턴 수",
+      "description": "압축할 때 원본 그대로 유지할 최근 턴 수입니다. 그 이전 내용은 요약됩니다.",
+      "placeholder": "유지할 턴 수"
+    },
+    "contextCompactHighlightsPerRole": {
+      "label": "역할별 핵심 항목 수",
+      "description": "템플릿 압축 중 사용자와 어시스턴트 역할마다 유지하는 요약 핵심 항목의 최대 개수입니다.",
+      "placeholder": "핵심 항목 수"
+    },
+    "contextCompactSnippetChars": {
+      "label": "스니펫 글자 수 제한",
+      "description": "템플릿 압축 중 메시지 스니펫 하나에 유지하는 최대 글자 수입니다.",
+      "placeholder": "글자 수 제한"
+    },
+    "contextArtifactRetentionDays": {
+      "label": "근거 보존 일수",
+      "description": "RAG 결과, 과거 근거, 도구 결과를 포함한 컨텍스트 근거의 보존 기간입니다. 0으로 설정하면 자동 만료를 사용하지 않습니다.",
+      "placeholder": "보존 일수"
+    },
+    "compactAsync": {
+      "label": "백그라운드 압축",
+      "description": "현재 응답이 끝난 후 템플릿 또는 LLM 압축을 실행합니다. 결과는 메시지 처리 추적에 저장되며, 시작, 완료, 실패는 백엔드 로그에 기록됩니다."
+    },
+    "compactLLM": {
+      "label": "LLM 압축",
+      "description": "모델을 호출해 의미 기반 요약을 생성합니다. 끄면 템플릿 요약만 사용합니다."
+    },
+    "compactTaskModel": {
+      "label": "압축 모델",
+      "description": "압축 요약을 생성하는 데 사용하는 모델입니다. 현재 모델 따르기를 선택했을 때 현재 대화 모델이 채팅을 지원하지 않으면 기본 채팅 모델을 사용합니다."
+    },
+    "compactMaxFailures": {
+      "label": "차단 임계값",
+      "description": "LLM 압축의 연속 실패 임계값입니다. 이 값에 도달하면 템플릿 요약으로 전환합니다.",
+      "placeholder": "차단 임계값"
+    },
+    "compactSystemPrompt": {
+      "label": "전체 요약 프롬프트",
+      "description": "전체 압축 시 LLM에 전달하는 사용자 지정 지침입니다. 비워 두면 기본 제공 지침을 사용합니다."
+    },
+    "compactLightPrompt": {
+      "label": "간략 요약 프롬프트",
+      "description": "간략 압축 시 LLM에 전달하는 사용자 지정 지침입니다. 비워 두면 기본 제공 지침을 사용합니다."
+    },
+    "optionPolicyMode": {
+      "label": "옵션 전달 정책",
+      "description": "사용자 요청 옵션을 업스트림 공급자에게 전달할 수 있는지 제어합니다. 기본적으로 허용 목록에 있는 경로만 전달됩니다."
+    },
+    "allowedPaths": {
+      "label": "모델 옵션 허용 목록",
+      "description": "JSON 객체입니다. default는 모든 프로토콜에 적용되고, 프로토콜별 항목은 해당 프로토콜에만 경로를 추가합니다. 경로는 xxx.xxx 형식을 사용합니다."
+    },
+    "deniedPaths": {
+      "label": "모델 옵션 차단 목록",
+      "description": "JSON 객체입니다. 차단 목록 모드에서만 사용합니다. 시스템 예약 필드는 목록에 없어도 차단됩니다."
+    },
+    "titlePrompt": {
+      "label": "제목 생성 프롬프트",
+      "description": "모델은 JSON 형식으로 응답해야 합니다: '{' \"title\": \"요약한 제목\" '}'. '{{MESSAGES}}' 자리 표시자를 지원합니다."
+    },
+    "labelsPrompt": {
+      "label": "라벨 생성 프롬프트",
+      "description": "모델은 JSON 형식으로 응답해야 합니다: '{' \"labels\": [\"라벨1\", \"라벨2\"] '}'. '{{MESSAGES}}' 자리 표시자를 지원합니다."
+    },
+    "defaultPromptPlaceholder": "비워 두면 기본 제공 프롬프트를 사용합니다"
+  },
+  "preview": {
+    "title": "실시간 미리보기",
+    "passed": "전달됨",
+    "filtered": "필터링됨",
+    "emptyPassed": "현재 전달되는 경로가 없습니다",
+    "emptyFiltered": "현재 필터링되는 경로가 없습니다",
+    "systemDenied": "시스템 차단",
+    "hitDenylist": "차단 목록과 일치",
+    "hitAllowlist": "허용 목록과 일치",
+    "otherFields": "기타 필드",
+    "notInDenylist": "차단 목록에 없음"
+  },
+  "guide": {
+    "button": "가이드",
+    "close": "닫기",
+    "title": "옵션 전달 가이드",
+    "description": "업스트림 요청에 포함될 수 있는 사용자 옵션을 제어합니다.",
+    "pathTitle": "경로 문법",
+    "pathLabel": "경로",
+    "pathDescription": "최상위 필드는 필드 이름을 그대로 사용하고, 중첩 필드는 점 표기법을 사용합니다. 여러 단계의 중첩을 지원합니다.",
+    "strategyTitle": "전달 전략",
+    "allowlistDescription": "목록에 있는 경로만 전달하고 나머지 필드는 버립니다.",
+    "denylistDescription": "기본적으로 전달합니다. 차단 목록이나 시스템 차단 목록에 일치하는 경로는 제거합니다.",
+    "openAIServiceTierNote": "OpenAI service_tier는 default, flex, priority만 허용합니다. 설정하지 않으면 생략됩니다.",
+    "protocolTitle": "프로토콜 키",
+    "protocolDescription": "default는 모든 프로토콜에 적용됩니다. 다른 키는 해당하는 프로토콜에만 적용됩니다.",
+    "systemDeniedTitle": "시스템 차단 목록",
+    "systemDeniedDescription": "이 필드들은 항상 차단되며 허용 목록으로 허용할 수 없습니다."
+  },
+  "toast": {
+    "sessionExpired": "세션이 만료되었습니다",
+    "signInAgain": "계속하려면 다시 로그인하세요.",
+    "loadFailed": "대화 설정을 불러오지 못했습니다",
+    "saveFailed": "대화 설정을 저장하지 못했습니다",
+    "updated": "대화 설정을 수정했습니다"
+  },
+  "dataExport": {
+    "title": "모든 대화",
+    "description": "모든 대화, 메시지, 메타데이터를 JSONL 파일로 내보냅니다.",
+    "exportButton": "내보내기",
+    "success": "대화 {count}개를 내보냈습니다",
+    "partial": "대화 {exported}개를 내보냈으며 {failed}개는 실패했습니다",
+    "failed": "내보내지 못했습니다. 다시 시도하세요."
+  }
+}

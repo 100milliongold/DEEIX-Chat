@@ -1,0 +1,22 @@
+{
+  "title": "공지",
+  "types": {
+    "critical": "긴급",
+    "warning": "경고",
+    "info": "안내",
+    "normal": "일반",
+    "general": "기타"
+  },
+  "sort": {
+    "default": "기본",
+    "type": "유형",
+    "time": "시간"
+  },
+  "loading": "공지를 불러오는 중...",
+  "empty": "현재 공지가 없습니다",
+  "openFailed": "공지를 불러오지 못했습니다",
+  "dismissAllToday": "오늘 하루 보지 않기",
+  "dismissFailed": "공지 상태를 저장하지 못했습니다",
+  "closeFailed": "공지 닫기 상태를 저장하지 못했습니다",
+  "close": "닫기"
+}

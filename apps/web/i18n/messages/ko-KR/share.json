@@ -1,0 +1,10 @@
+{
+  "title": "공유된 대화",
+  "snapshotMessages": "스냅샷 메시지 {count}개",
+  "continueConversation": "대화 이어가기",
+  "continuing": "이어가는 중...",
+  "signInToContinue": "계속하려면 DEEIX Chat에 로그인하세요",
+  "notFoundTitle": "공유를 사용할 수 없음",
+  "notFoundDescription": "공유가 존재하지 않거나, 종료되었거나, 원본 대화가 삭제되었습니다.",
+  "cloneFailed": "대화를 이어가지 못했습니다"
+}

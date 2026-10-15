@@ -6,12 +6,14 @@ import { NextIntlClientProvider } from "next-intl";
 import { detectLocale } from "@/i18n/detect-locale";
 import enDesktopTabs from "@/i18n/messages/en-US/desktop-tabs.json";
 import zhDesktopTabs from "@/i18n/messages/zh-CN/desktop-tabs.json";
+import koDesktopTabs from "@/i18n/messages/ko-KR/desktop-tabs.json";
 import { ThemeProvider } from "@/shared/components/theme-provider";
 import type { AppLocale } from "@/i18n/config";
 
 const MESSAGES: Record<AppLocale, { desktopTabs: typeof enDesktopTabs }> = {
   "en-US": { desktopTabs: enDesktopTabs },
   "zh-CN": { desktopTabs: zhDesktopTabs },
+  "ko-KR": { desktopTabs: koDesktopTabs },
 };
 
 /** Theme + the strip's own strings; follows the app's saved locale and theme. */

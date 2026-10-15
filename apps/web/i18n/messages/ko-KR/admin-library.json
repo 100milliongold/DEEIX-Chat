@@ -1,0 +1,75 @@
+{
+  "title": "라이브러리",
+  "types": {
+    "prompts": "프롬프트",
+    "skills": "스킬"
+  },
+  "libraryTitle": {
+    "prompts": "기본 제공 프롬프트",
+    "skills": "기본 제공 스킬"
+  },
+  "create": "새로 만들기",
+  "createSkill": "새 스킬",
+  "edit": "편집",
+  "delete": "삭제",
+  "enable": "활성화",
+  "disable": "비활성화",
+  "cancel": "취소",
+  "save": "저장",
+  "saving": "저장하는 중",
+  "searchPlaceholder": "이름 또는 내용 검색",
+  "skillsSearchPlaceholder": "스킬 검색",
+  "createTitle": "새 기본 제공 프롬프트",
+  "editTitle": "기본 제공 프롬프트 편집",
+  "dialogDescription": "채팅에서 빠르게 삽입할 수 있도록 플랫폼에서 관리하는 프롬프트입니다. 사용자는 볼 수만 있고 편집할 수 없습니다.",
+  "createSkillTitle": "새 기본 제공 스킬",
+  "editSkillTitle": "기본 제공 스킬 편집",
+  "skillDialogDescription": "기본 제공 스킬은 SKILL.md 파일 하나로 정의됩니다. 불러오면 현재 턴의 컨텍스트로만 사용되며 명령을 실행하지 않습니다.",
+  "deleteTitle": "기본 제공 프롬프트 삭제",
+  "deleteDescription": "삭제하면 기본 제공 프롬프트가 사용자에게 더 이상 표시되지 않습니다. 사용자 지정 프롬프트에는 영향이 없습니다.",
+  "deleteSkillTitle": "기본 제공 스킬 삭제",
+  "deleteSkillDescription": "삭제하면 기본 제공 스킬이 사용자에게 더 이상 표시되지 않습니다. 사용자 지정 스킬에는 영향이 없습니다.",
+  "empty": "기본 제공 프롬프트가 없습니다",
+  "skillsEmpty": "기본 제공 스킬이 없습니다",
+  "settings": {
+    "skillsPrompt": {
+      "label": "스킬 호출 프롬프트",
+      "description": "모델이 불러온 스킬을 해석하고 사용하는 방식을 제어합니다. 비워 두면 기본 제공 프롬프트를 사용합니다."
+    },
+    "defaultPromptPlaceholder": "비워 두면 기본 제공 프롬프트를 사용합니다"
+  },
+  "fields": {
+    "name": "이름",
+    "description": "설명",
+    "content": "내용",
+    "skillMarkdown": "SKILL.md",
+    "enabled": "활성화됨",
+    "createdAt": "생성일",
+    "updatedAt": "수정일"
+  },
+  "toast": {
+    "loadFailed": "프롬프트를 불러오지 못했습니다",
+    "invalid": "이름과 내용을 입력하세요.",
+    "tooLong": "이름은 최대 64자, 설명은 최대 256자, 내용은 최대 10000자까지 입력할 수 있습니다.",
+    "created": "프롬프트를 만들었습니다",
+    "createFailed": "프롬프트를 만들지 못했습니다",
+    "updated": "프롬프트를 수정했습니다",
+    "updateFailed": "프롬프트를 수정하지 못했습니다",
+    "deleted": "프롬프트를 삭제했습니다",
+    "deleteFailed": "프롬프트를 삭제하지 못했습니다",
+    "skillsLoadFailed": "스킬을 불러오지 못했습니다",
+    "skillInvalid": "이름과 SKILL.md를 입력하세요.",
+    "skillTooLong": "이름은 최대 64자, 설명은 최대 256자, SKILL.md는 최대 10000자까지 입력할 수 있습니다.",
+    "skillCreated": "스킬을 만들었습니다",
+    "skillCreateFailed": "스킬을 만들지 못했습니다",
+    "skillUpdated": "스킬을 수정했습니다",
+    "skillUpdateFailed": "스킬을 수정하지 못했습니다",
+    "skillDeleted": "스킬을 삭제했습니다",
+    "skillDeleteFailed": "스킬을 삭제하지 못했습니다",
+    "settingsLoadFailed": "프롬프트 설정을 불러오지 못했습니다",
+    "settingsUpdated": "프롬프트 설정을 수정했습니다",
+    "settingsSaveFailed": "프롬프트 설정을 저장하지 못했습니다",
+    "sessionExpired": "세션이 만료되었습니다.",
+    "signInAgain": "계속하려면 다시 로그인하세요."
+  }
+}

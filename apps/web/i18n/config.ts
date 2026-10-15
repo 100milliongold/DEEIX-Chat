@@ -1,6 +1,6 @@
 import { isOneOf } from "@/shared/lib/type-guards";
 
-export const APP_LOCALES = ["en-US", "zh-CN"] as const;
+export const APP_LOCALES = ["en-US", "zh-CN", "ko-KR"] as const;
 
 export type AppLocale = (typeof APP_LOCALES)[number];
 
@@ -12,6 +12,7 @@ export const LOCALE_COOKIE_NAME = "deeix_chat_locale";
 export const APP_LOCALE_LABELS: Record<AppLocale, string> = {
   "en-US": "English",
   "zh-CN": "简体中文",
+  "ko-KR": "한국어",
 };
 
 export function normalizeAppLocale(value: string | null | undefined): AppLocale {
@@ -24,6 +25,9 @@ export function normalizeAppLocale(value: string | null | undefined): AppLocale 
   if (lower === "en" || lower.startsWith("en-")) {
     return "en-US";
   }
+  if (lower === "ko" || lower.startsWith("ko-")) {
+    return "ko-KR";
+  }
   return isAppLocale(canonical) ? canonical : DEFAULT_LOCALE;
 }
 
@@ -35,6 +39,9 @@ export function resolveBrowserLocale(languages: readonly string[] | undefined): 
     }
     if (normalized === "en" || normalized.startsWith("en-")) {
       return "en-US";
+    }
+    if (normalized === "ko" || normalized.startsWith("ko-")) {
+      return "ko-KR";
     }
   }
   return DEFAULT_LOCALE;
